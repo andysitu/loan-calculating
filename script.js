@@ -1,3 +1,8 @@
+function display(msg) {
+	var msgArea = document.getElementById('msg');
+	msgArea.textContent = msg;
+}
+
 function init() {
 	function test(e) {
 		console.log(e.target.value, typeof e.target.value);

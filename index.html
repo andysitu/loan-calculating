@@ -10,7 +10,6 @@
 </head>
 
 <body>
-	<div id="msg"></div>
 	Option:
 	<form>
 		<select name='options' id='options'>
@@ -18,15 +17,17 @@
 			<option value='add'>Add</option>
 			<option value='pay'>Pay</option>
 		</select>
-		<br>
-		<p>Balance:</p>
+
+		Balance:
 		<input type="text" name="balance" id="balance" value='1000'>
-		<p>Rate:</p>
+		Rate:
 		<input type="text" name="rate" id="rate" value='20'>
-		<p>Pay in months</p>
+		Pay in months
 		<input type="text" name="date" id="date" value='5'>
 		<button type="button" id='submit'>submit</button>
 	</form>
+	<div id="msg"></div>
+
 	<script src='script.js'></script>	
 </body>
 
