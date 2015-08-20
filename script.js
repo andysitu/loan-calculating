@@ -17,7 +17,7 @@ function init() {
 		var rate = document.getElementById("rate");
 		var date = document.getElementById("date");
 
-		console.log(bal.value, rate.value, date.value);
+		p.dataIn(bal.value, rate.value, date.value);
 	}
 
 	var submit = document.getElementById("submit");
