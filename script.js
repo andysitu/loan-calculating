@@ -9,7 +9,10 @@ function init() {
 
 	function onSubmit(e) {
 		var bal = document.getElementById("balance");
-		console.log(e.target, bal.value);
+		var rate = document.getElementById("rate");
+		var date = document.getElementById("date");
+
+		console.log(bal.value, rate.value, date.value);
 	}
 
 	var submit = document.getElementById("submit");
