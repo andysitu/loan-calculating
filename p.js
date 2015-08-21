@@ -55,9 +55,11 @@ var p = {
 			newBal -= interest - payment;
 		}
 
+		interest = Math.ceil(interest * 100) / 100;
+
 		str += "With a balance of $" + bal + ", you will pay off everything in " + months + " months";
 		str += "\n if you make a payment of $" + payment + " each month, but you will also pay $" + interest;
-		str += "\n in total.";
+		str += "\n in total to interest for a grand total of $" + (bal + interest) + ".";
 
 		display(str);
 	}
