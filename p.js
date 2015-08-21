@@ -7,11 +7,16 @@ var p = {
 		this.rate = Number(rate);
 		this.months = Number(months);
 
-		this.calculatePayment(bal, rate, months);
+		var payment = this.calculatePayment(bal, rate, months);
+		display()
+		this.displayInfo(bal, rate, months, payment);
 	},
 	calculatePayment(bal, apr, months) {
-	  // uses bisect method to figure out min payment to pay off credit 
-	  // in that amount of time
+	  /* uses bisect method to figure out min payment to pay off credit 
+	   * in that amount of time.
+	   *
+	   * Returns the min payment amount
+	  */
 		var rate = 1 + apr / 12,
 			newBal = bal,
 			upLimit = Math.pow(rate, months) * bal / months,
@@ -32,9 +37,28 @@ var p = {
 				upLimit = guess;
 			}
 
-			console.log(newBal, guess, typeof guess);
+			// console.log(newBal, guess, typeof guess);
 		}
 
-		console.log(guess);
+		return guess;
+	},
+
+	displayInfo(bal, apr, months, payment) {
+		// displays all the appropriate info by using the display function
+		var interest = 0,
+			newBal = bal,
+			rate = 1 + apr / 12,
+			str = "";
+
+		for (var i = 0; i < months; i++) {
+			interest += newBal * rate - newBal;
+			newBal -= interest - payment;
+		}
+
+		str += "With a balance of $" + bal + ", you will pay off everything in " + months + " months";
+		str += "\n if you make a payment of $" + payment + " each month, but you will also pay $" + interest;
+		str += "\n in total.";
+
+		display(str);
 	}
 };
