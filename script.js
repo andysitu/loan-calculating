@@ -1,6 +1,12 @@
 function display(msg) {
 	var msgArea = document.getElementById('msg');
-	msgArea.textContent = msg;
+
+	if (msg !== false) {
+		msgArea.textContent += msg;
+	} else {
+		msgArea.textContent = "";
+	}
+	
 }
 
 function init() {
