@@ -5,7 +5,7 @@ function display(msg) {
 	
 }
 
-function makeTable(headerObj, dataObj) {
+function makeTable(dataArr, headerObj) {
 	/* Makes a table to doc by the headerObj (array) containing table heading
 	 * to specify order of the headings (optional) and dataObj which is objs 
 	 * in array that will contain the actual data.
@@ -14,12 +14,19 @@ function makeTable(headerObj, dataObj) {
 	 */
 	var docFrag = document.createDocumentFragment();
 
-	var tr = document.createElement("tr");
-	var th = document.createElement("th");
-	th.textContent = "TESTING HEADING";
-	tr.appendChild(th);
-	docFrag.appendChild(tr);
+	var keys = Object.keys(dataArr[0]);
 
+	for (var i = 0; i < dataArr.length; i++) {
+		var tr = document.createElement("tr");
+		for (var j = 0; j < keys.length; j++) {
+			var td = document.createElement("td");
+			td.textContent = dataArr[i][keys[j]];
+			tr.appendChild(td);
+		}
+		docFrag.appendChild(tr);
+	}
+	var th = document.createElement("th");
+	
 	document.body.appendChild(docFrag);
 }
 
