@@ -87,11 +87,16 @@ var p = {
 		return arr;
 	},
 
-	displayInfo(bal, apr, months, payment) {
+	displayInfo() {
 		// displays all the appropriate info by using the display function
-		var interest = 0,
+		var that = p;
+
+		var bal = that.balance,
+			rate = that.rate / 12,
+			months = that.months,
+			payment = that.payment,
+			interest = 0,
 			newBal = bal,
-			rate = apr / 12,
 			str = "";
 
 		for (var i = 0; i < months; i++) {

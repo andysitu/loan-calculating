@@ -51,7 +51,7 @@ function init() {
 
 		p.dataIn(bal, rate, months);
 		p.payment = p.calculatePayment();
-		p.displayInfo(p.balance, p.rate, p.months, p.payment);
+		p.displayInfo();
 
 		var paymentObj = p.makePaymentObj();
 
