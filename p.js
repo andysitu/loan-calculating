@@ -12,14 +12,15 @@ var p = {
 		this.displayInfo(bal, rate, months, payment);
 	},
 	calculatePayment(bal, apr, months) {
-	  /* uses bisect method to figure out min payment to pay off credit 
+	  /** 
+	   * uses bisect method to figure out min payment to pay off credit 
 	   * in that amount of time.
 	   *
 	   * Returns the min payment amount
 	  */
-		var rate = 1 + apr / 12,
+		var rate = apr / 12,
 			newBal = bal,
-			upLimit = Math.pow(rate, months) * bal / months,
+			upLimit = Math.pow(1 + rate, months) * bal / months,
 			lowLimit = bal / months,
 			guess,
 			limit = .20; // accepting limit of the bisect method (in $ amount)
@@ -28,7 +29,7 @@ var p = {
 			newBal = bal;
 			guess = Math.floor( (upLimit + lowLimit) / 2 * 100 ) / 100;
 			for (var i = 0; i < months; i++) {
-				newBal = newBal * rate - guess;
+				newBal = newBal * (1 + rate) - guess;
 			}
 
 			if (newBal > 0) { // newBal is amount left over after X months
@@ -47,12 +48,12 @@ var p = {
 		// displays all the appropriate info by using the display function
 		var interest = 0,
 			newBal = bal,
-			rate = 1 + apr / 12,
+			rate = apr / 12,
 			str = "";
 
 		for (var i = 0; i < months; i++) {
-			interest += newBal * rate - newBal;
-			newBal = newBal * rate - payment;
+			interest += newBal * (1 + rate) - newBal;
+			newBal = newBal * (1+ rate) - payment;
 		}
 
 		interest = Math.ceil(interest * 100) / 100;
