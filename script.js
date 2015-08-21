@@ -47,9 +47,15 @@ function init() {
 	function onSubmit(e) {
 		var bal = document.getElementById("balance").value;
 		var rate = document.getElementById("rate").value;
-		var date = document.getElementById("date").value;
+		var months = document.getElementById("date").value;
 
-		var pay = p.dataIn(bal, rate, date);
+		p.dataIn(bal, rate, months);
+		p.payment = p.calculatePayment();
+		p.displayInfo(p.balance, p.rate, p.months, p.payment);
+
+		var paymentObj = p.makePaymentObj();
+
+		makeTable(paymentObj);
 	}
 
 	var submit = document.getElementById("submit");
