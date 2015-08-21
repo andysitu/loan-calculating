@@ -45,11 +45,11 @@ function init() {
 	select = null;
 
 	function onSubmit(e) {
-		var bal = document.getElementById("balance");
-		var rate = document.getElementById("rate");
-		var date = document.getElementById("date");
+		var bal = document.getElementById("balance").value;
+		var rate = document.getElementById("rate").value;
+		var date = document.getElementById("date").value;
 
-		p.dataIn(bal.value, rate.value, date.value);
+		var pay = p.dataIn(bal, rate, date);
 	}
 
 	var submit = document.getElementById("submit");
