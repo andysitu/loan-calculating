@@ -44,6 +44,42 @@ var p = {
 		return guess;
 	},
 
+	makePaymentObj(balance, apr, months, payment) {
+		/**
+		 * returns array of objects for each month detailing interest,
+		 * remaining balance, etc.
+		 */
+		
+		var arr = [],
+			rate = apr/ 12,
+			bal = balance,
+		 	month = 0,
+		 	interest = 0,
+		 	totalInterest = 0;
+		
+		function pushIt() {
+			arr.push({
+			 	"Remaining Balance": moneyFormatter(bal),
+			 	"Interest Paid": moneyFormatter(interest),
+			 	"Total Interest": moneyFormatter(totalInterest),
+			 	"month": moneyFormatter(month)
+			});
+		}
+
+		pushIt();
+
+		for (month = 1; month <= months; month++) {
+			
+			interest = bal * rate;
+			totalInterest += interest;
+			bal += interest - payment;
+
+			pushIt();
+		}
+
+		return arr;
+	},
+
 	displayInfo(bal, apr, months, payment) {
 		// displays all the appropriate info by using the display function
 		var interest = 0,
@@ -56,7 +92,7 @@ var p = {
 			newBal = newBal * (1+ rate) - payment;
 		}
 
-		interest = Math.ceil(interest * 100) / 100;
+		interest = moneyFormatter(interest);
 
 		str += "With a balance of $" + bal + ", you will pay off everything in " + months + " months";
 		str += "\n if you make a payment of $" + payment + " each month, but you will also pay $" + interest;
