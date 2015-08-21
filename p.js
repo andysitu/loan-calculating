@@ -46,14 +46,19 @@ var p = {
 		return guess;
 	},
 
-	makePaymentObj(balance, apr, months, payment) {
+	makePaymentObj() {
 		/**
 		 * returns array of objects for each month detailing interest,
 		 * remaining balance, etc.
 		 */
+
+		var that = p;
+
 		var arr = [],
-			rate = apr/ 12,
-			bal = balance,
+			rate = that.rate/ 12,
+			bal = that.balance,
+			months = that.months,
+			payment = that.payment,
 		 	month = 0,
 		 	interest = 0,
 		 	totalInterest = 0;
