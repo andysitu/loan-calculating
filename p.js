@@ -3,9 +3,9 @@ var p = {
 	rate: 0,
 	months: 0,
 	dataIn(bal, rate, months) {
-		this.balance = Number(bal);
-		this.rate = Number(rate);
-		this.months = Number(months);
+		bal = this.balance = Number(bal);
+		rate = this.rate = Number(rate);
+		months = this.months = Number(months);
 
 		var payment = this.calculatePayment(bal, rate, months);
 		display()
