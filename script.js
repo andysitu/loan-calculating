@@ -5,6 +5,24 @@ function display(msg) {
 	
 }
 
+function makeTable(headerObj, dataObj) {
+	/* Makes a table to doc by the headerObj (array) containing table heading
+	 * to specify order of the headings (optional) and dataObj which is objs 
+	 * in array that will contain the actual data.
+	 *
+	 * If headObj is not provided, then the headings might not be in order
+	 */
+	var docFrag = document.createDocumentFragment();
+
+	var tr = document.createElement("tr");
+	var th = document.createElement("th");
+	th.textContent = "TESTING HEADING";
+	tr.appendChild(th);
+	docFrag.appendChild(tr);
+
+	document.body.appendChild(docFrag);
+}
+
 function init() {
 	function test(e) {
 		console.log(e.target.value, typeof e.target.value);
