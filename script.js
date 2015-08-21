@@ -1,11 +1,7 @@
 function display(msg) {
 	var msgArea = document.getElementById('msg');
 
-	if (msg !== false) {
-		msgArea.textContent += msg;
-	} else {
-		msgArea.textContent = "";
-	}
+	msgArea.textContent = msg;
 	
 }
 
