@@ -2,23 +2,25 @@ var p = {
 	balance: 0,
 	rate: 0,
 	months: 0,
+	payment: 0,
 	dataIn(bal, rate, months) {
 		bal = this.balance = Number(bal);
 		rate = this.rate = Number(rate);
 		months = this.months = Number(months);
-
-		var payment = this.calculatePayment(bal, rate, months);
-		display()
-		this.displayInfo(bal, rate, months, payment);
 	},
-	calculatePayment(bal, apr, months) {
+
+	calculatePayment() {
 	  /** 
 	   * uses bisect method to figure out min payment to pay off credit 
 	   * in that amount of time.
 	   *
 	   * Returns the min payment amount
 	  */
-		var rate = apr / 12,
+	  	var that = p;
+
+		var months = that.months,
+			bal = that.balance,
+			rate = that.rate / 12,
 			newBal = bal,
 			upLimit = Math.pow(1 + rate, months) * bal / months,
 			lowLimit = bal / months,
@@ -49,7 +51,6 @@ var p = {
 		 * returns array of objects for each month detailing interest,
 		 * remaining balance, etc.
 		 */
-		
 		var arr = [],
 			rate = apr/ 12,
 			bal = balance,
@@ -58,6 +59,7 @@ var p = {
 		 	totalInterest = 0;
 		
 		function pushIt() {
+			// pushes obj of values to arr that will be returned
 			arr.push({
 			 	"Remaining Balance": moneyFormatter(bal),
 			 	"Interest Paid": moneyFormatter(interest),
