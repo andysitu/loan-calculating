@@ -52,7 +52,7 @@ var p = {
 
 		for (var i = 0; i < months; i++) {
 			interest += newBal * rate - newBal;
-			newBal -= interest - payment;
+			newBal = newBal * rate - payment;
 		}
 
 		interest = Math.ceil(interest * 100) / 100;
