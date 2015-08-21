@@ -23,6 +23,11 @@ function makeTable(headerObj, dataObj) {
 	document.body.appendChild(docFrag);
 }
 
+function moneyFormatter(value) {
+	// Makes number into correct format for money
+	return Math.ceil(value * 100) / 100
+}
+
 function init() {
 	function test(e) {
 		console.log(e.target.value, typeof e.target.value);
