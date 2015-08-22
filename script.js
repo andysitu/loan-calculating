@@ -61,8 +61,10 @@ function init() {
 				textElem.textContent = arguments[i];
 			}
 		}	
+		var value = e.target.value;
 
-		if (e.target.value === "pay") {
+		p.changeStatus(value);
+		if (value === "pay") {
 			changeT("Balance:", "APR:", "Pay in months:");
 		} else {
 			changeT("Balance:", "APR:", "Pay each month:")

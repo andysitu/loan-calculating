@@ -1,4 +1,8 @@
 var p = {
+	status: "pay",
+	changeStatus(value) {
+		p.status = value;
+	},
 	balance: 0,
 	rate: 0,
 	months: 0,
