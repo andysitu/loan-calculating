@@ -51,8 +51,22 @@ function moneyFormatter(value) {
 }
 
 function init() {
-	function test(e) {
-		console.log(e.target.value);
+	function changeInput(e) {
+
+		function changeT() {
+			for (var i = 0, len = arguments.length; i < len; i++) {
+				var id = "text" + i;
+				var textElem = document.getElementById(id);
+
+				textElem.textContent = arguments[i];
+			}
+		}	
+
+		if (e.target.value === "pay") {
+			changeT("Balance:", "APR:", "Pay in months:");
+		} else {
+			changeT("Balance:", "APR:", "Pay each month:")
+		}
 	}
 
 	var select = document.getElementById("options");
