@@ -70,7 +70,7 @@ function init() {
 	}
 
 	var select = document.getElementById("options");
-	select.addEventListener("change", test, false); 
+	select.addEventListener("change", changeInput, false); 
 	select = null;
 
 	function onSubmit(e) {
