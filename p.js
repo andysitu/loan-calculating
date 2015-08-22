@@ -3,6 +3,8 @@ var p = {
 	rate: 0,
 	months: 0,
 	payment: 0,
+	headerObj: null,
+	paymentObj: null,
 	dataIn(bal, rate, months) {
 		bal = this.balance = Number(bal);
 		rate = this.rate = Number(rate);

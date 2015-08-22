@@ -66,11 +66,10 @@ function init() {
 
 		p.dataIn(bal, rate, months);
 		p.payment = p.calculatePayment();
+		p.paymentObj = p.makePaymentObj();
 		p.displayInfo();
 
-		var paymentObj = p.makePaymentObj();
-
-		makeTable(paymentObj);
+		makeTable(p.paymentObj);
 	}
 
 	var submit = document.getElementById("submit");
