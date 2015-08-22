@@ -26,13 +26,17 @@ function calculatePayment(bal, rate, months) {
   	rate = parseFloat(rate) / 12;
   	months = parseFloat(months);
 
-	var newBal = bal,
+	var counter = 0,
+		newBal = bal,
 		upLimit = Math.pow(1 + rate, months) * bal / months,
 		lowLimit = bal / months,
 		guess,
 		limit = .20; // accepting limit of the bisect method (in $ amount)
 
 	while (newBal > 0 || newBal < -limit ) {
+		if (counter++ > 100) {
+			break;
+		}
 		newBal = bal;
 		guess = Math.floor( (upLimit + lowLimit) / 2 * 100 ) / 100;
 		for (var i = 0; i < months; i++) {
