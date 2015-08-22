@@ -60,7 +60,7 @@ function init() {
 
 				textElem.textContent = arguments[i];
 			}
-		}	
+		}
 		var value = e.target.value;
 
 		p.changeStatus(value);
@@ -86,6 +86,18 @@ function init() {
 		p.displayInfo();
 
 		makeTable(p.paymentObj);
+
+		var worker = new Worker("worker.js");
+		worker.postMessage("1");
+
+		worker.onmessage = function(event) {
+			var data = event.data;
+			console.log(data);
+		}
+
+		worker.onerror = function(event) {
+			console.log("ERROR: " + event.filename + " ")
+		}
 	}
 
 	var submit = document.getElementById("submit");
