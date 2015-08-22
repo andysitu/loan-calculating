@@ -88,7 +88,7 @@ function init() {
 		makeTable(p.paymentObj);
 
 		var worker = new Worker("worker.js");
-		worker.postMessage({a:1});
+		worker.postMessage({input1:1200, input2: .2, input3: 20});
 
 		worker.onmessage = function(event) {
 			var data = event.data;

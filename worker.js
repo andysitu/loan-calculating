@@ -2,8 +2,15 @@ postMessage("Got it");
 
 onmessage = function(e) {
 	if (e.data) {
-		postMessage("I got an object");
-		postMessage(e.data);
+		var data = e.data;
+		postMessage(data);
+
+		var arg1 = data.input1,
+			arg2 = data.input2,
+			arg3 = data.input3;
+		var guess = calculatePayment(arg1, arg2, arg3);
+		
+		postMessage(guess);
 	} else {
 		postMessage("I didn't get an object.");
 	}
