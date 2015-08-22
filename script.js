@@ -14,13 +14,14 @@ function makeTable(dataArr, headerObj) {
 	 */
 	var docFrag = document.createDocumentFragment();
 
-	if (headerObj !== undefined) {
-
+	var keys = [];
+	if (Array.isArray(headerObj)) {
+		keys = headerObject.slice(0);
 	} else {
-
+		keys = Object.keys(dataArr[0]);
 	}
 
-	var keys = Object.keys(dataArr[0]);
+	
 
 	var tr = document.createElement("tr");
 	for (var i = 0; i < keys.length; i++) {
