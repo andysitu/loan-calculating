@@ -14,9 +14,24 @@ function makeTable(dataArr, headerObj) {
 	 */
 	var docFrag = document.createDocumentFragment();
 
+	if (headerObj !== undefined) {
+
+	} else {
+
+	}
+
 	var keys = Object.keys(dataArr[0]);
 
-	for (var i = 0; i < dataArr.length; i++) {
+	var tr = document.createElement("tr");
+	for (var i = 0; i < keys.length; i++) {
+		var th = document.createElement("th");
+		th.textContent = keys[i];
+		tr.appendChild(th);
+	}
+
+	docFrag.appendChild(tr);
+
+	for (i = 0; i < dataArr.length; i++) {
 		var tr = document.createElement("tr");
 		for (var j = 0; j < keys.length; j++) {
 			var td = document.createElement("td");
@@ -25,7 +40,6 @@ function makeTable(dataArr, headerObj) {
 		}
 		docFrag.appendChild(tr);
 	}
-	var th = document.createElement("th");
 	
 	document.body.appendChild(docFrag);
 }
