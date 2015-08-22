@@ -71,7 +71,7 @@ var p = {
 			 	"Remaining Balance": moneyFormatter(bal),
 			 	"Interest Paid": moneyFormatter(interest),
 			 	"Total Interest": moneyFormatter(totalInterest),
-			 	"month": moneyFormatter(month)
+			 	"Month": moneyFormatter(month)
 			});
 		}
 

@@ -6,6 +6,7 @@
 	<title>Test</title>
 
 	<link rel="stylesheet" type="text/css" href="style.css">
+	
 
 </head>
 
@@ -13,16 +14,15 @@
 	Option:
 	<form>
 		<select name='options' id='options'>
-			<option value='none' selected>None</option>
-			<option value='add'>Add</option>
-			<option value='pay'>Pay</option>
+			<option value='pay' selected>Payment</option>
+			<option value='time'>Time</option>
 		</select>
 
-		Balance:
+		<span>Balance:</span>
 		<input type="text" name="balance" id="balance" value='1000'>
-		APR:
+		<span>APR:</span>
 		<input type="text" name="rate" id="rate" value='.20'>
-		Pay in months
+		<span>Pay in months</span>
 		<input type="text" name="date" id="date" value='12'>
 		<button type="button" id='submit'>submit</button>
 	</form>

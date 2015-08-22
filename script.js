@@ -52,7 +52,7 @@ function moneyFormatter(value) {
 
 function init() {
 	function test(e) {
-		console.log(e.target.value, typeof e.target.value);
+		console.log(e.target.value);
 	}
 
 	var select = document.getElementById("options");
