@@ -81,23 +81,12 @@ function init() {
 		var months = document.getElementById("date").value;
 
 		p.dataIn(bal, rate, months);
-		p.payment = p.calculatePayment();
+		p.calculatePayment();
 		p.paymentObj = p.makePaymentObj();
 		p.displayInfo();
 
 		makeTable(p.paymentObj);
 
-		var worker = new Worker("worker.js");
-		worker.postMessage({input1:1200, input2: .2, input3: 20});
-
-		worker.onmessage = function(event) {
-			var data = event.data;
-			console.log(data);
-		}
-
-		worker.onerror = function(event) {
-			console.log("ERROR: " + event.filename + " ")
-		}
 	}
 
 	var submit = document.getElementById("submit");
