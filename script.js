@@ -82,10 +82,19 @@ function init() {
 
 		p.dataIn(bal, rate, months);
 		p.calculatePayment();
-		p.paymentObj = p.makePaymentObj();
-		p.displayInfo();
+		waitForWorker();
 
-		makeTable(p.paymentObj);
+		function waitForWorker() {
+			console.log("time");
+			if (p.payment > 0) {
+				p.paymentObj = p.makePaymentObj();
+				p.displayInfo();
+
+				makeTable(p.paymentObj);
+			} else {
+				window.setTimeout(waitForWorker, 50);
+			}
+		}
 
 	}
 

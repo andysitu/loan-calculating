@@ -45,6 +45,8 @@ function calculatePayment(bal, rate, months) {
 			upLimit = guess;
 		}
 
+		console.log(newBal, lowLimit, upLimit);
+
 		// console.log(newBal, guess, typeof guess);
 	}
 
