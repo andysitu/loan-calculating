@@ -28,6 +28,13 @@ var p = {
 				console.log("ERROR: " + event.filename + " ")
 		}
 	},
+	checkObjInStor(name) {
+		if (sessionStorage.getObject(name) === null) {
+			return false;
+		} else {
+			return true;
+		}
+	},
 
 	makePaymentObj() {
 		/**
@@ -45,7 +52,7 @@ var p = {
 		 	month = 0,
 		 	interest = 0,
 		 	totalInterest = 0;
-		
+
 		function pushIt() {
 			// pushes obj of values to arr that will be returned
 			arr.push({
@@ -54,7 +61,6 @@ var p = {
 			 	"Payment": moneyFormatter(payment),
 			 	"Interest Paid": moneyFormatter(interest),
 			 	"Total Interest": moneyFormatter(totalInterest),
-			 	
 			});
 		}
 

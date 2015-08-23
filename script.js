@@ -58,11 +58,6 @@ function init() {
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
 	submit = null;
-
-
-
-	sessionStorage.setObject("test", {a:1});
-	console.log(sessionStorage.getObject("test"));
 }
 
 window.onload = init;
