@@ -39,7 +39,7 @@ function calculatePayment(bal, rate, months) {
 			break;
 		}
 		newBal = bal;
-		guess = Math.floor( (upLimit + lowLimit) / 2 * 100 ) / 100;
+		guess = (upLimit + lowLimit) / 2;
 		for (var i = 0; i < months; i++) {
 			newBal = newBal * (1 + rate) - guess;
 		}
@@ -50,11 +50,11 @@ function calculatePayment(bal, rate, months) {
 			upLimit = guess;
 		}
 
-		console.log("guess " + guess + " newBal: " + newBal + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
+		// console.log("guess " + guess + " newBal: " + newBal + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
 
 	}
 
-	return guess;
+	return Math.ceil(guess * 100) / 100;
 }
 
 /** 
