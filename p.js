@@ -126,5 +126,13 @@ p.stor = {
 		this.storeObj("months", p.months);
 		this.storeObj("payment", p.payment);
 		this.storeObj("paymentObj", p.paymentObj);
+	},
+	setP(){
+		var that = p;
+		p.balance = this.getObj("balance");
+		p.rate = this.getObj("rate");
+		p.months = this.getObj("months");
+		p.payment = this.getObj("payment");
+		p.paymentObj = this.getObj("paymentObj");
 	}
 }
