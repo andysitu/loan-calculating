@@ -64,9 +64,7 @@ function init() {
 }
 
 window.onload = init;
-
-
-
+init = null;
 
 Storage.prototype.setObject = function(key, value) {
 	this.setItem(key, JSON.stringify(value));
