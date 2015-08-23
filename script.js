@@ -2,6 +2,8 @@ function init() {
 	function changeInput(e) {
 
 		function changeTextDiv() {
+		  // When the select option is changed, this changes the
+		  // text divs that label for the 3 text inputs
 			for (var i = 0, len = arguments.length; i < len; i++) {
 				var id = "text" + i;
 				var textElem = document.getElementById(id);

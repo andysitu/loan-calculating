@@ -16,6 +16,15 @@ var p = {
 	},
 
 	calculatePayment() {
+	/**
+	 * Calculates the payment necessary to pay off a loan in a certain
+	 * amount of time by sending it to the worker.
+	 * 
+	 * Input: values are given to work based on p.balance, p.rate
+	 * and p.months.
+	 *
+	 * Output: the payment value is set to p.payment
+	 */
 		var worker = new Worker("worker.js");
 			worker.postMessage({input1:p.balance, input2: p.rate, input3: p.months});
 
@@ -31,8 +40,12 @@ var p = {
 
 	makePaymentObj() {
 		/**
-		 * returns array of objects for each month detailing interest,
-		 * remaining balance, etc.
+		 * Makes the paymentObject that makeTable will use.
+		 *
+		 * Input: reads from p.balance, p.rate, p.months, p.payment
+		 *
+		 * Output: returns array of objects for each month detailing interest,
+		 * remaining balance, tallying interest from previous months
 		 */
 
 		var that = p;
@@ -128,6 +141,10 @@ p.stor = {
 		this.storeObj("paymentObj", p.paymentObj);
 	},
 	setP(){
+	/**
+	 * Reads from localStorage and stores the values into p
+	 * Values can be seen below
+	 */
 		var that = p;
 		p.balance = this.getObj("balance");
 		p.rate = this.getObj("rate");
