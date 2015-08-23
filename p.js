@@ -50,9 +50,11 @@ var p = {
 			// pushes obj of values to arr that will be returned
 			arr.push({
 			 	"Remaining Balance": moneyFormatter(bal),
+			 	"Month": moneyFormatter(month),
+			 	"Payment": moneyFormatter(payment),
 			 	"Interest Paid": moneyFormatter(interest),
 			 	"Total Interest": moneyFormatter(totalInterest),
-			 	"Month": moneyFormatter(month)
+			 	
 			});
 		}
 
