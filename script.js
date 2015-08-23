@@ -5,6 +5,10 @@ Storage.prototype.setObject = function(key, value) {
 Storage.prototype.getObject = function(key) {
 	var value = this.getItem(key);
 	return JSON.parse(value);
+};
+
+Storage.prototype.deleteObject = function(key) {
+	this.removeItem(key);
 }
 
 function init() {
@@ -42,7 +46,6 @@ function init() {
 		waitForWorker();
 
 		function waitForWorker() {
-			console.log("time");
 			if (p.payment > 0) {
 				p.paymentObj = p.makePaymentObj();
 				p.displayInfo();

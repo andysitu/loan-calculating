@@ -28,13 +28,6 @@ var p = {
 				console.log("ERROR: " + event.filename + " ")
 		}
 	},
-	checkObjInStor(name) {
-		if (sessionStorage.getObject(name) === null) {
-			return false;
-		} else {
-			return true;
-		}
-	},
 
 	makePaymentObj() {
 		/**
@@ -104,3 +97,25 @@ var p = {
 		display(str);
 	}
 };
+
+p.stor = {
+	checkObjInStor(name) {
+		if (sessionStorage.getObject(name) === null) {
+			return false;
+		} else {
+			return true;
+		}
+	},
+	
+	storOjb(key, obj) {
+		localStorage.setObject(key, obj);
+	},
+
+	getObj(key) {
+		return localStorage.getObject(key);
+	},
+
+	delObj(key) {
+		localStraoge.deleteObject(key);
+	}
+}
