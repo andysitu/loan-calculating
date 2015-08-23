@@ -61,6 +61,7 @@ function init() {
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
 	submit = null;
+
 }
 
 window.onload = init;

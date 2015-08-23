@@ -153,3 +153,11 @@ p.stor = {
 		p.paymentObj = this.getObj("paymentObj");
 	}
 }
+
+p.date = {
+	getMonthYear() {
+		var date = new Date();
+		console.log(date.getUTCMonth());
+		console.log(date.getUTCFullYear());
+	}
+}
