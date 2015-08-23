@@ -12,6 +12,14 @@ function init() {
 
 			}
 
+			// clearing text inputs
+			for (var i = 0; i < 3; i++) {
+				var id = "input" + i;
+				var input = document.getElementById(id);
+
+				input.value = "";
+
+			}
 		}
 		var value = e.target.value;
 
@@ -29,7 +37,6 @@ function init() {
 
 	function onSubmit(e) {
 		var bal = document.getElementById("input0").value;
-		console.log(bal);
 		var rate = document.getElementById("input1").value;
 		var months = document.getElementById("input2").value;
 
