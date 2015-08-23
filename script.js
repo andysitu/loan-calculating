@@ -1,5 +1,10 @@
+Storage.prototype.setObject = function(key, value) {
+	this.setItem(key, JSON.stringify(value));
 }
 
+Storage.prototype.getObject = function(key) {
+	var value = this.getItem(key);
+	return JSON.parse(value);
 }
 
 function init() {
@@ -53,6 +58,11 @@ function init() {
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
 	submit = null;
+
+
+
+	sessionStorage.setObject("test", {a:1});
+	console.log(sessionStorage.getObject("test"));
 }
 
 window.onload = init;
