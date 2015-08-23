@@ -15,21 +15,21 @@ onmessage = function(e) {
 
 };
 
-function calculatePayment(bal, rate, months) {
+function calculatePayment(balance, rate, months) {
   /** 
    * uses bisect method to figure out min payment to pay off credit 
    * in that amount of time.
    *
    * Returns the min payment amount
   */
-  	bal = parseFloat(bal);
+  	balance = parseFloat(balance);
   	rate = parseFloat(rate) / 12;
   	months = parseFloat(months);
 
 	var counter = 0,
-		newBal = bal,
-		upLimit = Math.pow(1 + rate, months) * bal / months,
-		lowLimit = bal / months,
+		newBal = balance,
+		upLimit = Math.pow(1 + rate, months) * balance / months,
+		lowLimit = balance / months,
 		guess,
 		limit = -0.1; // accepting limit of the bisect method (in $ amount)
 
@@ -38,7 +38,7 @@ function calculatePayment(bal, rate, months) {
 			console.log("Something was wrong");
 			break;
 		}
-		newBal = bal;
+		newBal = balance;
 		guess = (upLimit + lowLimit) / 2;
 		for (var i = 0; i < months; i++) {
 			newBal = newBal * (1 + rate) - guess;
