@@ -56,6 +56,7 @@ var p = {
 			oldBalance = 0,
 			months = that.months,
 			payment = that.payment,
+			realPayment = 0,
 		 	month = 0,
 		 	interest = 0,
 		 	totalInterest = 0;
@@ -67,6 +68,7 @@ var p = {
 			 	"Month": moneyFormatter(month),
 			 	"Payment": moneyFormatter(payment),
 			 	"Interest": moneyFormatter(interest),
+			 	"Actual Payment to Balance": moneyFormatter(realPayment),
 			 	"Total Interest": moneyFormatter(totalInterest),
 			 	"End Balance": moneyFormatter(balance)
 			});
@@ -75,6 +77,7 @@ var p = {
 		for (month = 1; month <= months; month++) {
 			oldBalance = balance;			
 			interest = balance * rate;
+			realPayment = payment - interest;
 			totalInterest += interest;
 			balance += interest - payment;
 
