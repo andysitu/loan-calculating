@@ -106,8 +106,8 @@ p.stor = {
 			return true;
 		}
 	},
-	
-	storOjb(key, obj) {
+
+	storeObj(key, obj) {
 		localStorage.setObject(key, obj);
 	},
 
@@ -117,5 +117,14 @@ p.stor = {
 
 	delObj(key) {
 		localStraoge.deleteObject(key);
+	},
+
+	storeP() {
+		// stores balance, payment, apr, month & paymentObj into storage
+		this.storeObj("balance", p.balance);
+		this.storeObj("rate", p.rate);
+		this.storeObj("months", p.months);
+		this.storeObj("payment", p.payment);
+		this.storeObj("paymentObj", p.paymentObj);
 	}
 }
