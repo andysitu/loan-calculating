@@ -31,9 +31,13 @@ function calculatePayment(bal, rate, months) {
 		upLimit = Math.pow(1 + rate, months) * bal / months,
 		lowLimit = bal / months,
 		guess,
-		limit = .20; // accepting limit of the bisect method (in $ amount)
+		limit = -0.1; // accepting limit of the bisect method (in $ amount)
 
-	while (newBal > 0 || newBal > -limit ) {
+	while ((newBal > 0 || newBal < limit)  ) {
+		if (counter++ > 100) {
+			console.log("Something was wrong");
+			break;
+		}
 		newBal = bal;
 		guess = Math.floor( (upLimit + lowLimit) / 2 * 100 ) / 100;
 		for (var i = 0; i < months; i++) {
@@ -46,7 +50,8 @@ function calculatePayment(bal, rate, months) {
 			upLimit = guess;
 		}
 
-		// console.log(newBal, guess, typeof guess);
+		console.log("guess " + guess + " newBal: " + newBal + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
+
 	}
 
 	return guess;
