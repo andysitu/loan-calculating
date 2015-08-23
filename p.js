@@ -39,7 +39,7 @@ var p = {
 
 		var arr = [],
 			rate = that.rate/ 12,
-			bal = that.balance,
+			balance = that.balance,
 			months = that.months,
 			payment = that.payment,
 		 	month = 0,
@@ -49,7 +49,7 @@ var p = {
 		function pushIt() {
 			// pushes obj of values to arr that will be returned
 			arr.push({
-			 	"Remaining Balance": moneyFormatter(bal),
+			 	"Remaining Balance": moneyFormatter(balance),
 			 	"Month": moneyFormatter(month),
 			 	"Payment": moneyFormatter(payment),
 			 	"Interest Paid": moneyFormatter(interest),
@@ -61,9 +61,9 @@ var p = {
 
 		for (month = 1; month <= months; month++) {
 			
-			interest = bal * rate;
+			interest = balance * rate;
 			totalInterest += interest;
-			bal += interest - payment;
+			balance += interest - payment;
 
 			pushIt();
 		}
