@@ -1,16 +1,3 @@
-Storage.prototype.setObject = function(key, value) {
-	this.setItem(key, JSON.stringify(value));
-}
-
-Storage.prototype.getObject = function(key) {
-	var value = this.getItem(key);
-	return JSON.parse(value);
-};
-
-Storage.prototype.deleteObject = function(key) {
-	this.removeItem(key);
-}
-
 function init() {
 	function changeInput(e) {
 
@@ -49,6 +36,7 @@ function init() {
 			if (p.payment > 0) {
 				p.paymentObj = p.makePaymentObj();
 				p.displayInfo();
+				p.stor.storeP();
 
 				makeTable(p.paymentObj);
 			} else {
@@ -64,3 +52,19 @@ function init() {
 }
 
 window.onload = init;
+
+
+
+
+Storage.prototype.setObject = function(key, value) {
+	this.setItem(key, JSON.stringify(value));
+}
+
+Storage.prototype.getObject = function(key) {
+	var value = this.getItem(key);
+	return JSON.parse(value);
+};
+
+Storage.prototype.deleteObject = function(key) {
+	this.removeItem(key);
+}
