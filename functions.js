@@ -14,6 +14,10 @@ function makeTable(dataArr, headerObj) {
 	 */
 	var docFrag = document.createDocumentFragment();
 
+	var table = document.createElement("table");
+	table.id = "table";
+	docFrag.appendChild(table);
+
 	var keys = [];
 	if (Array.isArray(headerObj)) {
 		keys = headerObject.slice(0);
@@ -28,7 +32,7 @@ function makeTable(dataArr, headerObj) {
 		tr.appendChild(th);
 	}
 
-	docFrag.appendChild(tr);
+	table.appendChild(tr);
 
 	for (i = 0; i < dataArr.length; i++) {
 		var tr = document.createElement("tr");
@@ -37,10 +41,10 @@ function makeTable(dataArr, headerObj) {
 			td.textContent = dataArr[i][keys[j]];
 			tr.appendChild(td);
 		}
-		docFrag.appendChild(tr);
+		table.appendChild(tr);
 	}
-	
-	document.body.appendChild(docFrag);
+
+	}
 }
 
 function moneyFormatter(value) {
