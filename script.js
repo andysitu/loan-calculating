@@ -24,9 +24,9 @@ function init() {
 	select = null;
 
 	function onSubmit(e) {
-		var bal = document.getElementById("balance").value;
-		var rate = document.getElementById("rate").value;
-		var months = document.getElementById("date").value;
+		var bal = document.getElementById("input1").value;
+		var rate = document.getElementById("input2").value;
+		var months = document.getElementById("input3").value;
 
 		p.dataIn(bal, rate, months);
 		p.calculatePayment();
