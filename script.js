@@ -9,7 +9,9 @@ function init() {
 				var textElem = document.getElementById(id);
 
 				textElem.textContent = arguments[i];
+
 			}
+
 		}
 		var value = e.target.value;
 
@@ -26,9 +28,10 @@ function init() {
 	select = null;
 
 	function onSubmit(e) {
-		var bal = document.getElementById("input1").value;
-		var rate = document.getElementById("input2").value;
-		var months = document.getElementById("input3").value;
+		var bal = document.getElementById("input0").value;
+		console.log(bal);
+		var rate = document.getElementById("input1").value;
+		var months = document.getElementById("input2").value;
 
 		p.dataIn(bal, rate, months);
 		p.calculatePayment();
