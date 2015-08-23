@@ -1,7 +1,7 @@
 function init() {
 	function changeInput(e) {
 
-		function changeT() {
+		function changeTextDiv() {
 			for (var i = 0, len = arguments.length; i < len; i++) {
 				var id = "text" + i;
 				var textElem = document.getElementById(id);
@@ -13,9 +13,9 @@ function init() {
 
 		p.changeStatus(value);
 		if (value === "pay") {
-			changeT("Balance:", "APR:", "Pay in months:");
+			changeTextDiv("Balance:", "APR:", "Pay in months:");
 		} else {
-			changeT("Balance:", "APR:", "Pay each month:")
+			changeTextDiv("Balance:", "APR:", "Pay each month:")
 		}
 	}
 
