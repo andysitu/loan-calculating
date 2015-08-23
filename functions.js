@@ -39,6 +39,9 @@ function makeTable(dataArr, headerObj) {
 		for (var j = 0; j < keys.length; j++) {
 			var td = document.createElement("td");
 			td.textContent = dataArr[i][keys[j]];
+			if (keys[j] == "Payment") {
+				td.contentEditable = true;
+			}
 			tr.appendChild(td);
 		}
 		table.appendChild(tr);
