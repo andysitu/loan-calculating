@@ -44,6 +44,11 @@ function makeTable(dataArr, headerObj) {
 		table.appendChild(tr);
 	}
 
+	var test = document.getElementById("table");
+	if (test === null) {
+		document.body.appendChild(docFrag);
+	} else {
+		document.body.replaceChild(docFrag, test);
 	}
 }
 
