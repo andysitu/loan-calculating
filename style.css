@@ -4,6 +4,11 @@ table {
     margin: 0;
 }
 
+#tableHere {
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
 td, th {
 	border: solid thin; 
 }
@@ -19,5 +24,9 @@ td {
 	background: rgb(245,245,255);
 }
 
-td:nth-child(1) { background: rgb(214,214,247); }
+td:nth-child(1) { 
+	background: rgb(214,214,247);
+	text-align: left;
+}
+td:nth-child(2) { text-align: center; }
 td:nth-child(7) { background: rgb(214,214,247); }

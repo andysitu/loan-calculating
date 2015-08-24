@@ -61,10 +61,11 @@ function makeTable(dataArr, headerObj) {
 	}
 
 	var test = document.getElementById("table");
+	var tableHere = document.getElementById("tableHere");
 	if (test === null) {
-		document.body.appendChild(docFrag);
+		tableHere.appendChild(docFrag);
 	} else {
-		document.body.replaceChild(docFrag, test);
+		tableHere.replaceChild(docFrag, test);
 	}
 }
 
