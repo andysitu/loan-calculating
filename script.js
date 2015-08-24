@@ -25,6 +25,17 @@ function init() {
 
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
+
+	// Check from localStorage if anything has been stored.
+	// If so, will make table and change values to last setting
+	if (p.stor.getObj("paymentObj") !== null) {
+		p.stor.setP();
+		setInput("balanceInput", p.balance);
+		setInput("rateInput", p.rate);
+		setInput("monthsInput", p.months);
+		submit.click();
+	}
+
 	submit = null;
 	onsubmit = null;
 
