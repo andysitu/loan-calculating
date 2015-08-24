@@ -2,9 +2,9 @@ function init() {
 	}
 
 	function onSubmit(e) {
-		var bal = document.getElementById("input0").value;
-		var rate = document.getElementById("input1").value;
-		var months = document.getElementById("input2").value;
+		var bal = document.getElementById("balanceInput").value;
+		var rate = document.getElementById("rateInput").value;
+		var months = document.getElementById("monthsInput").value;
 
 		p.dataIn(bal, rate, months);
 		p.calculatePayment();
