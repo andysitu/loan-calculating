@@ -1,39 +1,5 @@
 function init() {
-	function changeInput(e) {
-
-		function changeTextDiv() {
-		  // When the select option is changed, this changes the
-		  // text divs that label for the 3 text inputs
-			for (var i = 0, len = arguments.length; i < len; i++) {
-				var id = "text" + i;
-				var textElem = document.getElementById(id);
-
-				textElem.textContent = arguments[i];
-
-			}
-
-			// clearing text inputs
-			for (var i = 0; i < 3; i++) {
-				var id = "input" + i;
-				var input = document.getElementById(id);
-
-				input.value = "";
-
-			}
-		}
-		var value = e.target.value;
-
-		p.changeOption(value);
-		if (value === "pay") {
-			changeTextDiv("Balance:", "APR:", "Pay in months:");
-		} else {
-			changeTextDiv("Balance:", "APR:", "Pay each month:")
-		}
 	}
-
-	var select = document.getElementById("options");
-	select.addEventListener("change", changeInput, false); 
-	select = null;
 
 	function onSubmit(e) {
 		var bal = document.getElementById("input0").value;
