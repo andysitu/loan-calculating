@@ -31,10 +31,20 @@ function makeTable(dataArr, headerObj) {
 		keys = Object.keys(dataArr[0]);
 	}
 
+	function translator(value) {
+		switch(value) {
+			case "Actual Payment to Balance":
+				return "Actual Payment\nto Balance";
+				break;
+			default: return value;
+		}
+	}
+
 	var tr = document.createElement("tr");
 	for (var i = 0; i < keys.length; i++) {
 		var th = document.createElement("th");
-		th.textContent = keys[i];
+		th.textContent = translator(keys[i]);
+
 		tr.appendChild(th);
 	}
 

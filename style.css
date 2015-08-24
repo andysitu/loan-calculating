@@ -8,6 +8,10 @@ td, th {
 	border: solid thin; 
 }
 
+th {
+	white-space: pre-wrap;
+}
+
 td {
 	padding: 0;
 	text-align: right;
