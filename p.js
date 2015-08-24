@@ -1,4 +1,5 @@
 var p = {
+	workerStatus: false,
 	balance: 0,
 	rate: 0,
 	months: 0,
@@ -21,11 +22,14 @@ var p = {
 	 *
 	 * Output: the payment value is set to p.payment
 	 */
+	 	p.workerStatus = false;
+
 		var worker = new Worker("worker.js");
 			worker.postMessage({input1:p.balance, input2: p.rate, input3: p.months});
 
 			worker.onmessage = function(event) {
 				p.payment = event.data;
+				p.workerStatus = true;
 				console.log("from worker:" + typeof event.data);
 			}
 

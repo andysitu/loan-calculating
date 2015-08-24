@@ -8,7 +8,7 @@ function onSubmit(e) {
 	waitForWorker();
 
 	function waitForWorker() {
-		if (p.payment > 0) {
+		if (p.workerStatus == true) {
 			p.paymentObj = p.makePaymentObj();
 			p.displayInfo();
 			p.stor.storeP();
