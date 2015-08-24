@@ -1,3 +1,19 @@
-td, th {
-	border: 1px solid;
+table {
+	border-collapse: collapse;
+    padding: 0;
+    margin: 0;
 }
+
+td, th {
+	border: solid thin; 
+}
+
+td {
+	padding: 0;
+	text-align: right;
+	font-color: blue;
+	background: rgb(245,245,255);
+}
+
+td:nth-child(1) { background: rgb(214,214,247); }
+td:nth-child(7) { background: rgb(214,214,247); }
