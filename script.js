@@ -1,32 +1,32 @@
-function init() {
-	}
+function onSubmit(e) {
+	var bal = document.getElementById("balanceInput").value;
+	var rate = document.getElementById("rateInput").value;
+	var months = document.getElementById("monthsInput").value;
 
-	function onSubmit(e) {
-		var bal = document.getElementById("balanceInput").value;
-		var rate = document.getElementById("rateInput").value;
-		var months = document.getElementById("monthsInput").value;
+	p.dataIn(bal, rate, months);
+	p.calculatePayment();
+	waitForWorker();
 
-		p.dataIn(bal, rate, months);
-		p.calculatePayment();
-		waitForWorker();
+	function waitForWorker() {
+		if (p.payment > 0) {
+			p.paymentObj = p.makePaymentObj();
+			p.displayInfo();
+			p.stor.storeP();
 
-		function waitForWorker() {
-			if (p.payment > 0) {
-				p.paymentObj = p.makePaymentObj();
-				p.displayInfo();
-				p.stor.storeP();
-
-				makeTable(p.paymentObj);
-			} else {
-				window.setTimeout(waitForWorker, 50);
-			}
+			makeTable(p.paymentObj);
+		} else {
+			window.setTimeout(waitForWorker, 50);
 		}
-
 	}
+
+}
+
+function init() {
 
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
 	submit = null;
+	onsubmit = null;
 
 }
 
