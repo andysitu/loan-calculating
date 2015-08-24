@@ -5,6 +5,12 @@ function display(msg) {
 	
 }
 
+function setInput(id, value) {
+	var input = document.getElementById(id);
+
+	input.value = value;
+}
+
 function makeTable(dataArr, headerObj) {
 	/* Makes a table to doc by the headerObj (array) containing table heading
 	 * to specify order of the headings (optional) and dataObj which is objs 
@@ -19,7 +25,7 @@ function makeTable(dataArr, headerObj) {
 	docFrag.appendChild(table);
 
 	var keys = [];
-	if (Array.isArray(headerObj)) {
+	if (headerObj != undefined && typeof headerObj === "object") {
 		keys = headerObject.slice(0);
 	} else {
 		keys = Object.keys(dataArr[0]);
