@@ -1,7 +1,7 @@
 var p = {
-	status: "pay",
-	changeStatus(value) {
-		p.status = value;
+	option: "pay",
+	changeOption(value) {
+		p.option = value;
 	},
 	balance: 0,
 	rate: 0,
@@ -141,6 +141,7 @@ p.stor = {
 		this.storeObj("rate", p.rate);
 		this.storeObj("months", p.months);
 		this.storeObj("payment", p.payment);
+		this.storeObj("option", p.option);
 		this.storeObj("paymentObj", p.paymentObj);
 	},
 	setP(){
@@ -153,6 +154,7 @@ p.stor = {
 		p.rate = this.getObj("rate");
 		p.months = this.getObj("months");
 		p.payment = this.getObj("payment");
+		p.option = this.getObj("option");
 		p.paymentObj = this.getObj("paymentObj");
 	}
 }

@@ -23,7 +23,7 @@ function init() {
 		}
 		var value = e.target.value;
 
-		p.changeStatus(value);
+		p.changeOption(value);
 		if (value === "pay") {
 			changeTextDiv("Balance:", "APR:", "Pay in months:");
 		} else {
