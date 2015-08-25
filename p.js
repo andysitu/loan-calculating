@@ -12,11 +12,23 @@ var p = {
 	},
 	get rate() { return this._rate; },
 	_months: 0,
-	set months(value) { this._months = parseInt(value); },
+	set months(value) { 
+		if (value != undefined) {
+			this._months = parseInt(value);
+		} else {
+			this._months = 0;
+		}
+	},
 	get months() { return this._months; },
 	monthsI: 0,
 	_payment: 0,
-	set payment(value) { this._payment = moneyFormatter(value); },
+	set payment(value) { 
+		if (value != undefined) {
+			this._payment = moneyFormatter(value); 
+		} else {
+			this._payment = 0;
+		}
+	},
 	get payment() { return this._payment; },
 	paymentI: 0,
 	headerObj: null,
@@ -49,16 +61,10 @@ var p = {
 	},
 
 	dataIn(bal, rate, months, payment) {
-		this.balance = Number(bal);
-		rate = this.rate = Number(rate);
-		if (months == undefined) {
-			months = 0;
-		}
-		this.months = this.monthsI = Number(months);
-		if (payment == undefined) {
-			payment = 0;
-		}
-		this.payment = this.paymentI = Number(payment);
+		this.balance = bal;
+		this.rate = rate;
+		this.months = this.monthsI = months;
+		this.payment = this.paymentI = payment;
 
 		this.runIt();
 	},
