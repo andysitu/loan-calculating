@@ -80,5 +80,5 @@ function makeTable(dataArr, headerObj) {
 
 function moneyFormatter(value) {
 	// Makes number into correct format for money
-	return Math.ceil(value * 100) / 100
+	return Math.ceil(parseFloat(value) * 100) / 100
 }
