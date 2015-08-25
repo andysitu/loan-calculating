@@ -15,11 +15,14 @@ var p = {
 		if (months == undefined) {
 			months = 0;
 		}
-		this.monthsI = Number(months);
+		this.months = this.monthsI = Number(months);
 		if (payment == undefined) {
 			payment = 0;
 		}
-		this.paymentI = Number(payment);
+		this.payment = this.paymentI = Number(payment);
+	},
+	dataOut(){
+
 	},
 
 	calculatePayment() {
@@ -147,20 +150,24 @@ p.stor = {
 
 	storeP() {
 		// stores balance, payment, apr, month & paymentObj into storage
-		this.storeObj("balance", p.balance);
-		this.storeObj("rate", p.rate);
-		this.storeObj("months", p.months);
-		this.storeObj("payment", p.payment);
-		this.storeObj("monthsInput", p.monthsI);
-		this.storeObj("paymentInput", p.paymentI);
-		this.storeObj("paymentObj", p.paymentObj);
+		try {
+			this.storeObj("balance", p.balance);
+			this.storeObj("rate", p.rate);
+			this.storeObj("months", p.months);
+			this.storeObj("payment", p.payment);
+			this.storeObj("monthsInput", p.monthsI);
+			this.storeObj("paymentInput", p.paymentI);
+			this.storeObj("paymentObj", p.paymentObj);
+			//console.log("StoreP: ", p.balance, p.rate, p.months, p.payment,	 p.monthsI, p.paymentI, p.paymentObj);
+		} catch (e) {
+			console.log("ERROR with storeP: " + e)
+		}
 	},
 	setP(){
 	/**
 	 * Reads from localStorage and stores the values into p
 	 * Values can be seen below
 	 */
-		var that = p;
 		p.balance = this.getObj("balance");
 		p.rate = this.getObj("rate");
 		p.months = this.getObj("months");
@@ -168,7 +175,10 @@ p.stor = {
 		p.monthsI = this.getObj("monthsInput");
 		p.paymentI = this.getObj("paymentInput");
 		p.paymentObj = this.getObj("paymentObj");
+		//console.log("Set P: ", this.getObj("balance"), this.getObj("rate"), this.getObj("months"), this.getObj("payment"))
+		//console.log("Payment Obj of setP:", this.getObj("paymentObj"));
 	},
+
 	setInputs(){
 		setInput("balanceInput", p.balance);
 		setInput("rateInput", p.rate);

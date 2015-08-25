@@ -31,6 +31,7 @@ function init() {
 	// If so, will make table and change values to last setting
 	// of the HTML input element
 	if (p.stor.getObj("paymentObj") !== null) {
+		p.stor.setP();
 		p.stor.setInputs();
 		
 		submit.click();
