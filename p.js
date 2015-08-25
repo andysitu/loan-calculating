@@ -9,6 +9,27 @@ var p = {
 	headerObj: null,
 	paymentObj: null,
 
+	runIt() {
+		if (this.paymentI == 0) {
+			p.calculatePayment();
+		} else if (this.monthsI == 0) {
+			p.calculateMonths();
+		}
+		
+		waitForWorker();
+		function waitForWorker() {
+			if (p.workerStatus == true) {
+				p.paymentObj = p.makePaymentObj();
+				p.displayInfo();
+				p.stor.storeP();
+
+				makeTable(p.paymentObj);
+			} else {
+				window.setTimeout(waitForWorker, 50);
+			}
+		}
+	},
+
 	dataIn(bal, rate, months, payment) {
 		this.balance = Number(bal);
 		rate = this.rate = Number(rate);

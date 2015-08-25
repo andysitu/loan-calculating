@@ -5,21 +5,6 @@ function onSubmit(e) {
 	var payment = document.getElementById("paymentInput").value;
 
 	p.dataIn(bal, rate, months, payment);
-	p.calculatePayment();
-	waitForWorker();
-
-	function waitForWorker() {
-		if (p.workerStatus == true) {
-			p.paymentObj = p.makePaymentObj();
-			p.displayInfo();
-			p.stor.storeP();
-
-			makeTable(p.paymentObj);
-		} else {
-			window.setTimeout(waitForWorker, 50);
-		}
-	}
-
 }
 
 function init() {
