@@ -85,7 +85,7 @@ var p = {
 	 	p.workerStatus = false;
 
 		var worker = new Worker("worker.js");
-		worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI, "payment": 0});
+		worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.months, "payment": 0});
 
 		worker.onmessage = function(event) {
 			p.payment = event.data;
@@ -110,7 +110,7 @@ var p = {
 		p.workerStatus = false;
 
 		var worker = new Worker("worker.js");
-		worker.postMessage({"balance":p.balance, "rate": p.rate, "months": 0, "payment": p.paymentI});
+		worker.postMessage({"balance":p.balance, "rate": p.rate, "months": 0, "payment": p.payment});
 
 		worker.onmessage = function(event) {
 			p.months = event.data;
