@@ -28,11 +28,10 @@ function init() {
 
 	// Check from localStorage if anything has been stored.
 	// If so, will make table and change values to last setting
+	// of the HTML input element
 	if (p.stor.getObj("paymentObj") !== null) {
-		p.stor.setP();
-		setInput("balanceInput", p.balance);
-		setInput("rateInput", p.rate);
-		setInput("monthsInput", p.months);
+		p.stor.setInputs();
+		
 		submit.click();
 	}
 
