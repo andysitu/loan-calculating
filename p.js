@@ -1,5 +1,7 @@
 var p = {
-	workerStatus: false,
+	_workerStatus: false,
+	set workerStatus(status) {this._workerStatus = status;},
+	get workerStatus() {return this._workerStatus;},
 	balance: 0,
 	rate: 0,
 	months: 0,
