@@ -6,8 +6,9 @@ onmessage = function(e) {
 		var balance = data.balance,
 			rate = data.rate,
 			months = data.months;
+			payment = data.payment
 
-		console.log(balance, rate, months);
+		//console.log(balance, rate, months, payment);
 		var guess = calculatePayment(balance, rate, months);
 
 		postMessage(guess);

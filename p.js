@@ -38,7 +38,7 @@ var p = {
 	 	p.workerStatus = false;
 
 		var worker = new Worker("worker.js");
-			worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI});
+			worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI, "payment": p.paymentI});
 
 			worker.onmessage = function(event) {
 				p.payment = event.data;
