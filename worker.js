@@ -15,7 +15,7 @@ onmessage = function(e) {
 		} else if (months == 0) {
 			var guess = calculateMonths(balance, rate, payment);
 		}
-		
+
 		postMessage(guess);
 	} else {
 		postMessage("I didn't get an object.");
@@ -41,7 +41,7 @@ function calculatePayment(balance, rate, months) {
 		guess,
 		limit = -0.1; // accepting limit of the bisect method (in $ amount)
 
-	while ((newBal > 0 || newBal < limit)  ) {
+	while ( newBal > 0 || newBal < limit  ) {
 		if (counter++ > 100) {
 			console.log("Something was wrong");
 			break;
@@ -72,7 +72,11 @@ function calculateMonths(balance, rate, payment) {
 
 	while (newBalance > 0) {
 		months++;
-		newBalance = newBalance* (1 + rate) - payment;
+		newBalance = newBalance * (1 + rate) - payment;
+		if (months >= 1000) {
+			console.log("Error: too many calculations in months from worker");
+			break;
+		}
 	}
 
 	return months
