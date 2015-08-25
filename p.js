@@ -1,5 +1,5 @@
 var p = {
-	_workerStatus: false,
+	_workerStatus: true,
 	set workerStatus(status) {this._workerStatus = status;},
 	get workerStatus() {return this._workerStatus;},
 	_balance: 0,
@@ -43,10 +43,12 @@ var p = {
 				display("Your payment is too low. Need to be at least larger than $	" + min);
 			} else {
 				p.calculateMonths();
+				
 			}
-		}
-		
+		} 
+
 		waitForWorker();
+
 		function waitForWorker() {
 			if (p.workerStatus == true) {
 				p.paymentObj = p.makePaymentObj();
@@ -150,7 +152,7 @@ var p = {
 			// pushes obj of values to arr that will be returned
 			arr.push({
 			 	"Starting Balance": moneyFormatter(oldBalance),
-			 	"Month": moneyFormatter(month),
+			 	"Month": month,
 			 	"Payment": moneyFormatter(payment),
 			 	"Interest": moneyFormatter(interest),
 			 	"Actual Payment to Balance": moneyFormatter(realPayment),
@@ -159,7 +161,7 @@ var p = {
 			});
 		}
 
-		for (month = 1; month <= months; month++) {
+		for (month = 1; month <= months && balance >= 0; month++) {
 			oldBalance = balance;			
 			interest = balance * rate;
 			realPayment = payment - interest;
