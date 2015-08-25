@@ -8,10 +8,11 @@ var p = {
 	paymentI: 0,
 	headerObj: null,
 	paymentObj: null,
-	dataIn(bal, rate, months) {
-		bal = this.balance = Number(bal);
+	dataIn(bal, rate, months, payment) {
+		this.balance = Number(bal);
 		rate = this.rate = Number(rate);
-		months = this.months = Number(months);
+		this.monthsI = Number(months);
+		this.paymentI = Number(payment);
 	},
 
 	calculatePayment() {
@@ -27,7 +28,7 @@ var p = {
 	 	p.workerStatus = false;
 
 		var worker = new Worker("worker.js");
-			worker.postMessage({input1:p.balance, input2: p.rate, input3: p.months});
+			worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI});
 
 			worker.onmessage = function(event) {
 				p.payment = event.data;
