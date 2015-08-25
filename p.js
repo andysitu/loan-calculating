@@ -8,10 +8,17 @@ var p = {
 	paymentI: 0,
 	headerObj: null,
 	paymentObj: null,
+
 	dataIn(bal, rate, months, payment) {
 		this.balance = Number(bal);
 		rate = this.rate = Number(rate);
+		if (months == undefined) {
+			months = 0;
+		}
 		this.monthsI = Number(months);
+		if (payment == undefined) {
+			payment = 0;
+		}
 		this.paymentI = Number(payment);
 	},
 
@@ -33,7 +40,7 @@ var p = {
 			worker.onmessage = function(event) {
 				p.payment = event.data;
 				p.workerStatus = true;
-				console.log("from worker:" + typeof event.data);
+				console.log("from worker:" + typeof event.data + " payment:" + event.data);
 			}
 
 			worker.onerror = function(event) {
