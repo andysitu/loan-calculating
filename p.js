@@ -3,7 +3,9 @@ var p = {
 	balance: 0,
 	rate: 0,
 	months: 0,
+	monthsI: 0,
 	payment: 0,
+	paymentI: 0,
 	headerObj: null,
 	paymentObj: null,
 	dataIn(bal, rate, months) {
