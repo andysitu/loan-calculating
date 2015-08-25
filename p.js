@@ -52,7 +52,6 @@ var p = {
 		function waitForWorker() {
 			if (p.workerStatus == true) {
 				p.paymentObj = p.makePaymentObj();
-				p.displayInfo();
 				p.stor.storeP();
 
 				makeTable(p.paymentObj);
@@ -172,32 +171,6 @@ var p = {
 		}
 
 		return arr;
-	},
-
-	displayInfo() {
-		// displays all the appropriate info by using the display function
-		var that = p;
-
-		var bal = that.balance,
-			rate = that.rate / 12,
-			months = that.months,
-			payment = that.payment,
-			interest = 0,
-			newBal = bal,
-			str = "";
-
-		for (var i = 0; i < months; i++) {
-			interest += newBal * (1 + rate) - newBal;
-			newBal = newBal * (1+ rate) - payment;
-		}
-
-		interest = moneyFormatter(interest);
-
-		str += "With a balance of $" + bal + ", you will pay off everything in " + months + " months";
-		str += "\n if you make a payment of $" + payment + " each month, but you will also pay $" + interest;
-		str += "\n in total to interest for a grand total of $" + (bal + interest) + ".";
-
-		display(str);
 	}
 };
 
