@@ -9,8 +9,13 @@ onmessage = function(e) {
 			payment = data.payment
 
 		//console.log(balance, rate, months, payment);
-		var guess = calculatePayment(balance, rate, months);
-
+		if (payment == 0) {
+			var guess = calculatePayment(balance, rate, months);
+			postMessage(guess);
+		} else if (months == 0) {
+			var guess = calculateMonths(balance, rate, payment);
+		}
+		
 		postMessage(guess);
 	} else {
 		postMessage("I didn't get an object.");
@@ -58,6 +63,19 @@ function calculatePayment(balance, rate, months) {
 	}
 
 	return Math.ceil(guess * 100) / 100;
+}
+
+function calculateMonths(balance, rate, payment) {
+	var newBalance = balance,
+		months = 0,
+		rate = rate / 12;
+
+	while (newBalance > 0) {
+		months++;
+		newBalance = newBalance* (1 + rate) - payment;
+	}
+
+	return months
 }
 
 /** 
