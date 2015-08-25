@@ -31,7 +31,7 @@ function makeTable(dataArr, headerObj) {
 		keys = Object.keys(dataArr[0]);
 	}
 
-	function translator(value) {
+	function headerTranslator(value) {
 		switch(value) {
 			case "Actual Payment to Balance":
 				return "Actual Payment\nto Balance";
@@ -43,9 +43,18 @@ function makeTable(dataArr, headerObj) {
 	var tr = document.createElement("tr");
 	for (var i = 0; i < keys.length; i++) {
 		var th = document.createElement("th");
-		th.textContent = translator(keys[i]);
+		th.textContent = headerTranslator(keys[i]);
 
 		tr.appendChild(th);
+	}
+
+	function moneyTranslator(value, key) {
+		switch(key) {
+			case "Month":
+				return value;
+			default:
+				return value.toFixed(2);
+		}
 	}
 
 	table.appendChild(tr);
@@ -54,7 +63,7 @@ function makeTable(dataArr, headerObj) {
 		var tr = document.createElement("tr");
 		for (var j = 0; j < keys.length; j++) {
 			var td = document.createElement("td");
-			td.textContent = dataArr[i][keys[j]];
+			td.textContent = moneyTranslator(dataArr[i][keys[j]], keys[j]);
 			tr.appendChild(td);
 		}
 		table.appendChild(tr);

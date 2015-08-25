@@ -24,9 +24,11 @@ td {
 	background: rgb(245,245,255);
 }
 
-td:nth-child(1) { 
+td:nth-child(2n+1) {
 	background: rgb(214,214,247);
+}
+
+td:nth-child(1) { 
 	text-align: left;
 }
 td:nth-child(2) { text-align: center; }
-td:nth-child(7) { background: rgb(214,214,247); }
