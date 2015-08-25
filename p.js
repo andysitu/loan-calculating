@@ -38,10 +38,35 @@ var p = {
 	 	p.workerStatus = false;
 
 		var worker = new Worker("worker.js");
-			worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI, "payment": p.paymentI});
+			worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI, 0});
 
 			worker.onmessage = function(event) {
 				p.payment = event.data;
+				p.workerStatus = true;
+				console.log("from worker:" + typeof event.data + " payment:" + event.data);
+			}
+
+			worker.onerror = function(event) {
+				console.log("ERROR: " + event.filename + " ")
+		}
+	},
+	calculateMonths() {
+	/**
+	 * Calculates the months necessary to pay off a loan in a certain
+	 * by sending it to the worker.
+	 * 
+	 * Input: values are given to work based on p.balance, p.rate
+	 * and p.payment.
+	 *
+	 * Output: the months value is set to p.months
+	 */
+		p.workerStatus = false;
+
+		var worker = new Worker("worker.js");
+			worker.postMessage({"balance":p.balance, "rate": p.rate, 0, "payment": p.monthsI});
+
+			worker.onmessage = function(event) {
+				p.months = event.data;
 				p.workerStatus = true;
 				console.log("from worker:" + typeof event.data + " payment:" + event.data);
 			}
