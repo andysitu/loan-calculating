@@ -41,6 +41,8 @@ var p = {
 			payment = 0;
 		}
 		this.payment = this.paymentI = Number(payment);
+
+		this.runIt();
 	},
 	dataOut(){
 
@@ -59,16 +61,16 @@ var p = {
 	 	p.workerStatus = false;
 
 		var worker = new Worker("worker.js");
-			worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI, 0});
+		worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.monthsI, "payment": 0});
 
-			worker.onmessage = function(event) {
-				p.payment = event.data;
-				p.workerStatus = true;
-				console.log("from worker:" + typeof event.data + " payment:" + event.data);
-			}
+		worker.onmessage = function(event) {
+			p.payment = event.data;
+			p.workerStatus = true;
+			console.log("from worker:" + typeof event.data + " payment:" + event.data);
+		}
 
-			worker.onerror = function(event) {
-				console.log("ERROR: " + event.filename + " ")
+		worker.onerror = function(event) {
+			console.log("ERROR: " + event.filename + " ")
 		}
 	},
 	calculateMonths() {
@@ -84,16 +86,16 @@ var p = {
 		p.workerStatus = false;
 
 		var worker = new Worker("worker.js");
-			worker.postMessage({"balance":p.balance, "rate": p.rate, 0, "payment": p.monthsI});
+		worker.postMessage({"balance":p.balance, "rate": p.rate, "months": 0, "payment": p.paymentI});
 
-			worker.onmessage = function(event) {
-				p.months = event.data;
-				p.workerStatus = true;
-				console.log("from worker:" + typeof event.data + " payment:" + event.data);
-			}
+		worker.onmessage = function(event) {
+			p.months = event.data;
+			p.workerStatus = true;
+			console.log("from worker:" + typeof event.data + " payment:" + event.data);
+		}
 
-			worker.onerror = function(event) {
-				console.log("ERROR: " + event.filename + " ")
+		worker.onerror = function(event) {
+			console.log("ERROR: " + event.filename + " ")
 		}
 	},
 
