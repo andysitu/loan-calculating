@@ -143,6 +143,8 @@ p.stor = {
 		this.storeObj("rate", p.rate);
 		this.storeObj("months", p.months);
 		this.storeObj("payment", p.payment);
+		this.storeObj("monthsInput", p.monthsI);
+		this.storeObj("paymentInput", p.paymentI);
 		this.storeObj("paymentObj", p.paymentObj);
 	},
 	setP(){
@@ -155,7 +157,15 @@ p.stor = {
 		p.rate = this.getObj("rate");
 		p.months = this.getObj("months");
 		p.payment = this.getObj("payment");
+		p.monthsI = this.getObj("monthsInput");
+		p.paymentI = this.getObj("paymentInput");
 		p.paymentObj = this.getObj("paymentObj");
+	},
+	setInputs(){
+		setInput("balanceInput", p.balance);
+		setInput("rateInput", p.rate);
+		setInput("monthsInput", p.monthsI);
+		setInput("paymentInput", p.paymentI)
 	}
 }
 
