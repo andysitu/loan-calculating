@@ -13,7 +13,12 @@ var p = {
 		if (this.paymentI == 0) {
 			p.calculatePayment();
 		} else if (this.monthsI == 0) {
-			p.calculateMonths();
+			var min = this.balance * (1 + this.rate/12) - this.balance;
+			if (min >= this.payment) {
+				display("Your payment is too low. Need to be at least larger than $	" + min);
+			} else {
+				p.calculateMonths();
+			}
 		}
 		
 		waitForWorker();
