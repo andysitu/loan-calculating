@@ -3,10 +3,12 @@ onmessage = function(e) {
 		var data = e.data;
 		console.log(data);
 
-		var arg1 = data.input1,
-			arg2 = data.input2,
-			arg3 = data.input3;
-		var guess = calculatePayment(arg1, arg2, arg3);
+		var balance = data.balance,
+			rate = data.rate,
+			months = data.months;
+
+		console.log(balance, rate, months);
+		var guess = calculatePayment(balance, rate, months);
 
 		postMessage(guess);
 	} else {
