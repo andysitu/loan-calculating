@@ -2,8 +2,9 @@ function onSubmit(e) {
 	var bal = document.getElementById("balanceInput").value;
 	var rate = document.getElementById("rateInput").value;
 	var months = document.getElementById("monthsInput").value;
+	var payment = document.getElementById("paymentInput").value;
 
-	p.dataIn(bal, rate, months);
+	p.dataIn(bal, rate, months, payment);
 	p.calculatePayment();
 	waitForWorker();
 
