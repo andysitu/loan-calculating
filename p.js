@@ -52,6 +52,39 @@ var p = {
 		return this.paymentObj[month];
 	},
 	
+	translatePaymentObject(name) {
+	/**
+	 * In case I want to change the Payment Object's key names later on
+	 * Just a simple switch case. Keep the cases constant.
+	 */
+		switch(name) {
+			case "Starting Balance":
+				return "Starting Balance";
+			case "Month":
+				return "Month";
+			case "Payment":
+				return "Payment";
+			case "Interest":
+				return "Interest";
+			case "Actual Payment to Balance":
+				return "Actual Payment to Balance";
+			case "Total Interest":
+				return "Total Interest";
+			case "End Balance":
+				return "End Balance";
+		}
+	},
+
+	getPayObjValue(month, name) {
+	/**
+	 * Combine getPaymentObject & translatPaymentObject into one to
+	 * return a value depending on the month and the name of the value.
+	 */
+
+	 	var obj = this.getPaymentObject(month);
+	 	return obj[this.translatePaymentObject(name)]
+	},
+
 	runIt() {
 		if (this.paymentI == 0) {
 			p.calculatePayment();
@@ -248,7 +281,7 @@ p.stor = {
 		setInput("balanceInput", p.balance);
 		setInput("rateInput", p.rate);
 		setInput("monthsInput", p.monthsI);
-		setInput("paymentInput", p.paymentI)
+		setInput("paymentInput", p.paymentI);
 	}
 }
 
