@@ -75,12 +75,27 @@ var p = {
 		}
 	},
 
+	makeOnePObj(a, b, c, d, e, f, g) {
+		// makes obj of the values. To be used in creation 
+		// and recreation of the payment object.
+		var moneyF = moneyFormatter;
+
+		return {
+		 	"Starting Balance": moneyF(a),
+		 	"Month": b,
+		 	"Payment": moneyF(c),
+		 	"Interest": moneyFormatter(d),
+		 	"Actual Payment to Balance": moneyF(e),
+		 	"Total Interest": moneyF(f),
+		 	"End Balance": moneyF(g)
+		};
+	},
+
 	getPayObjValue(month, name) {
 	/**
 	 * Combine getPaymentObject & translatPaymentObject into one to
 	 * return a value depending on the month and the name of the value.
 	 */
-
 	 	var obj = this.getPaymentObject(month);
 	 	return obj[this.translatePaymentObject(name)]
 	},
@@ -212,19 +227,6 @@ var p = {
 		 	interest = 0,
 		 	totalInterest = 0;
 
-		function pushIt() {
-			// pushes obj of values to arr that will be returned
-			arr.push({
-			 	"Starting Balance": moneyFormatter(oldBalance),
-			 	"Month": month,
-			 	"Payment": moneyFormatter(payment),
-			 	"Interest": moneyFormatter(interest),
-			 	"Actual Payment to Balance": moneyFormatter(realPayment),
-			 	"Total Interest": moneyFormatter(totalInterest),
-			 	"End Balance": moneyFormatter(balance)
-			});
-		}
-
 		for (month = 1; month <= months && balance >= 0; month++) {
 			oldBalance = balance;			
 			interest = balance * rate;
@@ -232,7 +234,11 @@ var p = {
 			totalInterest += interest;
 			balance += interest - payment;
 
-			pushIt();
+			arr.push(that.makeOnePObj(oldBalance, month, payment, interest, realPayment, totalInterest, balance) );
+		}
+
+		return arr;
+	},
 		}
 
 		return arr;
