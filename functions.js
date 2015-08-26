@@ -83,6 +83,9 @@ function makeTable(dataArr, headerObj) {
 	for (i = 0; i < dataArr.length; i++) {
 		var tr = document.createElement("tr");
 		var td = document.createElement("td");
+		var check = document.createElement("input");
+		check.type = "checkbox";
+		td.appendChild(check);
 		tr.appendChild(td);
 		for (var j = 0; j < keys.length; j++) {
 			var td = document.createElement("td");
