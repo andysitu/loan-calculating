@@ -264,10 +264,9 @@ var p = {
 		 	totalInterest = 0;
 
 		while (balance >= 0) {
-			month++;
 			oldBalance = balance;
 			try {
-				payment = that.paymentObj[month - 1][that.translatePaymentObject("Payment")];
+				payment = that.paymentObj[month][that.translatePaymentObject("Payment")];
 			} catch(e) {
 				// do nothing, let payment stay as it is
 			}
@@ -277,6 +276,7 @@ var p = {
 			balance += interest - payment;
 
 			arr.push(that.makeOnePObj(oldBalance, month, payment, interest, realPayment, totalInterest, balance) );
+			month++;
 		}
 
 		return arr;
