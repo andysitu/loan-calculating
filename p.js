@@ -239,6 +239,44 @@ var p = {
 
 		return arr;
 	},
+
+	recalPObj() {
+	/** 
+	 * Change the paymentObj by first make a new object, using 
+	 * the starting of the object (just the first one) and the 
+	 * payments (all of them).
+	 * 
+	 * Then, everything is recalculated from there. If more 
+	 * months are need then the old payment object, then 
+	 * calculation will use payment from the last month.
+	*/
+
+		var that = p;
+
+		var arr = [],
+			rate = that.rate/ 12,
+			balance = that.getPayObjValue(1, "Starting Balance"),
+			oldBalance = 0,
+			payment = 0,
+			realPayment = 0,
+		 	month = 0,
+		 	interest = 0,
+		 	totalInterest = 0;
+
+		while (balance >= 0) {
+			month++;
+			oldBalance = balance;
+			try {
+				payment = that.paymentObj[month - 1][that.translatePaymentObject("Payment")];
+			} catch(e) {
+				// do nothing, let payment stay as it is
+			}
+			interest = balance * rate;
+			realPayment = payment - interest;
+			totalInterest += interest;
+			balance += interest - payment;
+
+			arr.push(that.makeOnePObj(oldBalance, month, payment, interest, realPayment, totalInterest, balance) );
 		}
 
 		return arr;
