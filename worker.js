@@ -81,37 +81,3 @@ function calculateMonths(balance, rate, payment) {
 
 	return months
 }
-
-/** 
-	   OLD VERSION CALCULATEPAYMENT THAT USED TO BE IN P
-	  
-calculatePayment() {
-  	var that = p;
-
-	var months = that.months,
-		bal = that.balance,
-		rate = that.rate / 12,
-		newBal = bal,
-		upLimit = Math.pow(1 + rate, months) * bal / months,
-		lowLimit = bal / months,
-		guess,
-		limit = .20; // accepting limit of the bisect method (in $ amount)
-
-	while (newBal > 0 || newBal < -limit ) {
-		newBal = bal;
-		guess = Math.floor( (upLimit + lowLimit) / 2 * 100 ) / 100;
-		for (var i = 0; i < months; i++) {
-			newBal = newBal * (1 + rate) - guess;
-		}
-
-		if (newBal > 0) { // newBal is amount left over after X months
-			lowLimit = guess;
-		} else {
-			upLimit = guess;
-
-		// console.log(newBal, guess, typeof guess);
-
-	return guess;
-}
-
- */
