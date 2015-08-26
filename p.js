@@ -85,6 +85,19 @@ var p = {
 	 	return obj[this.translatePaymentObject(name)]
 	},
 
+	changePaymentObject(month, name, value) {
+	/** 
+	 * Change the payment object values based on month, name of 
+	 * key, ane value for the amount to change it by (note: not set
+	 * to this value, but changed to).
+	*/
+		month -= 1;
+		name = this.translatePaymentObject(name);
+
+		this.paymentObj[month][name] += value;
+		console.log(this.paymentObj[month][name]);	
+	},
+
 	runIt() {
 		if (this.paymentI == 0) {
 			p.calculatePayment();
