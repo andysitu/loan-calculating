@@ -34,6 +34,24 @@ var p = {
 	headerObj: null,
 	paymentObj: null,
 
+	getPaymentObject(month) {
+	/**
+	 * I want to prevent direct access to obj & want to ensure that
+	 * future modifications to anything here will break as least as
+	 * possible.
+	 *
+	 * Input: month, can type "end" &
+	 * Output: Return the object of that month
+	 */
+	 	if (month === "end") {
+	 		month = this.paymentObj.length - 1;
+	 	} else {
+	 		month -= 1;
+	 	}
+
+		return this.paymentObj[month];
+	},
+	
 	runIt() {
 		if (this.paymentI == 0) {
 			p.calculatePayment();
