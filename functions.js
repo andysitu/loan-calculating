@@ -64,12 +64,14 @@ function makeTable(dataArr, headerObj) {
 		tr.appendChild(th);
 	}
 
+	var commas = makeCommas;
+
 	function moneyTranslator(value, key) {
 		switch(key) {
 			case "Month":
 				return value;
 			default:
-				return makeCommas(value.toFixed(2));
+				return commas(value.toFixed(2));
 		}
 	}
 
