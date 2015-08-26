@@ -1,7 +1,7 @@
 onmessage = function(e) {
 	if (e.data) {
 		var data = e.data;
-		console.log(data);
+		console.log("received a message: ",data);
 
 		var balance = data.balance,
 			rate = data.rate,

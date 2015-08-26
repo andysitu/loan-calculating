@@ -1,0 +1,7 @@
+Onload, makeTable & settingP is running too much, even when payment & everything is not set. Need to set more conditions.
+
+Isolate P. Nothinng else should access its values.
+
+Add ability to add payment & have this change calculations & table.
+
+Set months to the current months or allow user to select the option.
