@@ -57,6 +57,9 @@ function makeTable(dataArr, headerObj) {
 	}
 
 	var tr = document.createElement("tr");
+	var th = document.createElement("th");
+	th.textContent = "Select";
+	tr.appendChild(th);
 	for (var i = 0; i < keys.length; i++) {
 		var th = document.createElement("th");
 		th.textContent = headerTranslator(keys[i]);
@@ -79,6 +82,8 @@ function makeTable(dataArr, headerObj) {
 
 	for (i = 0; i < dataArr.length; i++) {
 		var tr = document.createElement("tr");
+		var td = document.createElement("td");
+		tr.appendChild(td);
 		for (var j = 0; j < keys.length; j++) {
 			var td = document.createElement("td");
 			td.textContent = moneyTranslator(dataArr[i][keys[j]], keys[j]);
