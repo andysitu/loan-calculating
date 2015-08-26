@@ -85,6 +85,8 @@ function makeTable(dataArr, headerObj) {
 		var td = document.createElement("td");
 		var check = document.createElement("input");
 		check.type = "checkbox";
+		check.value = i;
+		check.id = "check" + i;
 		td.appendChild(check);
 		tr.appendChild(td);
 		for (var j = 0; j < keys.length; j++) {
@@ -94,6 +96,12 @@ function makeTable(dataArr, headerObj) {
 		}
 		table.appendChild(tr);
 	}
+
+	table.addEventListener("click", function(e) {
+		if (e.target.type == "checkbox") {
+			console.log(e.target.value, e.target.checked);
+		}
+	})
 
 	var test = document.getElementById("table");
 	var tableHere = document.getElementById("tableHere");
