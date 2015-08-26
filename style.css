@@ -34,3 +34,19 @@ td:nth-child(2) { text-align: center; }
 	margin-top: 2%;
 	margin-left: 5%;
 }
+
+#balanceInput {
+	width: 10em;
+}
+
+#rateInput {
+	width: 5em;
+}
+
+#monthsInput {
+	width: 5em;
+}
+
+#paymentInput {
+	width: 10em;
+}
