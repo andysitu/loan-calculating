@@ -102,14 +102,15 @@ function makeCircle() {
  */
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d"),
-		width = 400,
+		width = 600,
+		height = 400,
 		pi = 2 * Math.PI,
 		startingBalance = p.getPayObjValue(1, "Starting Balance"),
 		totalInterest = p.getPayObjValue("end", "Total Interest"),
-		center = Math.floor(width/2);
+		center = Math.floor(height/2);
 
 	canvas.width = width;
-	canvas.height = width;
+	canvas.height = height;
 	portion = startingBalance / (startingBalance + totalInterest);
 
 	ctx.save();

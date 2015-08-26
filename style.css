@@ -4,11 +4,6 @@ table {
     margin: 0;
 }
 
-#tableHere {
-	margin-top: 10px;
-	margin-left: 30px;
-}
-
 td, th {
 	border: solid thin; 
 }
@@ -31,10 +26,11 @@ td:nth-child(2n+1) {
 td:nth-child(2) { text-align: center; }
 
 #tableHere {
-	position: relative;
-	float: left;
+	margin-top: 1%;
+	margin-left: 2%;
 }
 
 #canvasDiv {
-	
+	margin-top: 2%;
+	margin-left: 5%;
 }
