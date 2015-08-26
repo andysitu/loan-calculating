@@ -25,8 +25,6 @@ function init() {
 		
 		submit.click();
 	}
-
-	makeCircle();
 	submit = null;
 	onsubmit = null;
 

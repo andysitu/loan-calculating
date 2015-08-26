@@ -106,6 +106,7 @@ var p = {
 				p.stor.storeP();
 
 				makeTable(p.paymentObj);
+				makeCircle();
 			} else {
 				window.setTimeout(waitForWorker, 50);
 			}
