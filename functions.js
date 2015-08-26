@@ -69,7 +69,7 @@ function makeTable(dataArr, headerObj) {
 			case "Month":
 				return value;
 			default:
-				return value.toFixed(2);
+				return makeCommas(value.toFixed(2));
 		}
 	}
 
@@ -97,4 +97,8 @@ function makeTable(dataArr, headerObj) {
 function moneyFormatter(value) {
 	// Makes number into correct format for money
 	return Math.ceil(parseFloat(value) * 100) / 100
+}
+
+function makeCommas(value) {
+	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 }
