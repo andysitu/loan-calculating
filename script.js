@@ -26,6 +26,7 @@ function init() {
 		submit.click();
 	}
 
+	makeCircle();
 	submit = null;
 	onsubmit = null;
 
@@ -46,4 +47,3 @@ Storage.prototype.getObject = function(key) {
 Storage.prototype.deleteObject = function(key) {
 	this.removeItem(key);
 }
-
