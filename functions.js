@@ -11,6 +11,22 @@ function setInput(id, value) {
 	input.value = value;
 }
 
+function clearInput(id) {
+	setInput(id, "");
+}
+
+function addClearEvent(id) {
+	var ele = document.getElementById(id);
+
+	ele.addEventListener("contextmenu", function(e){
+		e.preventDefault();
+		clearInput(id);
+	});
+
+	ele = null;
+}
+
+
 function makeTable(dataArr, headerObj) {
 	/* Makes a table to doc by the headerObj (array) containing table heading
 	 * to specify order of the headings (optional) and dataObj which is objs 

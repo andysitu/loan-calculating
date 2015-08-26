@@ -11,6 +11,10 @@ function init() {
 
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
+	addClearEvent("balanceInput");
+	addClearEvent("rateInput");
+	addClearEvent("monthsInput");
+	addClearEvent("paymentInput");
 
 	// Check from localStorage if anything has been stored.
 	// If so, will make table and change values to last setting
@@ -42,3 +46,4 @@ Storage.prototype.getObject = function(key) {
 Storage.prototype.deleteObject = function(key) {
 	this.removeItem(key);
 }
+
