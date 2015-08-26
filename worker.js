@@ -1,19 +1,18 @@
 onmessage = function(e) {
 	if (e.data) {
-		var data = e.data;
-		console.log("received a message: ",data);
-
-		var balance = data.balance,
+		var data = e.data,
+			balance = data.balance,
 			rate = data.rate,
-			months = data.months;
-			payment = data.payment
+			months = data.months,
+			payment = data.payment,
+			guess = 0;
 
+		console.log("received a message: ", data);
 		//console.log(balance, rate, months, payment);
 		if (payment == 0) {
-			var guess = calculatePayment(balance, rate, months);
-			postMessage(guess);
+			guess = calculatePayment(balance, rate, months);
 		} else if (months == 0) {
-			var guess = calculateMonths(balance, rate, payment);
+			guess = calculateMonths(balance, rate, payment);
 		}
 
 		postMessage(guess);
