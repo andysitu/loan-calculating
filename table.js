@@ -1,12 +1,19 @@
-var table = {
+var table = t = {
+	// rows selected by user
+	selectedList: null,
+
 	makeTable(dataArr, headerObj) {
 	/* Makes a table to doc by the headerObj (array) containing table heading
 	 * to specify order of the headings (optional) and dataObj which is objs 
 	 * in array that will contain the actual data.
 	 *
 	 * If headObj is not provided, then the headings might not be in order
+	 * 
+	 * Has an event handler for the entire table. Currently, only registers
+	 * if user has clicked on the checked input
 	 */
-		var docFrag = document.createDocumentFragment();
+		var docFrag = document.createDocumentFragment(),
+			selectedArr = [];
 
 		var table = document.createElement("table");
 		table.id = "table";
@@ -52,7 +59,10 @@ var table = {
 
 		table.appendChild(tr);
 
+
 		for (i = 0; i < dataArr.length; i++) {
+			selectedArr.push(false);
+
 			var tr = document.createElement("tr");
 			var td = document.createElement("td");
 			var check = document.createElement("input");
@@ -69,11 +79,22 @@ var table = {
 			table.appendChild(tr);
 		}
 
-		table.addEventListener("click", function(e) {
+		function toggleSelected(e) {
 			if (e.target.type == "checkbox") {
-				console.log(e.target.value, e.target.checked);
+				console.log(e.target.value);
+				if (e.target.checked) {
+					t.selectedList[e.target.value] = true;
+				} else {
+					t.selectedList[e.target.value] = false;
+				}
 			}
-		})
+		}
+
+		table.addEventListener("click", toggleSelected );
+
+		toggleSelected = null;
+
+		this.selectedList = selectedArr;
 
 		var test = document.getElementById("table");
 		var tableHere = document.getElementById("tableHere");
