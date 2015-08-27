@@ -11,10 +11,13 @@ function init() {
 
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
+	// add right click events for the inputs
 	addClearEvent("balanceInput");
 	addClearEvent("rateInput");
 	addClearEvent("monthsInput");
 	addClearEvent("paymentInput");
+
+	ele = null;
 
 	// Check from localStorage if anything has been stored.
 	// If so, will make table and change values to last setting

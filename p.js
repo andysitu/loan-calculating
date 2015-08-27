@@ -7,7 +7,7 @@ var p = {
 	get balance() { return this._balance; },
 	_rate: 0,
 	set rate(value) {
-		if (value >= 1) { this_.rate = parseFloat(value) / 100; }
+		if (value >= 1) { this._rate = parseFloat(value) / 100; }
 		else { this._rate = parseFloat(value); }
 	},
 	get rate() { return this._rate; },
@@ -133,7 +133,7 @@ var p = {
 				p.paymentObj = p.makePaymentObj();
 				p.stor.storeP();
 
-				makeTable(p.paymentObj);
+				table.makeTable(p.paymentObj);
 				makeCircle();
 			} else {
 				window.setTimeout(waitForWorker, 50);
