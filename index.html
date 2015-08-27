@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+	<meta charset="utf-8">
+	<title>Test</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+
+</head>
+
+<body>
+	<div id="Info">
+		<p>To calculate the minimal payment to pay in X amount of months, leave the payment option empty. To calculate the min. months it will take, leave months empty while filling in pament. Fill in both of them to calculate the payment info for that period of time.</p>
+		<p>Right click on an input to clear it.</p>
+	</div>
+	<form>
+		<span id="text0">Balance:</span>
+		<input type="text" name="balanceInput" id="balanceInput" placeholder="Enter a number">
+		<span id="text1">APR:</span>
+		<input type="text" name="rateInput" id="rateInput" placeholder="Enter a number">
+		<span id="text2">Pay in months:</span>
+		<input type="text" name="monthsInput" id="monthsInput" placeholder="Enter a number">
+		<span id="text3">Payment:</span>
+		<input type="text" name="paymentInput" id="paymentInput" placeholder="Enter a number">
+		<button type="button" id='submit'>submit</button>
+	</form>
+
+	<div id="msg"></div>
+
+	<div id="container">
+		<div id="canvasDiv">
+			<canvas id='canvas'></canvas>
+		</div>
+		<div id="tableHere"></div>
+			
+	</div>
+
+	<script src='functions.js'></script>
+	<script src='p.js'></script>
+	<script src='script.js'></script>
+	<script src='worker.js'></script>
+	<script src='test.js'></script>
+</body>
+
+</html>

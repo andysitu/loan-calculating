@@ -1,0 +1,53 @@
+table {
+	border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+}
+
+td, th {
+	border: solid thin; 
+}
+
+th {
+	white-space: pre-wrap;
+}
+
+td {
+	padding: 0;
+	text-align: right;
+	font-color: blue;
+	background: rgb(245,245,255);
+}
+
+td:nth-child(2n+1) {
+	background: rgb(214,214,247);
+}
+
+td:nth-child(1),td:nth-child(3) { 
+	text-align: center; }
+
+#tableHere {
+	margin-top: 1%;
+	margin-left: 2%;
+}
+
+#canvasDiv {
+	margin-top: 2%;
+	margin-left: 5%;
+}
+
+#balanceInput {
+	width: 10em;
+}
+
+#rateInput {
+	width: 5em;
+}
+
+#monthsInput {
+	width: 5em;
+}
+
+#paymentInput {
+	width: 10em;
+}
