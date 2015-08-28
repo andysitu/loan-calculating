@@ -51,6 +51,7 @@ var table = t = {
 			}
 		}
 
+		// header row
 		var tr = document.createElement("tr");
 		var th = document.createElement("th");
 		th.textContent = "Select";
@@ -75,11 +76,12 @@ var table = t = {
 
 		table.appendChild(tr);
 
-
+		// rows of the table
 		for (i = 0; i < dataArr.length; i++) {
 			selectedArr.push(false);
 
 			var tr = document.createElement("tr");
+			tr.id = "row" + i;
 			var td = document.createElement("td");
 			var check = document.createElement("input");
 			check.type = "checkbox";
