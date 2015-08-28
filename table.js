@@ -4,11 +4,13 @@ var table = t = {
 	// rows selected by user
 	selectedList: [false],
 
-	changeSelected(index, value) {
+	changeSelectedList(index, value) {
 		this.selectedList[index] = Boolean(value);
 	},
 
 	getSelected() {
+	// contains array of the indices (or months) of those elements on
+	// the table selected by user.
 		var arr = [];
 
 		for (var i = 0, len = this.selectedList.length; i < len; i++) {
@@ -28,7 +30,7 @@ var table = t = {
 			if (this.selectedList[i] == true) {
 				ele = document.getElementById("check" + i);
 				ele.checked = false;
-				changeSelected(i, false);
+				changeSelectedList(i, false);
 			}
 		}
 	},
@@ -119,7 +121,7 @@ var table = t = {
 			var ele = e.target
 
 			if (ele.type == "checkbox") {
-				t.changeSelected(ele.value, ele.checked);
+				t.changeSelectedList(ele.value, ele.checked);
 			} else {
 				// accesses the live HTMLCollection of child elements
 				// inefficient, but only solution I can think of for now
@@ -133,7 +135,7 @@ var table = t = {
 							ele.checked = true;
 						}
 
-						t.changeSelected(ele.value, ele.checked);
+						t.changeSelectedList(ele.value, ele.checked);
 					}
 				} catch (e) { /*blank*/}
 			}
