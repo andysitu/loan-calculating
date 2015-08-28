@@ -81,7 +81,6 @@ var table = t = {
 
 		function toggleSelected(e) {
 			if (e.target.type == "checkbox") {
-				console.log(e.target.value);
 				if (e.target.checked) {
 					t.selectedList[e.target.value] = true;
 				} else {
