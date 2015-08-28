@@ -92,12 +92,29 @@ var table = t = {
 		}
 
 		function toggleSelected(e) {
-			if (e.target.type == "checkbox") {
-				if (e.target.checked) {
+			var ele = e.target
+
+			if (ele.type == "checkbox") {
+				if (ele.checked) {
 					t.selectedList[e.target.value] = true;
 				} else {
 					t.selectedList[e.target.value] = false;
 				}
+			} else {
+				// accesses the live HTMLCollection of child elements
+				// inefficient, but only solution I can think of for now
+				// and should be okay for now since no other things are running
+				try {
+					if (ele.children[0].type == "checkbox") {
+						var ele = ele.children[0];
+						console.log(ele.checked);
+						if (ele.checked) {
+							e.checked = false;
+						} else {
+							e.checked = true;
+						}
+					}
+				} catch (e) { /*blank*/}
 			}
 		}
 
