@@ -2,6 +2,10 @@ var table = t = {
 	// rows selected by user
 	selectedList: null,
 
+	changeSelected(index, value) {
+		this.selectedList(index) = Boolean(value);
+	},
+
 	getSelected() {
 		var arr = [];
 
