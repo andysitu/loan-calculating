@@ -21,12 +21,12 @@ function init() {
 
 	// Check from localStorage if anything has been stored.
 	// If so, will make table and change values to last setting
-	// of the HTML input element
+	// of the HTML input element. Then, will plot the table.
 	if (p.stor.getObj("paymentObj") !== null) {
 		p.stor.setP();
 		p.stor.setInputs();
 		
-		submit.click();
+		table.makeTable( p.getPObj() );
 	}
 
 	var add = document.getElementById("addSubmit");
