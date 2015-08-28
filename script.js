@@ -27,6 +27,7 @@ function init() {
 		p.stor.setInputs();
 		
 		table.makeTable( p.getPObj() );
+		makeCircle();
 	}
 
 	var add = document.getElementById("addSubmit");
