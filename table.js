@@ -20,6 +20,17 @@ var table = t = {
 		return arr;
 	},
 
+	deselectTable() {
+		var ele;
+		for (var i = 1, len = this.selectedList.length; i <= len; i++) {
+			if (this.selectedList[i] == true) {
+				ele = document.getElementById("check" + i);
+				ele.checked = false;
+				this.selectedList[i] = false;
+			}
+		}
+	},
+
 	makeTable(dataArr, headerObj) {
 	/* Makes a table to doc by the headerObj (array) containing table heading
 	 * to specify order of the headings (optional) and dataObj which is objs 
