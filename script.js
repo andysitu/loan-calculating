@@ -28,6 +28,14 @@ function init() {
 		
 		submit.click();
 	}
+
+	var add = document.getElementById("addSubmit");
+	add.addEventListener("click", function(e){
+		var addInput = document.getElementById("addInput");
+		console.log(addInput.value);
+		addInput.value = "";
+	});
+
 	submit = null;
 	onsubmit = null;
 
