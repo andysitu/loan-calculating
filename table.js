@@ -76,6 +76,9 @@ var table = t = {
 
 		table.appendChild(tr);
 
+		// should throw error if the first element is accessed
+		selectedArr[0] = null;
+
 		// rows of the table, Note: i starts at 1
 		for (i = 1; i <= dataArr.length; i++) {
 			selectedArr[i] = false;
