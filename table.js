@@ -21,12 +21,14 @@ var table = t = {
 	},
 
 	deselectTable() {
+	// Deselects all selected checkboxes in table and sets their value
+	// to false in selectedList
 		var ele;
 		for (var i = 1, len = this.selectedList.length; i <= len; i++) {
 			if (this.selectedList[i] == true) {
 				ele = document.getElementById("check" + i);
 				ele.checked = false;
-				this.selectedList[i] = false;
+				changeSelected(i, false);
 			}
 		}
 	},
