@@ -143,6 +143,7 @@ var p = {
 
 		p.recalPObj();
 		table.makeTable( p.getPObj() );
+		makeCircle();
 		table.deselectTable();
 
 	},
