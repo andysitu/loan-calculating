@@ -34,6 +34,7 @@ var p = {
 	headerObj: null,
 	paymentObj: null,
 
+
 	getPObj() {
 		return this.paymentObj;
 	},
@@ -116,6 +117,16 @@ var p = {
 		this.paymentObj[month][name] += value;
 	},
 
+	replacePObj(obj) {
+	// In addition to replacing PObj, also stores new one to local Storage
+		if (Array.isArray(obj)) {
+			p.paymentObj = obj;
+			p.stor.storeP();
+		} else {
+			throw "replacePObj was given a non-Array";
+		}
+	},
+
 	addPayments(amount) {
 	/**
 	 * Add payment in bulk depending on what user selects on the table
@@ -157,8 +168,7 @@ var p = {
 
 		function waitForWorker() {
 			if (p.workerStatus == true) {
-				p.paymentObj = p.makePaymentObj();
-				p.stor.storeP();
+				p.makePaymentObj();
 
 				table.makeTable(p.paymentObj);
 				makeCircle();
@@ -232,14 +242,14 @@ var p = {
 	},
 
 	makePaymentObj() {
-		/**
-		 * Makes the paymentObject that makeTable will use.
-		 *
-		 * Input: reads from p.balance, p.rate, p.months, p.payment
-		 *
-		 * Output: returns array of objects for each month detailing interest,
-		 * remaining balance, tallying interest from previous months
-		 */
+	/**
+	 * Makes the paymentObject that makeTable will use.
+	 *
+	 * Input: reads from p.balance, p.rate, p.months, p.payment
+	 *
+	 * Output: replaces p.paymentObject (null) for each month detailing interest,
+	 * remaining balance, tallying interest from previous months
+	 */
 
 		var that = p;
 
@@ -264,7 +274,7 @@ var p = {
 			arr.push(that.makeOnePObj(oldBalance, month, payment, interest, realPayment, totalInterest, balance) );
 		}
 
-		return arr;
+		p.replacePObj(arr);
 	},
 
 	recalPObj() {
@@ -309,7 +319,7 @@ var p = {
 			month++;
 		}
 
-		p.paymentObj = arr;
+		p.replacePObj(arr);
 	}
 };
 
