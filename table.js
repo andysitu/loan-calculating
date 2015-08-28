@@ -99,11 +99,7 @@ var table = t = {
 			var ele = e.target
 
 			if (ele.type == "checkbox") {
-				if (ele.checked) {
-					t.selectedList[e.target.value] = true;
-				} else {
-					t.selectedList[e.target.value] = false;
-				}
+				table.changeSelected(ele.value, ele.checked);
 			} else {
 				// accesses the live HTMLCollection of child elements
 				// inefficient, but only solution I can think of for now
@@ -111,12 +107,13 @@ var table = t = {
 				try {
 					if (ele.children[0].type == "checkbox") {
 						var ele = ele.children[0];
-						console.log(ele.checked);
 						if (ele.checked) {
 							ele.checked = false;
 						} else {
 							ele.checked = true;
 						}
+
+						table.changeSelected(ele.value, ele.checked);
 					}
 				} catch (e) { /*blank*/}
 			}
