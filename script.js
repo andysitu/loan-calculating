@@ -32,7 +32,11 @@ function init() {
 	var add = document.getElementById("addSubmit");
 	add.addEventListener("click", function(e){
 		var addInput = document.getElementById("addInput");
-		console.log(addInput.value);
+		if (parseFloat(addInput.value) > 0) {
+			p.addPayments(moneyFormatter(addInput.value));
+		} else {
+			display("You didn't enter an value into Add");
+		}
 		addInput.value = "";
 	});
 
