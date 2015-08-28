@@ -299,14 +299,14 @@ var p = {
 			oldBalance = 0,
 			payment = 0,
 			realPayment = 0,
-		 	month = 0,
+		 	month = 1,
 		 	interest = 0,
 		 	totalInterest = 0;
 
 		while (balance >= 0) {
 			oldBalance = balance;
 			try {
-				payment = that.paymentObj[month][that.translatePaymentObject("Payment")];
+				payment = that.paymentObj[month - 1][that.translatePaymentObject("Payment")];
 			} catch(e) {
 				// do nothing, let payment stay as it is
 			}
