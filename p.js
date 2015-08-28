@@ -276,6 +276,9 @@ var p = {
 	 * Then, everything is recalculated from there. If more 
 	 * months are need then the old payment object, then 
 	 * calculation will use payment from the last month.
+	 *
+	 * Output: Doesn't return anything. Directly replaces 
+	 * paymentObj with a new, updated one.
 	*/
 
 		var that = p;
@@ -306,7 +309,7 @@ var p = {
 			month++;
 		}
 
-		return arr;
+		p.paymentObj = arr;
 	}
 };
 
