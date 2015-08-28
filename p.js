@@ -114,10 +114,33 @@ var p = {
 		name = this.translatePaymentObject(name);
 
 		this.paymentObj[month][name] += value;
-		console.log(this.paymentObj[month][name]);	
+	},
+
+	addPayments(amount) {
+	/**
+	 * Add payment in bulk depending on what user selects on the table
+	 * to paymentObject.
+	 *
+	 * Note: table deals in i representing the actual month, meaning it
+	 * starts with 1, not 0.
+	 */
+
+		var selectedArr = t.getSelected();
+		selectedArr.forEach(function(value, i, arr) {
+			p.changePaymentObject(value, "Payment", amount);
+		});
+
+		p.recalPObj();
+		table.makeTable( p.getPObj() );
+		table.deselectTable();
+
 	},
 
 	runIt() {
+		/** 
+		 * Handles running of everything after data goes in.
+		 * Called by p.dataIn.
+		 */
 		if (this.paymentI == 0) {
 			p.calculatePayment();
 		} else if (this.monthsI == 0) {
