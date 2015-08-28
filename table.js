@@ -109,9 +109,9 @@ var table = t = {
 						var ele = ele.children[0];
 						console.log(ele.checked);
 						if (ele.checked) {
-							e.checked = false;
+							ele.checked = false;
 						} else {
-							e.checked = true;
+							ele.checked = true;
 						}
 					}
 				} catch (e) { /*blank*/}
