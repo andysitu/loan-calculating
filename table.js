@@ -1,6 +1,6 @@
 var table = t = {
 	// rows selected by user
-	selectedList: null,
+	selectedList: [false],
 
 	changeSelected(index, value) {
 		this.selectedList(index) = Boolean(value);
@@ -76,9 +76,9 @@ var table = t = {
 
 		table.appendChild(tr);
 
-		// rows of the table
-		for (i = 0; i < dataArr.length; i++) {
-			selectedArr.push(false);
+		// rows of the table, Note: i starts at 1
+		for (i = 1; i <= dataArr.length; i++) {
+			selectedArr[i] = false;
 
 			var tr = document.createElement("tr");
 			tr.id = "row" + i;
@@ -91,7 +91,7 @@ var table = t = {
 			tr.appendChild(td);
 			for (var j = 0; j < keys.length; j++) {
 				var td = document.createElement("td");
-				td.textContent = moneyTranslator(dataArr[i][keys[j]], keys[j]);
+				td.textContent = moneyTranslator(dataArr[i - 1][keys[j]], keys[j]);
 				tr.appendChild(td);
 			}
 			table.appendChild(tr);
