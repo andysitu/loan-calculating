@@ -1,9 +1,11 @@
+// Also used t as name because table is often used as var for the
+// the table element
 var table = t = {
 	// rows selected by user
 	selectedList: [false],
 
 	changeSelected(index, value) {
-		this.selectedList(index) = Boolean(value);
+		this.selectedList[index] = Boolean(value);
 	},
 
 	getSelected() {
@@ -104,7 +106,7 @@ var table = t = {
 			var ele = e.target
 
 			if (ele.type == "checkbox") {
-				table.changeSelected(ele.value, ele.checked);
+				t.changeSelected(ele.value, ele.checked);
 			} else {
 				// accesses the live HTMLCollection of child elements
 				// inefficient, but only solution I can think of for now
@@ -118,7 +120,7 @@ var table = t = {
 							ele.checked = true;
 						}
 
-						table.changeSelected(ele.value, ele.checked);
+						t.changeSelected(ele.value, ele.checked);
 					}
 				} catch (e) { /*blank*/}
 			}
