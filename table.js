@@ -2,6 +2,18 @@ var table = t = {
 	// rows selected by user
 	selectedList: null,
 
+	getSelected() {
+		var arr = [];
+
+		for (var i = 0, len = this.selectedList.length; i < len; i++) {
+			if (this.selectedList[i] == true) {
+				arr.push(i);
+			}
+		}
+
+		return arr;
+	},
+
 	makeTable(dataArr, headerObj) {
 	/* Makes a table to doc by the headerObj (array) containing table heading
 	 * to specify order of the headings (optional) and dataObj which is objs 
