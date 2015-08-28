@@ -34,6 +34,10 @@ var p = {
 	headerObj: null,
 	paymentObj: null,
 
+	getPObj() {
+		return this.paymentObj;
+	},
+
 	getPaymentObject(month) {
 	/**
 	 * I want to prevent direct access to obj & want to ensure that
