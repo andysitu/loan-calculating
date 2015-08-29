@@ -1,3 +1,7 @@
+body {
+	font-family: Arial;
+}
+
 table {
 	border-collapse: collapse;
     padding: 0;
@@ -5,30 +9,39 @@ table {
 }
 
 td, th {
-	border: solid thin; 
+	border: solid thin gray;
+	color: rgb(239,220,220);
 }
 
 th {
 	white-space: pre-wrap;
+	background-color: rgb(204,229,255);
+	color: green;
 }
 
 td {
 	padding: 0;
 	text-align: right;
-	font-color: blue;
-	background: rgb(245,245,255);
+	font-family: Rockwell;
 }
 
 td:nth-child(2n+1) {
-	background: rgb(214,214,247);
+	background: rgb(243,86,107);
+}
+
+td:nth-child(2n) {
+	background: rgb(242, 120, 120);
 }
 
 td:nth-child(1),td:nth-child(3) { 
 	text-align: center; }
 
+#container {
+	margin-left: 4px;
+}
+
 #tableHere {
 	margin-top: 1%;
-	margin-left: 2%;
 }
 
 #canvasDiv {
@@ -37,17 +50,17 @@ td:nth-child(1),td:nth-child(3) {
 }
 
 #balanceInput {
-	width: 10em;
+	width: 8em;
 }
 
 #rateInput {
-	width: 5em;
+	width: 4em;
 }
 
 #monthsInput {
-	width: 5em;
+	width: 3em;
 }
 
 #paymentInput {
-	width: 10em;
+	width: 8em;
 }

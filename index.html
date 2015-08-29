@@ -12,34 +12,35 @@
 
 <body>
 	<div #top></div>
-	
-	<form>
-		<span id="text0">Balance:</span>
-		<input type="text" name="balanceInput" id="balanceInput" placeholder="Enter a number">
-		<span id="text1">APR:</span>
-		<input type="text" name="rateInput" id="rateInput" placeholder="Enter a number">
-		<span id="text2">Pay in months:</span>
-		<input type="text" name="monthsInput" id="monthsInput" placeholder="Enter a number">
-		<span id="text3">Payment:</span>
-		<input type="text" name="paymentInput" id="paymentInput" placeholder="Enter a number">
-		<button type="button" id='submit'>submit</button>
-	</form>
-	<form>
-		<span>Add</span>
-		<input type="text" name="addInput" id="addInput" placeholder="Enter a value">
-		<button type="button" id="addSubmit">submit</button>
-	</form>
-	<a href="info.html">More Info!</a>
-	<div id="msg"></div>
-
 	<div id="container">
-		<div id="canvasDiv">
-			<canvas id='canvas'></canvas>
+		<form id="inputForm">
+			<span id="text0">Balance:</span>
+			<input type="text" name="balanceInput" id="balanceInput" placeholder="Enter a number">
+			<span id="text1">APR:</span>
+			<input type="text" name="rateInput" id="rateInput" placeholder="Enter a number">
+			<span id="text2">Pay in months:</span>
+			<input type="text" name="monthsInput" id="monthsInput" placeholder="Enter a number">
+			<span id="text3">Payment:</span>
+			<input type="text" name="paymentInput" id="paymentInput" placeholder="Enter a number">
+			<button type="button" id='submit'>submit</button>
+		</form>
+		<form id="optionsForm">
+			<span>Add to payment(s)</span>
+			<input type="text" name="addInput" id="addInput" placeholder="Enter a value">
+			<button type="button" id="addSubmit">submit</button>
+		</form>
+		<a href="info.html">More Info!</a>
+		<div id="msg"></div>
+
+		<div id="container">
+			<div id="canvasDiv">
+				<canvas id='canvas'></canvas>
+			</div>
+			<div id="tableHere"></div>
+				
 		</div>
-		<div id="tableHere"></div>
-			
+		<a href="#top">Go to the top</a>
 	</div>
-	<a href="#top">Go to the top</a>
 
 	<script src='functions.js'></script>
 	<script src='table.js'></script>
