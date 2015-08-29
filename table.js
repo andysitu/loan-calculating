@@ -136,9 +136,15 @@ var table = t = {
 
 			if (ele.type == "checkbox") {
 				t.changeSelectedList(ele.value, ele.checked);
-				console.log("HI");
+				var row = document.getElementById("row" + ele.value);
+				
+				var children = row.children;
+				for (var i = 0, len = row.children.length; i < len; i++) {
+					children[i].classList.add("selected");
+				}
 			}
-			}
+
+			
 		}
 
 		table.addEventListener("click", toggleSelected );
