@@ -69,11 +69,11 @@ function makeCircle() {
 	ctx.fillStyle = "green";
 	ctx.fillRect(center + radius + 20, height / 15, 20, 20);
 	ctx.font = "16px serif";
-	ctx.fillText("Total Balance Paid: $" + startingBalance , center + radius + 45, height / 15);
+	ctx.fillText("Total Balance Paid: $" + makeCommas(String(startingBalance)) , center + radius + 45, height / 15);
 	ctx.fillStyle = "red";
 	ctx.fillRect(center + radius + 20, height / 15 + 25, 20, 20);
 	ctx.font = "16px serif";
-	ctx.fillText("Total Interest Paid: $" + totalInterest , center + radius + 45, height / 15 + 25);
+	ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25);
 }
 
 function moneyFormatter(value) {
