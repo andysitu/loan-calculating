@@ -26,15 +26,20 @@ td {
 }
 
 td:nth-child(2n+1) {
-	background: rgb(243,86,107);
+	background-color: rgb(243,86,107);
 }
 
 td:nth-child(2n) {
-	background: rgb(242, 120, 120);
+	background-color: rgb(242, 120, 120);
 }
 
 td:nth-child(1),td:nth-child(3) { 
 	text-align: center; }
+
+td:hover {
+	background: red;
+}
+
 
 #container {
 	margin-left: 4px;
@@ -49,7 +54,7 @@ td:nth-child(1),td:nth-child(3) {
 	margin-left: 5%;
 }
 
-#balanceInput {
+#balanceInput, #paymentInput {
 	width: 8em;
 }
 
@@ -61,6 +66,6 @@ td:nth-child(1),td:nth-child(3) {
 	width: 3em;
 }
 
-#paymentInput {
-	width: 8em;
+.selected {
+	background: white;
 }
