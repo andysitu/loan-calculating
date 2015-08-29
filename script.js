@@ -9,6 +9,9 @@ function onSubmit(e) {
 
 function init() {
 
+	var reset = document.getElementById("resetButton");
+	reset.addEventListener("click", onSubmit);
+
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
 	// add right click events for the inputs
@@ -17,7 +20,9 @@ function init() {
 	addClearEvent("monthsInput");
 	addClearEvent("paymentInput");
 
-	ele = null;
+	reset = null;
+	submit = null;
+	onsubmit = null;
 
 	// Check from localStorage if anything has been stored.
 	// If so, will make table and change values to last setting
@@ -40,9 +45,6 @@ function init() {
 		}
 		addInput.value = "";
 	});
-
-	submit = null;
-	onsubmit = null;
 
 }
 
