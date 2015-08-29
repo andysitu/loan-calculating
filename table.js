@@ -135,12 +135,22 @@ var table = t = {
 			} catch (e) { /*blank*/}
 
 			if (ele.type == "checkbox") {
-				t.changeSelectedList(ele.value, ele.checked);
-				var row = document.getElementById("row" + ele.value);
-				
-				var children = row.children;
-				for (var i = 0, len = row.children.length; i < len; i++) {
-					children[i].classList.add("selected");
+				if (ele.checked) {
+					t.changeSelectedList(ele.value, ele.checked);
+					var row = document.getElementById("row" + ele.value);
+					
+					var children = row.children;
+					for (var i = 0, len = row.children.length; i < len; i++) {
+						children[i].classList.add("selected");
+					}
+				} else {
+					t.changeSelectedList(ele.value, ele.checked);
+					var row = document.getElementById("row" + ele.value);
+					
+					var children = row.children;
+					for (var i = 0, len = row.children.length; i < len; i++) {
+						children[i].classList.remove("selected");
+					}
 				}
 			}
 
