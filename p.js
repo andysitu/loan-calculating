@@ -142,7 +142,7 @@ var p = {
 		});
 
 		p.recalPObj();
-		table.makeTable( p.getPObj() );
+		table.tableMaker( p.getPObj() );
 		makeCircle();
 		table.deselectTable();
 
@@ -171,7 +171,7 @@ var p = {
 			if (p.workerStatus == true) {
 				p.makePaymentObj();
 
-				table.makeTable(p.paymentObj);
+				table.tableMaker( p.getPObj() );
 				makeCircle();
 			} else {
 				window.setTimeout(waitForWorker, 50);

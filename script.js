@@ -37,7 +37,7 @@ function init() {
 		p.stor.setP();
 		p.stor.setInputs();
 		
-		table.makeTable( p.getPObj() );
+		table.tableMaker( p.getPObj() );
 		makeCircle();
 	}
 
