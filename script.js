@@ -15,6 +15,12 @@ function init() {
 	var submit = document.getElementById("submit");
 	submit.addEventListener("click", onSubmit);
 	// add right click events for the inputs
+
+	var tableButton = document.getElementById("tableButton");
+	tableButton.addEventListener("click", function(e) {
+		hideInput(false);
+	});
+
 	addClearEvent("balanceInput");
 	addClearEvent("rateInput");
 	addClearEvent("monthsInput");
