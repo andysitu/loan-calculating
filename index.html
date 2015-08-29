@@ -11,10 +11,8 @@
 </head>
 
 <body>
-	<div id="Info">
-		<p>To calculate the minimal payment to pay in X amount of months, leave the payment option empty. To calculate the min. months it will take, leave months empty while filling in pament. Fill in both of them to calculate the payment info for that period of time.</p>
-		<p>Right click on an input to clear it.</p>
-	</div>
+	<div #top></div>
+	
 	<form>
 		<span id="text0">Balance:</span>
 		<input type="text" name="balanceInput" id="balanceInput" placeholder="Enter a number">
@@ -31,6 +29,7 @@
 		<input type="text" name="addInput" id="addInput" placeholder="Enter a value">
 		<button type="button" id="addSubmit">submit</button>
 	</form>
+	<a href="info.html">More Info!</a>
 	<div id="msg"></div>
 
 	<div id="container">
@@ -40,6 +39,7 @@
 		<div id="tableHere"></div>
 			
 	</div>
+	<a href="#top">Go to the top</a>
 
 	<script src='functions.js'></script>
 	<script src='table.js'></script>
