@@ -35,6 +35,18 @@ var table = t = {
 		}
 	},
 
+	tableMaker(PObj) {
+	/**
+	 * Runs all the functions that are necessary after makeTable, which is
+	 * for now makeTable(obj), makeCircle(), and hideInput(true).
+	 * This is so that it'll be easier to change later.
+	*/
+		this.makeTable(PObj);
+		makeCircle();
+		hideInput(true);
+
+	},
+
 	makeTable(dataArr, headerObj) {
 	/* Makes a table to doc by the headerObj (array) containing table heading
 	 * to specify order of the headings (optional) and dataObj which is objs 
