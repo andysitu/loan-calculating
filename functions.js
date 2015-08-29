@@ -34,9 +34,9 @@ function makeCircle() {
  */
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d"),
-		width = 600,
-		height = 400,
-		radius = 200
+		width = 800,
+		height = 320,
+		radius = 160,
 		pi = 2 * Math.PI,
 		startingBalance = p.getPayObjValue(1, "Starting Balance"),
 		totalInterest = p.getPayObjValue("end", "Total Interest"),
@@ -65,6 +65,15 @@ function makeCircle() {
 	ctx.fill();
 	ctx.restore(); 
 
+	ctx.textBaseline = "top";
+	ctx.fillStyle = "green";
+	ctx.fillRect(center + radius + 20, height / 15, 20, 20);
+	ctx.font = "16px serif";
+	ctx.fillText("Total Balance Paid: $" + startingBalance , center + radius + 45, height / 15);
+	ctx.fillStyle = "red";
+	ctx.fillRect(center + radius + 20, height / 15 + 25, 20, 20);
+	ctx.font = "16px serif";
+	ctx.fillText("Total Interest Paid: $" + totalInterest , center + radius + 45, height / 15 + 25);
 }
 
 function moneyFormatter(value) {
