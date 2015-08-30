@@ -34,7 +34,7 @@ function makeCircle() {
  */
 	var canvas = document.getElementById("canvas");
 	var ctx = canvas.getContext("2d"),
-		width = 800,
+		width = 700,
 		height = 320,
 		radius = 160,
 		pi = 2 * Math.PI,
