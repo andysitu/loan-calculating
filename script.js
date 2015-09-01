@@ -4,7 +4,12 @@ function onSubmit(e) {
 	var months = document.getElementById("monthsInput").value;
 	var payment = document.getElementById("paymentInput").value;
 
-	p.dataIn(bal, rate, months, payment);
+	if ( parseInt(months) > 0 || parseFloat(payment) > 0) {
+		p.dataIn(bal, rate, months, payment);
+	} else {
+		display("You need to fill in either months or payment with a valid value");
+	}
+	
 }
 
 function init() {
