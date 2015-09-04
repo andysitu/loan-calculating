@@ -91,6 +91,9 @@ function moneyFormatter(value) {
 }
 
 function makeCommas(value) {
+	if (typeof value == 'number') {
+		value = String(value);
+	}
 	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 }
 
