@@ -5,6 +5,9 @@ function display(msg) {
 	
 }
 
+// setInput & clearInput are used when page is loaded
+// and local storage has prev info, so the inputs are
+// set as they are previously.
 function setInput(id, value) {
 	var input = document.getElementById(id);
 
@@ -15,6 +18,10 @@ function clearInput(id) {
 	setInput(id, "");
 }
 
+// Sets clear event on ele with right click.
+// It was called on the 4 inputs. Chose against clear all,
+// since that might be clicked accidentally frequently and
+// this feels easier to use.
 function addClearEvent(id) {
 	var ele = document.getElementById(id);
 
@@ -78,6 +85,8 @@ function makeCircle() {
 
 function moneyFormatter(value) {
 	// Makes number into correct format for money
+	// Chose ceil, because money esp. money you owe is
+	// usually round up.
 	return Math.ceil(parseFloat(value) * 100) / 100
 }
 
