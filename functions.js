@@ -76,6 +76,7 @@ function makeCircle() {
 	ctx.fill();
 	ctx.restore(); 
 
+	// Insert key
 	ctx.textBaseline = "top";
 	ctx.fillStyle = "green";
 	ctx.fillRect(center + radius + 20, height / 15, 20, 20);
@@ -116,4 +117,19 @@ function hideInput(bool) {
 		input.hidden = false;
 		options.hidden = true;
 	}
+}
+
+function each(obj, callback) {
+	if (Object.prototype.toString.call(obj) == '[object Object]') {
+		for (var key in obj) {
+			callback(obj[key], key, obj);
+		}
+	} else if (Object.prototype.toString.call(obj) == '[object Array]') {
+		for (var i = 0, len = obj.length; i < len; i++) {
+			callback(obj[i], i, obj);
+		}
+	} else {
+		throw "each was given a non-object";
+	}
+
 }
