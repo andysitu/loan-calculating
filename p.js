@@ -1,5 +1,6 @@
 var p = {
 	_workerStatus: true,
+	// table formation should go on only if workerstatus is true
 	set workerStatus(status) {this._workerStatus = status;},
 	get workerStatus() {return this._workerStatus;},
 	_balance: 0,
@@ -197,8 +198,7 @@ var p = {
 	 * amount of time by sending it to the worker.
 	 * 
 	 * Input: values are given to work based on p.balance, p.rate
-	 * and p.months.
-	 *
+	 * 	and p.months.
 	 * Output: the payment value is set to p.payment
 	 */
 	 	p.workerStatus = false;
@@ -222,8 +222,7 @@ var p = {
 	 * by sending it to the worker.
 	 * 
 	 * Input: values are given to work based on p.balance, p.rate
-	 * and p.payment.
-	 *
+	 * 	and p.payment.
 	 * Output: the months value is set to p.months
 	 */
 		p.workerStatus = false;
@@ -247,9 +246,8 @@ var p = {
 	 * Makes the paymentObject that makeTable will use.
 	 *
 	 * Input: reads from p.balance, p.rate, p.months, p.payment
-	 *
 	 * Output: replaces p.paymentObject (null) for each month detailing interest,
-	 * remaining balance, tallying interest from previous months
+	 * 	remaining balance, tallying interest from previous months
 	 */
 
 		var that = p;

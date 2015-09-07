@@ -103,8 +103,8 @@ function makeCommas(value) {
 
 function hideInput(bool) {
 /* For now there are only two input forms, so if status if true
-	then the inputForm will be hidden. If false, that will show,
-	but optionsForm will be hidden.
+	then the inputForm will be hidden and optionsForm will show.
+	If false, then the opposite.
 */
 	var input = document.getElementById("inputForm"),
 		options = document.getElementById("optionsForm");
