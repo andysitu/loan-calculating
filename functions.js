@@ -57,6 +57,16 @@ function makeCircle() {
 	canvas.height = height;
 	portion = startingBalance / (startingBalance + totalInterest);
 
+	function drawCirclePortion(x,y,radius,start,end,color, ctx){
+		ctx.save();
+		ctx.moveTo(center, center);
+		ctx.beginPath();
+		ctx.arc(x, y, radius, start, end, false);
+		ctx.lineTo(center, center);
+		ctx.closePath();
+		ctx.fillStyle = color;
+		ctx.fill();
+		ctx.restore();
 	ctx.save();
 	ctx.moveTo(center, center);
 	ctx.beginPath();
