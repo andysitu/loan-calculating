@@ -18,19 +18,23 @@ function clearInput(id) {
 	setInput(id, "");
 }
 
-// Sets clear event on ele with right click.
-// It was called on the 4 inputs. Chose against clear all,
-// since that might be clicked accidentally frequently and
-// this feels easier to use.
-function addClearEvent(id) {
-	var ele = document.getElementById(id);
+function addClearEvents() {
+	function addClearEvent(id) {
+		// Sets clear event on ele with right click.
+		var ele = document.getElementById(id);
 
-	ele.addEventListener("contextmenu", function(e){
-		e.preventDefault();
-		clearInput(id);
-	});
+		ele.addEventListener("contextmenu", function(e){
+			e.preventDefault();
+			clearInput(id);
+		});
 
-	ele = null;
+		ele = null;
+	}
+
+	addClearEvent("balanceInput");
+	addClearEvent("rateInput");
+	addClearEvent("monthsInput");
+	addClearEvent("paymentInput");
 }
 
 function makeCircle() {

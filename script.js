@@ -26,10 +26,7 @@ function init() {
 		hideInput(false);
 	});
 
-	addClearEvent("balanceInput");
-	addClearEvent("rateInput");
-	addClearEvent("monthsInput");
-	addClearEvent("paymentInput");
+	addClearEvents();
 
 	reset = null;
 	submit = null;
