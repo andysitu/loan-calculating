@@ -42,7 +42,6 @@ var table = t = {
 	 * This is so that it'll be easier to change later.
 	*/
 		this.makeTable(PObj);
-		makeCircle();
 		hideInput(true);
 
 	},
