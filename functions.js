@@ -68,7 +68,6 @@ function makeCircle() {
 		for (var i = 0, len = colors.length; i < len; i++) {
 			var color = colors[i],
 				portion = dataObj[color] / total * pi;
-			console.log(color, dataObj[color], portion * pi, prev * pi );
 			if (i === 0) {
 				drawCirclePortion(x, y, radius, 0, portion, color, ctx);
 				prev = portion;
