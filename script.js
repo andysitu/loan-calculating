@@ -44,6 +44,8 @@ function init() {
 		
 		table.tableMaker( p.getPObj() );
 		makeCircle();
+	} else {
+		hideInput(false);
 	}
 
 	var add = document.getElementById("addSubmit");
