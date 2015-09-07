@@ -57,6 +57,30 @@ function makeCircle() {
 	canvas.height = height;
 	portion = startingBalance / (startingBalance + totalInterest);
 
+	function drawCircle(x,y,radius, dataObj, ctx) {
+		var total = 0,
+			colors = Object.keys(dataObj),
+			pi = 2 * Math.PI,
+			prev = "";
+
+		each(dataObj, function(value) { total += value; })
+		
+		for (var i = 0, len = colors.length; i < len; i++) {
+			var color = colors[i],
+				portion = dataObj[color] / total * pi;
+			console.log(color, dataObj[color], portion * pi, prev * pi );
+			if (i === 0) {
+				drawCirclePortion(x, y, radius, 0, portion, color, ctx);
+				prev = portion;
+			} else if (i === len - 1) {
+				drawCirclePortion(x, y, radius, prev, 0, color, ctx);
+			} else {
+				drawCirclePortion(x, y, radius, prev, pi - portion, color, ctx);
+				prev = pi - portion;
+			}
+		}
+	}
+
 	function drawCirclePortion(x,y,radius,start,end,color, ctx){
 		ctx.save();
 		ctx.moveTo(center, center);
@@ -67,6 +91,7 @@ function makeCircle() {
 		ctx.fillStyle = color;
 		ctx.fill();
 		ctx.restore();
+	}
 	ctx.save();
 	ctx.moveTo(center, center);
 	ctx.beginPath();
