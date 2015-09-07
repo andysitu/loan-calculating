@@ -92,24 +92,8 @@ function makeCircle() {
 		ctx.fill();
 		ctx.restore();
 	}
-	ctx.save();
-	ctx.moveTo(center, center);
-	ctx.beginPath();
-	ctx.arc(center, center, radius, 0, portion * pi, false);
-	ctx.lineTo(center, center);
-	ctx.closePath();
-	ctx.fillStyle = "green";
-	ctx.fill();
-	ctx.restore();
 
-	ctx.save();
-	ctx.beginPath();
-	ctx.fillStyle = "red";
-	ctx.arc(center, center, radius, portion * pi, 0 , false);
-	ctx.lineTo(center, center);
-	ctx.closePath();
-	ctx.fill();
-	ctx.restore(); 
+	drawCircle(center, center, radius, {"green": startingBalance, "red": totalInterest}, ctx);
 
 	// Insert key
 	ctx.textBaseline = "top";
