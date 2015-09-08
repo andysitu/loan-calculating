@@ -106,7 +106,7 @@ function makeCircle() {
 	ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25);
 }
 
-function moneyFormatter(value) {
+function decimalConverter(value) {
 	// Makes number into correct format for money
 	// Chose ceil, because money esp. money you owe is
 	// usually round up.

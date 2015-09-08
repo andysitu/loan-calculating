@@ -4,7 +4,7 @@ var p = {
 	set workerStatus(status) {this._workerStatus = status;},
 	get workerStatus() {return this._workerStatus;},
 	_balance: 0,
-	set balance(value) { this._balance = moneyFormatter(value);},
+	set balance(value) { this._balance = decimalConverter(value);},
 	get balance() { return this._balance; },
 	_rate: 0,
 	set rate(value) {
@@ -25,7 +25,7 @@ var p = {
 	_payment: 0,
 	set payment(value) { 
 		if (value != undefined) {
-			this._payment = moneyFormatter(value); 
+			this._payment = decimalConverter(value); 
 		} else {
 			this._payment = 0;
 		}
@@ -83,13 +83,13 @@ var p = {
 	makeOnePObj(a, b, c, d, e, f, g) {
 		// makes obj of the values. To be used in creation 
 		// and recreation of the payment object.
-		var moneyF = moneyFormatter;
+		var moneyF = decimalConverter;
 
 		return {
 		 	"Starting Balance": moneyF(a),
 		 	"Month": b,
 		 	"Payment": moneyF(c),
-		 	"Interest": moneyFormatter(d),
+		 	"Interest": moneyF(d),
 		 	"Actual Payment to Balance": moneyF(e),
 		 	"Total Interest": moneyF(f),
 		 	"End Balance": moneyF(g)
@@ -180,15 +180,13 @@ var p = {
 	},
 
 	dataIn(bal, rate, months, payment) {
+		// properties have setters that'll convert to correct format.
 		this.balance = bal;
 		this.rate = rate;
 		this.months = this.monthsI = months;
 		this.payment = this.paymentI = payment;
 
 		this.runIt();
-	},
-	dataOut(){
-
 	},
 
 	calculatePayment() {

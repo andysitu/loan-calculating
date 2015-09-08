@@ -29,6 +29,7 @@ function calculatePayment(balance, rate, months) {
    *
    * Returns the min payment amount
   */
+  
   	balance = parseFloat(balance);
   	rate = parseFloat(rate) / 12;
   	months = parseFloat(months);
