@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+	<meta charset="utf-8">
+	<title>Loan Calculation!</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+
+</head>
+
+<body>
+	<div #top></div>
+	<div id="container">
+		<form id="inputForm">
+			<span id="text0">Balance:</span>
+			<input type="text" name="balanceInput" id="balanceInput" placeholder="Enter a number">
+			<span id="text1">APR:</span>
+			<input type="text" name="rateInput" id="rateInput" placeholder="Enter a number">
+			<span id="text2">Pay in months:</span>
+			<input type="text" name="monthsInput" id="monthsInput" placeholder="Enter a number">
+			<span id="text3">Payment:</span>
+			<input type="text" name="paymentInput" id="paymentInput" placeholder="Enter a number">
+			<button type="button" id='submit'>submit</button>
+		</form>
+		<form id="optionsForm">
+			<span>Add to payment(s)</span>
+			<input type="text" name="addInput" id="addInput" placeholder="Enter a value">
+			<button type="button" id="addSubmit">submit</button>
+			<button type="button" id="resetButton">reset</button>
+			<button type="button" id="tableButton">make new table</button>
+		</form>
+		<a href="info.html" target="_blank">More Info!</a>
+		<div id="msg"></div>
+
+		<div id="canvasDiv">
+			<canvas id='canvas'></canvas>
+		</div>
+		<div id="tableHere"></div>
+				
+		<a href="#top">Go to the top</a>
+	</div>
+
+	<script src='functions.js'></script>
+	<script src='table.js'></script>
+	<script src='p.js'></script>
+	<script src='script.js'></script>
+	<script src='worker.js'></script>
+	<script src='test.js'></script>
+</body>
+
+</html>
