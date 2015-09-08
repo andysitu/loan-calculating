@@ -1,0 +1,65 @@
+body {
+	font-family: Arial;
+	background-color: white;	
+}
+
+table {
+	border-collapse: collapse;
+    padding: 0;
+}
+
+td, th {
+	border: solid thin gray;
+}
+
+th {
+	white-space: pre-wrap;
+	background-color: rgb(204,229,255);
+	color: green;
+}
+
+td {
+	padding: 0;
+	text-align: right;
+	font-family: Rockwell;
+	color: rgb(239,220,220);
+}
+
+td:nth-child(2n+1) { background-color: rgb(243,86,107); }
+
+td:nth-child(2n) { background-color: rgb(242, 120, 120); }
+
+td:nth-child(1),td:nth-child(3) { 
+	text-align: center; }
+
+td:hover {
+	background: red;
+}
+
+#container {
+	text-align: center;
+}
+
+#container table {
+	margin: 0 auto; 
+    text-align: left;
+}
+
+#tableHere {
+	margin-top: 1%;
+}
+
+#canvasDiv {
+	margin-top: 2%;
+	margin-left: 5%;
+}
+
+#balanceInput, #paymentInput {
+	width: 8em;
+}
+
+#rateInput { width: 4em; }
+
+#monthsInput { width: 3em; }
+
+td.selected { background: green; }
