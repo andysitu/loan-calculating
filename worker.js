@@ -42,7 +42,7 @@ function calculatePayment(balance, rate, months) {
 
 	while ( newBal > 0 || newBal < limit  ) {
 		if (counter++ > 100) {
-			console.log("Something was wrong");
+			console.log("Something went wrong");
 			break;
 		}
 		newBal = balance;
@@ -65,14 +65,13 @@ function calculatePayment(balance, rate, months) {
 }
 
 function calculateMonths(balance, rate, payment) {
-	var newBalance = balance,
-		months = 0,
+	var months = 0,
 		rate = rate / 12;
 
-	while (newBalance > 0) {
+	while (balance > 0) {
 		months++;
-		newBalance = newBalance * (1 + rate) - payment;
-		if (months >= 1000) {
+		balance = balance * (1 + rate) - payment;
+		if (months >= 3000) {
 			console.log("Error: too many calculations in months from worker");
 			break;
 		}

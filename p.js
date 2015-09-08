@@ -35,7 +35,6 @@ var p = {
 	headerObj: null,
 	paymentObj: null,
 
-
 	getPObj() {
 		return this.paymentObj;
 	},

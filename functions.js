@@ -149,5 +149,4 @@ function each(obj, callback) {
 	} else {
 		throw "each was given a non-object";
 	}
-
 }
