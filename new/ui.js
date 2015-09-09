@@ -1,13 +1,14 @@
 var ui = {
+  inputList: ['balanceInput', 'rateInput', 'monthsInput', 'paymentInput'],
+  inputValues: [],
   translateSubmitData(e) {
-  	console.log("works");
-    var inputList = ['balanceInput', 'rateInput', 'monthsInput', 'paymentInput'];
+  	var that = ui;	
 
   	function getValue(elementId) {
-  	  return document.getElementById(elementId).value;
+  	  return document.getElementById(elementId).value; 
   	}
 
-  	var inputValues = inputList.map(function(id, i, arr) {
+  	that.inputValues = that.inputList.map(function(id, i, arr) {
   	  return getValue(id);
     });
 
