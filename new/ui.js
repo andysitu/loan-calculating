@@ -16,8 +16,7 @@ var ui = {
   	  	  return parseFloat(value);
   	}
   },
-  inputChecker() {
-  	var data = this.inputData;
+  inputChecker(data) {
 
   	if (data.months <= 0 && data.payment <= 0) {
       return false; 
@@ -45,11 +44,13 @@ var ui = {
   submitData(e) {
   	var that = ui;
 
-  	that.translateInputData(e);
+  	var inputData = that.translateInputData(e);
 
-  	if (that.inputChecker()) {
-  	  pObj.inputData(that.inputData);
-      that.pObject = new PaymentObject(that.inputData) ;
+  	if (that.inputChecker(inputData)) {
+      that.inputData = inputData;
+      storage.store("inputData", inputData);
+
+      that.pObject = new PaymentObject(inputData);
   	} else {
   	  console.log("ERROR");
     }
