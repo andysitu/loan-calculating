@@ -168,3 +168,7 @@ function map(obj, callback, context) {
 
   return newObj;
 }
+
+function copy(obj) {
+  return map(obj, function(value) { return value; })
+}
