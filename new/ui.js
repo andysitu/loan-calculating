@@ -25,8 +25,9 @@ var ui = {
   	}
 
   	each(this.inputList, function( _, id, obj) {
-  	  obj[id] = getValue(id);
-    });
+  	  var value = getValue(id);
+  	  obj[id] = this.inputFormatter(id, value);
+    }, this);
   },
   submitData(e) {
   	var that = ui;
