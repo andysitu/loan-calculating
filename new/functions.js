@@ -151,9 +151,7 @@ function each(obj, callback, context) {
       callback.call(context, obj[key], key, obj);
     }
   } else if (Object.prototype.toString.call(obj) == '[object Array]') {
-    for (var i = 0, len = obj.length; i < len; i++) {
-      callback.call(context, obj[i], i, obj);
-    }
+    obj.forEach(callback, context);
   } else { throw "each was given a non-object"; }
 }
 
@@ -164,7 +162,7 @@ function map(obj, callback, context) {
   if (Object.prototype.toString.call(obj) == '[object Object]') {
   	newObj = {};
   } else if (Object.prototype.toString.call(obj) == '[object Array]') {
-  	newObj = [];
+  	newObj = obj.map(callback, context);
   } else { throw "map was given a non-object"; }
 
   each(obj, function(value, key, obj) {
