@@ -137,14 +137,14 @@ function decimalConverter(value) {
 // 	}
 // }
 
-function each(obj, callback) {
+function each(obj, callback, context) {
 	if (Object.prototype.toString.call(obj) == '[object Object]') {
 		for (var key in obj) {
-			callback(obj[key], key, obj);
+			callback.call(obj[key], key, obj);
 		}
 	} else if (Object.prototype.toString.call(obj) == '[object Array]') {
 		for (var i = 0, len = obj.length; i < len; i++) {
-			callback(obj[i], i, obj);
+			callback.call(obj[i], i, obj);
 		}
 	} else {
 		throw "each was given a non-object";
