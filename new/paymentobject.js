@@ -1,9 +1,6 @@
-var pObj = paymentObject = {
-  inputData(dataObj) {
-  	this.data = copy(dataObj);
-  },
-  data: null
-};
+function PaymentObject(data) {
+  this.data = copy(data);
+}
 
 // var p = {
 // _workerStatus: true,

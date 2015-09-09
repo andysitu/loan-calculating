@@ -1,4 +1,5 @@
 var ui = {
+  pObject: null,
   inputData: {
   	'balance': 0,
   	'rate': 0,
@@ -45,9 +46,12 @@ var ui = {
   	var that = ui;
 
   	that.translateInputData(e);
-  	if (that.inputChecker())
+
+  	if (that.inputChecker()) {
   	  pObj.inputData(that.inputData);
-  	else
+      that.pObject = new PaymentObject(that.inputData) ;
+  	} else {
   	  console.log("ERROR");
+    }
   }
 };
