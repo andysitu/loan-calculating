@@ -11,7 +11,11 @@ var ui = {
   	that.inputValues = that.inputList.map(function(id, i, arr) {
   	  return getValue(id);
     });
+  },
+  submitData(e) {
+  	var that = ui;
 
-    pObj.inputData.apply(pObj, inputValues);
+  	translateSubmitData(e);
+  	pObj.inputData.apply(pObj, that.inputValues);
   }
 };
