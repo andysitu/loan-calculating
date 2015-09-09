@@ -5,6 +5,20 @@ var ui = {
   	'monthsInput': 0,
   	'paymentInput': 0
   },
+  inputFormatter(type, value) {
+  	switch(type) {
+  	  case 'balanceInput':
+  	  case 'paymentInput': 
+  	    return decimalConverter(value);
+  	  case 'rateInput':
+  	  	if (value >= 1) {
+  	  	  return value / 100; }
+  	  	else {
+  	  	  return value; }
+  	  default:
+  	  	  return value;
+  	}
+  },
   translateSubmitData() {
   	function getValue(elementId) {
   	  return document.getElementById(elementId).value; 
