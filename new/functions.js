@@ -1,3 +1,7 @@
+/**
+ * Function List: each, map, copy
+ */
+
 // function display(msg) {
 // 	var msgArea = document.getElementById('msg');
 
@@ -108,9 +112,10 @@
 
 function decimalConverter(value) {
   // Makes number into correct format for money
-  // Chose ceil, because money esp. money you owe is
-  // usually round up.
-  return Math.ceil(parseFloat(value) * 100) / 100
+  if (value == '')
+  	return value;
+  if (typeof value == 'string' || typeof value == 'number')
+  	return Math.round(parseFloat(value) * 100) / 100
 }
 
 // function makeCommas(value) {
