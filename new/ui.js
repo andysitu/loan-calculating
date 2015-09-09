@@ -1,16 +1,16 @@
 var ui = {
   inputList: {
-  	'balanceInput': 0,
-  	'rateInput': 0,
-  	'monthsInput': 0,
-  	'paymentInput': 0
+  	'balance': 0,
+  	'rate': 0,
+  	'months': 0,
+  	'payment': 0
   },
   inputFormatter(type, value) {
   	switch(type) {
-  	  case 'balanceInput':
-  	  case 'paymentInput': 
+  	  case 'balannce':
+  	  case 'payment': 
   	    return decimalConverter(value);
-  	  case 'rateInput':
+  	  case 'rate':
   	  	if (value >= 1) {
   	  	  return value / 100; }
   	  	else {
@@ -34,5 +34,6 @@ var ui = {
 
   	that.translateSubmitData(e);
   	pObj.inputData.apply(pObj, that.inputValues);
+  	console.log(that.inputList);
   }
 };
