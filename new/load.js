@@ -9,7 +9,7 @@ function onSubmit(e) {
   	return getValue(id);
   });
 
-  paymentObject.dataIn.apply(null, inputValues);
+  paymentObject.inputData.apply(paymentObject, inputValues);
 
 }
 

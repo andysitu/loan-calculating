@@ -1,4 +1,14 @@
 var paymentObject = {
+  inputData(balance, rate, months, payment) {
+  	this.balance = balance;
+  	this.rate = rate;
+  	this.months = months;
+  	this.payment = payment;
+  },
+  balance: 0,
+  rate: 0,
+  months: 0,
+  payment: 0
 
 };
 
