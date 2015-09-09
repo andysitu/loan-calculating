@@ -1,5 +1,5 @@
 var ui = {
-  inputList: {
+  inputData: {
   	'balance': 0,
   	'rate': 0,
   	'months': 0,
@@ -7,7 +7,7 @@ var ui = {
   },
   inputFormatter(type, value) {
   	switch(type) {
-  	  case 'balannce':
+  	  case 'balance':
   	  case 'payment': 
   	    return decimalConverter(value);
   	  case 'rate':
@@ -19,20 +19,20 @@ var ui = {
   	  	  return value;
   	}
   },
-  translateSubmitData() {
-  	function getValue(elementId) {
+  translateInputData() {
+  	function getValueFromEle(elementId) {
   	  return document.getElementById(elementId).value; 
   	}
 
-  	each(this.inputList, function( _, id, obj) {
-  	  var value = getValue(id);
+  	each(this.inputData, function( _, id, obj) {
+  	  var value = getValueFromEle(id);
   	  obj[id] = this.inputFormatter(id, value);
   	}, this);
   },
   submitData(e) {
   	var that = ui;
 
-  	that.translateSubmitData(e);
-  	pObj.inputData(that.inputList);
+  	that.translateInputData(e);
+  	pObj.inputData(that.inputData);
   }
 };
