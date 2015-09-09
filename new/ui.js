@@ -6,6 +6,8 @@ var ui = {
   	'payment': 0
   },
   inputFormatter(type, value) {
+  	// formats value, eg 100.424 to 100.42,
+  	// depending on the input 
   	switch(type) {
   	  case 'balance':
   	  case 'payment': 
@@ -18,6 +20,18 @@ var ui = {
   	  default:
   	  	  return value;
   	}
+  },
+  inputChecker() {
+  	var data = this.inputData;
+
+  	if (data.months <= 0 && data.payment <= 0) {
+      return false; 
+    } else if (data.rate >= 1 || data.rate <= 0) {
+      return false;
+    } else if (data.balance <= 0) {
+      return false;
+    }
+    return true;
   },
   translateInputData() {
   	function getValueFromEle(elementId) {
@@ -33,6 +47,9 @@ var ui = {
   	var that = ui;
 
   	that.translateInputData(e);
-  	pObj.inputData(that.inputData);
+  	if (that.inputChecker())
+  	  pObj.inputData(that.inputData);
+  	else
+  	  console.log("ERROR");
   }
 };
