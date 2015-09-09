@@ -27,13 +27,12 @@ var ui = {
   	each(this.inputList, function( _, id, obj) {
   	  var value = getValue(id);
   	  obj[id] = this.inputFormatter(id, value);
-    }, this);
+  	}, this);
   },
   submitData(e) {
   	var that = ui;
 
   	that.translateSubmitData(e);
-  	pObj.inputData.apply(pObj, that.inputValues);
-  	console.log(that.inputList);
+  	pObj.inputData(that.inputList);
   }
 };
