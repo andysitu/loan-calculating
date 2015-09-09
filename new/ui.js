@@ -1,11 +1,7 @@
 var ui = {
   pObject: null,
-  inputData: {
-  	'balance': 0,
-  	'rate': 0,
-  	'months': 0,
-  	'payment': 0
-  },
+  inputList: ['balance', 'rate', 'months', 'payment'],
+  inputData: null,
   inputFormatter(type, value) {
   	// formats value, eg 100.424 to 100.42,
   	// depending on the input 
@@ -37,10 +33,14 @@ var ui = {
   	  return document.getElementById(elementId).value; 
   	}
 
-  	each(this.inputData, function( _, id, obj) {
-  	  var value = getValueFromEle(id);
-  	  obj[id] = this.inputFormatter(id, value);
+    var data = {};
+
+  	each(this.inputList, function( input ) {
+  	  var value = getValueFromEle(input);
+  	  data[input] = this.inputFormatter(input, value);
   	}, this);
+
+    return data;
   },
   submitData(e) {
   	var that = ui;
