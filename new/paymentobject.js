@@ -1,6 +1,6 @@
 var pObj = paymentObject = {
   inputData(dataObj) {
-  	this.data = dataObj;
+  	this.data = copy(dataObj);
   },
   data: null
 };
