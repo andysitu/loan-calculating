@@ -1,25 +1,10 @@
-function onSubmit(e) {
-  var inputList = ['balanceInput', 'rateInput', 'monthsInput', 'paymentInput'];
-
-  function getValue(elementId) {
-  	return document.getElementById(elementId).value
-  }
-
-  var inputValues = inputList.map(function(id, i, arr) {
-  	return getValue(id);
-  });
-
-  pObj.inputData.apply(pObj, inputValues);
-
-}
-
 function init() {
 
 // var reset = document.getElementById("resetButton");
 // reset.addEventListener("click", onSubmit);
 
   var submitButton = document.getElementById("submit");
-  submitButton.addEventListener("click", onSubmit);
+  submitButton.addEventListener("click", ui.translateSubmitData);
 // add right click events for the inputs
 
 // var tableButton = document.getElementById("tableButton");
