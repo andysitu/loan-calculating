@@ -149,7 +149,22 @@ function each(obj, callback, context) {
     for (var i = 0, len = obj.length; i < len; i++) {
       callback.call(context, obj[i], i, obj);
     }
-  } else {
-    throw "each was given a non-object";
-  }
+  } else { throw "each was given a non-object"; }
+}
+
+function map(obj, callback, context) {
+  if (context === undefined)
+  	context = window;
+  var newObj = null;
+  if (Object.prototype.toString.call(obj) == '[object Object]') {
+  	newObj = {};
+  } else if (Object.prototype.toString.call(obj) == '[object Array]') {
+  	newObj = [];
+  } else { throw "map was given a non-object"; }
+
+  each(obj, function(value, key, obj) {
+  	newObj[key] = callback.call(context, value, key, obj);
+  }, context);
+
+  return newObj;
 }
