@@ -14,11 +14,9 @@ var ui = {
   	    return decimalConverter(value);
   	  case 'rate':
   	  	if (value >= 1) {
-  	  	  return value / 100; }
-  	  	else {
-  	  	  return value; }
+  	  	  return parseFloat(value) / 100; }
   	  default:
-  	  	  return value;
+  	  	  return parseFloat(value);
   	}
   },
   inputChecker() {
