@@ -1,4 +1,4 @@
-var paymentObject = {
+var pObj = paymentObject = {
   inputData(balance, rate, months, payment) {
   	this.balance = balance;
   	this.rate = rate;
