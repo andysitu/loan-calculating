@@ -110,6 +110,15 @@
 // 	ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25);
 // }
 
+function testForNumber(value) {
+  if (typeof value == "number")
+    return true;
+  else if (/\d/.test(value))
+    return true;
+  else
+    return false;
+}
+
 function decimalConverter(value) {
   // Makes number into correct format for money
   if (value == '')
@@ -174,4 +183,15 @@ function map(obj, callback, context) {
 
 function copy(obj) {
   return map(obj, function(value) { return value; })
+}
+
+function every(obj, callback, context) {
+  if (context === undefined)
+    context = window;
+
+  for (var key in obj) {
+    if (!callback.call(context, obj[key], key, obj))
+      return false;
+  }
+  return true;
 }
