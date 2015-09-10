@@ -219,3 +219,10 @@ function getArguments(func) {
 function getNumArguments(func) {
   return getArguments(func).length;
 }
+
+function range(start, end) {
+  var array = [];
+  for (var i = start; i < end; i++)
+    array.push(i);
+  return array;
+}
