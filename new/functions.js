@@ -9,18 +9,14 @@
 	
 // }
 
-// // setInput & clearInput are used when page is loaded
-// // and local storage has prev info, so the inputs are
-// // set as they are previously.
-// function setInput(id, value) {
-// 	var input = document.getElementById(id);
+function setInput(id, value) {
+	var input = document.getElementById(id);
+	input.value = value;
+}
 
-// 	input.value = value;
-// }
-
-// function clearInput(id) {
-// 	setInput(id, "");
-// }
+function clearInput(id) {
+	setInput(id, "");
+}
 
 // function addClearEvents() {
 // 	function addClearEvent(id) {
