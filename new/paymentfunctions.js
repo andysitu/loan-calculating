@@ -52,16 +52,16 @@ var payF = {
     return months
   },
 
-  makePObj: function(data) {
+  makePArray: function(data) {
     var rate = data.rate,
       balance = data.balance,
       months = data.months,
       payment = data.payment;
 
-    return this.makePayingArray(this.makePayingObject, balance, rate, months, payment);
+    return this.makePObj(this.pObjMaker, balance, rate, months, payment);
   },
 
-  makePayingArray: function(objMaker, balance, rate, months, payment) {
+  makePObj: function(objMaker, balance, rate, months, payment) {
     var array = [],
       startBalance,
       actualPayment = 0,
@@ -82,7 +82,7 @@ var payF = {
     return array;
   },
 
-  makePayingObject: function(startingBalance, month, payment, interest, actualPayment, totalInterest, endBalance) {
+  pObjMaker: function(startingBalance, month, payment, interest, actualPayment, totalInterest, endBalance) {
     // Interprets data & returns object containing correct
     // format for the data. This is for negative payments.
 

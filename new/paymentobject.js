@@ -1,27 +1,30 @@
 function PaymentObject(data) {
   this.data = payF.completeData(data);
-  this.paymentObject = payF.makePObj( this.data );
+  this.paymentArray = payF.makePArray( this.data );
   this.index = 0;
 }
 
 PaymentObject.prototype.getHeaderList = function() {
-  return payF.makeHeaderList(payF.makePayingObject);
+  return payF.makeHeaderList(payF.pObjMaker);
 };
 
-PaymentObject.prototype.getPaymentObject = function() {
+PaymentObject.prototype.getPaymentArray = function() {
+  return this.paymentArray;
+};
+
+PaymentObject.prototype.resetNext = function() {
   this.index = 0;
-  return this.paymentObject[this.index];
 };
 PaymentObject.prototype.nextPaymentObject = function() {
   if (this.index === 0)
-    return this.paymentObject[this.index++];
+    return this.paymentArray[this.index++];
   else
-    return this.paymentObject[++this.index];
+    return this.paymentArray[++this.index];
 };
 PaymentObject.prototype.checkNext = function() {
   if (this.index === 0)
     return true;
-  else if (this.index + 1 >= this.paymentObject.length)
+  else if (this.index + 1 >= this.paymentArray.length)
     return false;
   else
     return true;
