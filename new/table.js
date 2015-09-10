@@ -103,9 +103,7 @@ var table = {
   },
 
   makeTr: function(id) {
-    if (id === undefined)
-      id = "";
-    var tr = document.createElement("tr");
+    var tr = this.makeElement("tr", id);
     tr.id = id;
     return tr;
   },
@@ -116,26 +114,26 @@ var table = {
     }, this);
   },
   makeTd: function(content, id) {
-    if (id === undefined)
-      id = "";
-    var td = document.createElement("td");
+    var td = this.makeElement("td", id);
     td.textContent = value;
     return td;
   },
   makeCheckbox: function(value, id) {
-    if (id === undefined)
-      id = "";
-    var check = document.createElement("input");
+    var check = this.makeElement("input", id);
     check.type = "checkbox";
     check.value = value;
-    check.id = id;
     return check;
   },
   makeTh: function(content, id) {
-    if (id === undefined)
-      id = "";
-    var th = document.createElement("th");
+    var th = this.makeElement("th", id);
     th.textContent = content;
     return th;
+  },
+  makeElement: function(type, id) {
+    if (id === undefined)
+      id = "";
+    var element = document.createElement(type);
+    element.id = id;
+    return element;
   }
 }
