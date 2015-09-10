@@ -7,7 +7,8 @@ function PaymentObject(data) {
 PaymentObject.prototype.decider = function(data) {
   var data = this.data;
   if (data.months == '') {
-    console.log("Needs months");
+    var months = this.calculateMonths(data.balance, data.rate, data.payment);
+    console.log("Needs months", months);
   } else if (data.payment == '') {
     var payment = this.calculatePayment(data.balance, data.rate, data.months);
     console.log("needs payment:", payment);
@@ -48,6 +49,22 @@ PaymentObject.prototype.calculatePayment = function(balance, rate, months) {
   }
 
   return Math.ceil(guess * 100) / 100;
+}
+
+PaymentObject.prototype.calculateMonths = function(balance, rate, payment) {
+  var months = 0,
+    rate = rate / 12;
+
+  while (balance > 0) {
+    months++;
+    balance = balance * (1 + rate) - payment;
+    if (months >= 3000) {
+      console.log("Error: too many calculations in months from worker");
+      break;
+    }
+  }
+
+  return months
 }
 // var p = {
 // _workerStatus: true,
