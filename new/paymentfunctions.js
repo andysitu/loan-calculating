@@ -53,8 +53,7 @@ var payF = {
   },
 
   makePObj: function(data) {
-    var array = [],
-      rate = data.rate,
+    var rate = data.rate,
       balance = data.balance,
       months = data.months,
       payment = data.payment;
@@ -96,5 +95,17 @@ var payF = {
       "Total Interest": decimalConverter(totalInterest),
       "End Balance": decimalConverter(endBalance)
     };
+  },
+
+  makeHeaderList: function(makePObjFunction) {
+    var length = getNumArguments(makePObjFunction),
+      rangedArray = range(0, length),
+      obj = makePObjFunction.apply(null, rangedArray);
+
+    var headerList = [];
+    each(obj, function(order, header) {
+      headerList[order] = header;
+    });
+    return headerList;
   }
 };
