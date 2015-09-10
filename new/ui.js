@@ -17,15 +17,13 @@ var ui = {
   	}
   },
   inputChecker(data) {
-
-  	if (data.months <= 0 && data.payment <= 0) {
-      return false; 
-    } else if (data.rate >= 1 || data.rate <= 0) {
-      return false;
-    } else if (data.balance <= 0) {
-      return false;
+    if (testForNumber(data.balance) && testForNumber(data.rate)) {
+      if (testForNumber(data.months))
+        return true;
+      if (testForNumber(data.payment))
+        return true;
     }
-    return true;
+    return false;
   },
   translateInputData() {
   	function getValueFromEle(elementId) {
