@@ -50,7 +50,7 @@ var ui = {
       storage.store("inputData", inputData);
 
       that.paymentObject = new PaymentObject(inputData);
-      table.makeTable(that.paymentObject);
+      table.createTable(that.paymentObject);
   	} else {
   	  console.log("ERROR");
     }

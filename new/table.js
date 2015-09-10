@@ -1,5 +1,5 @@
 var table = {
-  makeTable: function(pObj) {
+  createTable: function(pObj) {
   /* Makes a table to doc by the headerObj (array) containing table heading
    * to specify order of the headings (optional) and dataObj which is objs 
    * in array that will contain the actual data.
