@@ -64,20 +64,20 @@ var payF = {
 
   makePayingArray: function(objMaker, balance, rate, months, payment) {
     var array = [],
-      oldBalance = 0,
+      startBalance,
       actualPayment = 0,
       month = 0,
       interest = 0,
       totalInterest = 0;
 
     for (month = 1; month <= months && balance >= 0; month++) {
-      oldBalance = balance;     
-      interest = balance * rate;
+      startBalance = balance;     
+      interest = balance * rate - balance;
       actualPayment = payment - interest;
       totalInterest += interest;
       balance -= actualPayment;
 
-      array.push( objMaker(oldBalance, month, payment, interest, actualPayment, totalInterest, balance) );
+      array.push( objMaker(startBalance, month, payment, interest, actualPayment, totalInterest, balance) );
     }
 
     return array;
