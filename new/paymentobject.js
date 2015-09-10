@@ -4,17 +4,17 @@ function PaymentObject(data) {
   this.decider(copyData);
 }
 
-PaymentObject.prototype.decider = function(data) {
-  var data = this.data;
+PaymentObject.prototype.completeData = function(data) {
   if (data.months == '') {
     var months = this.calculateMonths(data.balance, data.rate, data.payment);
-    console.log("Needs months", months);
+    data.months = months;
   } else if (data.payment == '') {
     var payment = this.calculatePayment(data.balance, data.rate, data.months);
-    console.log("needs payment:", payment);
+    data.payment = payment;
   } else {
     console.log("Got everything");
   }
+  return data;
 };
 
 PaymentObject.prototype.calculatePayment = function(balance, rate, months) {
