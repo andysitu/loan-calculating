@@ -1,5 +1,5 @@
 var table = {
-  makeTable(dataArr, headerObj) {
+  makeTable(pObj) {
   /* Makes a table to doc by the headerObj (array) containing table heading
    * to specify order of the headings (optional) and dataObj which is objs 
    * in array that will contain the actual data.
@@ -16,12 +16,7 @@ var table = {
     table.id = "table";
     docFrag.appendChild(table);
 
-    var headerList = [];
-    if (headerObj != undefined && typeof headerObj === "object") {
-      headerList = headerObject.slice(0);
-    } else {
-      headerList = Object.keys(dataArr[0]);
-    }
+    var headerList = pObj.getHeaderList;
 
     // header row
     var tr = document.createElement("tr");
@@ -64,51 +59,51 @@ var table = {
       table.appendChild(tr);
     }
 
-    function toggleSelected(e) {
-      var ele = e.target
+    // function toggleSelected(e) {
+    //   var ele = e.target
 
-      try {
-        // accesses the live HTMLCollection of child elements
-        // inefficient, but only solution I can think of for now
-        // and should be okay for now since no other things are running
-          if (ele.children[0].type == "checkbox") {
-            var ele = ele.children[0];
-            if (ele.checked) {
-              ele.checked = false;
-            } else {
-              ele.checked = true;
-            }
-          }
-      } catch (e) { /*blank*/}
+    //   try {
+    //     // accesses the live HTMLCollection of child elements
+    //     // inefficient, but only solution I can think of for now
+    //     // and should be okay for now since no other things are running
+    //       if (ele.children[0].type == "checkbox") {
+    //         var ele = ele.children[0];
+    //         if (ele.checked) {
+    //           ele.checked = false;
+    //         } else {
+    //           ele.checked = true;
+    //         }
+    //       }
+    //   } catch (e) { /*blank*/}
 
-      if (ele.type == "checkbox") {
-        if (ele.checked) {
-          t.changeSelectedList(ele.value, ele.checked);
-          var row = document.getElementById("row" + ele.value);
+    //   if (ele.type == "checkbox") {
+    //     if (ele.checked) {
+    //       t.changeSelectedList(ele.value, ele.checked);
+    //       var row = document.getElementById("row" + ele.value);
           
-          var children = row.children;
-          for (var i = 0, len = row.children.length; i < len; i++) {
-            children[i].classList.add("selected");
-          }
-        } else {
-          t.changeSelectedList(ele.value, ele.checked);
-          var row = document.getElementById("row" + ele.value);
+    //       var children = row.children;
+    //       for (var i = 0, len = row.children.length; i < len; i++) {
+    //         children[i].classList.add("selected");
+    //       }
+    //     } else {
+    //       t.changeSelectedList(ele.value, ele.checked);
+    //       var row = document.getElementById("row" + ele.value);
           
-          var children = row.children;
-          for (var i = 0, len = row.children.length; i < len; i++) {
-            children[i].classList.remove("selected");
-          }
-        }
-      }
+    //       var children = row.children;
+    //       for (var i = 0, len = row.children.length; i < len; i++) {
+    //         children[i].classList.remove("selected");
+    //       }
+    //     }
+    //   }
 
       
-    }
+    // }
 
-    table.addEventListener("click", toggleSelected );
+    // table.addEventListener("click", toggleSelected );
 
-    toggleSelected = null;
+    // toggleSelected = null;
 
-    this.selectedList = selectedArr;
+    // this.selectedList = selectedArr;
 
     var test = document.getElementById("table");
     var tableHere = document.getElementById("tableHere");
