@@ -18,7 +18,7 @@ var table = {
 
     var headerList = this.makeHeaderList(pObj);
 
-    this.makeHeadersToTr(headerList, tr);
+    this.makeHeadersToTr(headerList);
 
     table.appendChild(tr);
 
@@ -107,11 +107,13 @@ var table = {
     tr.id = id;
     return tr;
   },
-  makeHeadersToTr: function(headerList, tr) {
+  makeTrWithHeaders: function(headerList) {
+    var tr = this.makeTr();
     each(headerList, function(head, i, list) {
-      var th = this.makeTh(head, "");
+      var th = this.makeTh(head);
       tr.appendChild(th);
     }, this);
+    return tr;
   },
   makeTd: function(content, id) {
     var td = this.makeElement("td", id);
