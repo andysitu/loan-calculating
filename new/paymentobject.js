@@ -64,6 +64,26 @@ PaymentObject.prototype.makePObj = function(data) {
 
   return this.makePayingArray(this.makePayingObject, balance, rate, months, payment);
 };
+
+PaymentObject.prototype.makePayingArray = function(objMaker, balance, rate, months, payment) {
+  var array = [],
+    oldBalance = 0,
+    actualPayment = 0,
+    month = 0,
+    interest = 0,
+    totalInterest = 0;
+
+  for (month = 1; month <= months && balance >= 0; month++) {
+    oldBalance = balance;     
+    interest = balance * rate;
+    actualPayment = payment - interest;
+    totalInterest += interest;
+    balance += interest - payment;
+
+    array.push( objMaker(oldBalance, month, payment, interest, actualPayment, totalInterest, balance) );
+  }
+
+  return array;
 }
 // var p = {
 // _workerStatus: true,
