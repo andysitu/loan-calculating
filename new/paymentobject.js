@@ -4,6 +4,10 @@ function PaymentObject(data) {
   this.headerList = payF.makeHeaderList(payF.makePayingObject);
 }
 
+PaymentObject.prototype.getHeaderList = function() {
+  return payF.makeHeaderList(payF.makePayingObject);
+};
+
 
 // var p = {
 // _workerStatus: true,
