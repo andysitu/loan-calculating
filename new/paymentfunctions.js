@@ -15,7 +15,8 @@ var payF = {
   calculatePayment: function(balance, rate, months) {
     var counter = 0,
       endingBalance = balance,
-      upLimit = Math.pow(1 + rate, months) * balance / months,
+      rate = 1 + rate,
+      upLimit = Math.pow(rate, months) * balance / months,
       lowLimit = balance / months,
       guess;
 
@@ -27,7 +28,8 @@ var payF = {
       endingBalance = balance;
       guess = (upLimit + lowLimit) / 2;
       for (var i = 0; i < months; i++) {
-        endingBalance = endingBalance * (1 + rate) - guess;
+        endingBalance = endingBalance * (rate) - guess;
+        console.log(Math.ceil(guess * 100) / 100, endingBalance);
       }
 
       if (endingBalance > 0) {
@@ -35,7 +37,6 @@ var payF = {
       } else { upLimit = guess; }
       //console.log(limit, "guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
     }
-
     return Math.ceil(guess * 100) / 100;
   },
 
@@ -73,7 +74,7 @@ var payF = {
       interest = balance * rate;
       actualPayment = payment - interest;
       totalInterest += interest;
-      balance += interest - payment;
+      balance -= actualPayment;
 
       array.push( objMaker(oldBalance, month, payment, interest, actualPayment, totalInterest, balance) );
     }
