@@ -13,10 +13,15 @@ PaymentObject.prototype.getPaymentObject = function() {
   return this.paymentObject[this.index];
 };
 PaymentObject.prototype.nextPaymentObject = function() {
-  return this.paymentObject[++this.index];
+  if (this.index === 0)
+    return this.paymentObject[this.index++];
+  else
+    return this.paymentObject[++this.index];
 };
 PaymentObject.prototype.checkNext = function() {
-  if (this.index + 1 >= this.paymentObject.length)
+  if (this.index === 0)
+    return true;
+  else if (this.index + 1 >= this.paymentObject.length)
     return false;
   else
     return true;
