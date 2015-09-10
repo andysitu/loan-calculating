@@ -1,5 +1,6 @@
 /**
- * Function List: each, map, copy
+ * Function List: setInput, clearInput, testForNumber,
+ *    decimalConverter, each, map, copy, every, some
  */
 
 // function display(msg) {
@@ -121,12 +122,12 @@ function decimalConverter(value) {
   	return Math.round(parseFloat(value) * 100) / 100
 }
 
-// function makeCommas(value) {
-// 	if (typeof value == 'number') {
-// 		value = String(value);
-// 	}
-// 	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-// }
+function makeCommas(value) {
+	if (typeof value == 'number') {
+		value = String(value);
+	}
+	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
 
 // function hideInput(bool) {
 // /* For now there are only two input forms, so if status if true
