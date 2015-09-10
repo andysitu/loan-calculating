@@ -35,16 +35,14 @@ PaymentObject.prototype.calculatePayment = function(balance, rate, months) {
       endingBalance = endingBalance * (1 + rate) - guess;
     }
 
-    if (endingBalance > 0) { // newBal is amount left over after X months
+    if (endingBalance > 0) {
       lowLimit = guess;
-    } else {
-      upLimit = guess;
-    }
+    } else { upLimit = guess; }
     //console.log(limit, "guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
   }
 
   return Math.ceil(guess * 100) / 100;
-}
+};
 
 PaymentObject.prototype.calculateMonths = function(balance, rate, payment) {
   var months = 0,
