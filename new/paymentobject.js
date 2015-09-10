@@ -19,14 +19,13 @@ PaymentObject.prototype.decider = function(data) {
 
 PaymentObject.prototype.calculatePayment = function(balance, rate, months) {
   var counter = 0,
-      balance = this.data.balance,
-      endingBalance = balance,
-      rate = this.data.rate,
-      months = this.data.months,
-      upLimit = Math.pow(1 + rate, months) * balance / months,
-      lowLimit = balance / months,
-      guess,
-      limit = -0.01 * months; // accepting limit of the bisect method (in $ amount)
+    balance = this.data.balance,
+    endingBalance = balance,
+    rate = this.data.rate,
+    months = this.data.months,
+    upLimit = Math.pow(1 + rate, months) * balance / months,
+    lowLimit = balance / months,
+    guess;
 
   while ( upLimit - lowLimit > 0.01  ) {
     if (counter++ > 1000) {
@@ -58,12 +57,7 @@ PaymentObject.prototype.calculateMonths = function(balance, rate, payment) {
   while (balance > 0) {
     months++;
     balance = balance * (1 + rate) - payment;
-    if (months >= 3000) {
-      console.log("Error: too many calculations in months from worker");
-      break;
-    }
   }
-
   return months
 }
 // var p = {
