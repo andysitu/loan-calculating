@@ -16,13 +16,7 @@ var table = {
     table.id = "table";
     docFrag.appendChild(table);
 
-    var headerList = pObj.getHeaderList();
-
-    // header row
-    var tr = document.createElement("tr");
-    var th = document.createElement("th");
-    th.textContent = "Select";
-    tr.appendChild(th);
+    var headerList = this.makeHeaderList(pObj);
 
     each(headerList, function(head, i, list) {
       var th = document.createElement("th");
@@ -107,6 +101,12 @@ var table = {
     }
   },
 
+  makeHeaderList: function(pObj) {
+    var headerList = pObj.getHeaderList();
+    headerList.unshift("Select");
+    return headerList;
+  },
+
   makeTr: function(id) {
     var tr = document.createElement("tr");
     tr.id = id;
@@ -123,5 +123,10 @@ var table = {
     check.value = value;
     check.id = id;
     return check;
+  },
+  makeTh: function(content, id) {
+    var th = document.createElement("th");
+    th.textContent = content;
+    return th;
   }
 }
