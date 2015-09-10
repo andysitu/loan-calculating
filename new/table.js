@@ -18,12 +18,7 @@ var table = {
 
     var headerList = this.makeHeaderList(pObj);
 
-    each(headerList, function(head, i, list) {
-      var th = document.createElement("th");
-      th.textContent = head;
-
-      tr.appendChild(th);
-    })
+    this.makeHeadersToTr(headerList, tr);
 
     table.appendChild(tr);
 
@@ -111,6 +106,12 @@ var table = {
     var tr = document.createElement("tr");
     tr.id = id;
     return tr;
+  },
+  makeHeadersToTr: function(headerList, tr) {
+    each(headerList, function(head, i, list) {
+      var th = this.makeTh(head, "");
+      tr.appendChild(th);
+    }, this);
   },
   makeTd: function(content, id) {
     var td = document.createElement("td");
