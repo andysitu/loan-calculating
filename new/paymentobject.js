@@ -1,7 +1,6 @@
 function PaymentObject(data) {
-  var copyData = copy(data);
-  this.data = copyData;
-  this.decider(copyData);
+  this.data = this.completeData( copy(data) );
+  this.paymentObject = this.makePObj( this.data );
 }
 
 PaymentObject.prototype.completeData = function(data) {
