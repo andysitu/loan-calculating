@@ -1,7 +1,54 @@
 function PaymentObject(data) {
-  this.data = copy(data);
+  var copyData = copy(data);
+  this.data = copyData;
+  this.decider(copyData);
 }
 
+PaymentObject.prototype.decider = function(data) {
+  if (data.months == '') {
+    console.log("Needs months");
+  } else if (data.payment == '') {
+    console.log("needs payment");
+    this.calculatePayment();
+  } else {
+    console.log("Got everything");
+  }
+};
+
+PaymentObject.prototype.calculatePayment = function() {
+
+  var counter = 0,
+      balance = this.data.balance,
+      endingBalance = balance,
+      rate = this.data.rate,
+      months = this.data.months,
+      upLimit = Math.pow(1 + rate, months) * balance / months,
+      lowLimit = balance / months,
+      guess,
+      limit = -0.01 * months; // accepting limit of the bisect method (in $ amount)
+
+  while ( endingBalance > 0 || endingBalance < limit  ) {
+    if (counter++ > 1000) {
+      console.log("Something went wrong");
+      break;
+    }
+    endingBalance = balance;
+    guess = (upLimit + lowLimit) / 2;
+    for (var i = 0; i < months; i++) {
+      endingBalance = endingBalance * (1 + rate) - guess;
+    }
+
+    if (endingBalance > 0) { // newBal is amount left over after X months
+      lowLimit = guess;
+    } else {
+      upLimit = guess;
+    }
+
+    console.log(limit, "guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
+  }
+
+  return Math.ceil(guess * 100) / 100;
+}
 // var p = {
 // _workerStatus: true,
 // // table formation should go on only if workerstatus is true
