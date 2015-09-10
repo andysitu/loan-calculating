@@ -201,3 +201,21 @@ function some(obj, callback, context) {
   }
   return false;
 }
+
+function getArguments(func) {
+  var functionString = func.toString();
+  if (/function\s*\(.*\)/.test(functionString)) {
+    var parameter = /function\s*\(([\w,\s]+)\)/g.exec(functionString);
+    if (parameter) {
+      return parameter[1].replace(/\s/g, "").split(",");
+    } else {
+      return [];
+    }
+  } else {
+    return false;
+  }
+}
+
+function getNumArguments(func) {
+  return getArguments(func).length;
+}
