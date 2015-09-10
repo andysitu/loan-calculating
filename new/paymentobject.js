@@ -8,6 +8,19 @@ PaymentObject.prototype.getHeaderList = function() {
   return payF.makeHeaderList(payF.makePayingObject);
 };
 
+PaymentObject.prototype.getPaymentObject = function() {
+  this.index = 0;
+  return this.paymentObject[this.index];
+};
+PaymentObject.prototype.nextPaymentObject = function() {
+  return this.paymentObject[++this.index];
+};
+PaymentObject.prototype.checkNext = function() {
+  if (this.index + 1 >= this.paymentObject.length)
+    return false;
+  else
+    return true;
+}
 
 // var p = {
 // _workerStatus: true,
