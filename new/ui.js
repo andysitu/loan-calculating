@@ -1,5 +1,5 @@
 var ui = {
-  pObject: null,
+  paymentObject: null,
   inputList: ['balance', 'rate', 'months', 'payment'],
   inputData: null,
   inputFormatter(type, value) {
@@ -49,7 +49,8 @@ var ui = {
       that.inputData = inputData;
       storage.store("inputData", inputData);
 
-      that.pObject = new PaymentObject(inputData);
+      that.paymentObject = new PaymentObject(inputData);
+      table.makeTable(that.paymentObject);
   	} else {
   	  console.log("ERROR");
     }
