@@ -112,5 +112,23 @@ var table = {
     } else {
       tableHere.replaceChild(docFrag, test);
     }
+  },
+
+  makeTr: function(id) {
+    var tr = document.createElement("tr");
+    tr.id = id;
+    return tr;
+  },
+  makeTd: function(content, id) {
+    var td = document.createElement("td");
+    td.textContent = value;
+    return td;
+  },
+  makeCheckbox: function(value, id) {
+    var check = document.createElement("input");
+    check.type = "checkbox";
+    check.value = value;
+    check.id = id;
+    return check;
   }
 }
