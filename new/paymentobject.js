@@ -1,7 +1,7 @@
 function PaymentObject(data) {
   this.data = payF.completeData(data);
   this.paymentObject = payF.makePObj( this.data );
-  this.headerList = payF.makeHeaderList(payF.makePayingObject);
+  this.index = 0;
 }
 
 PaymentObject.prototype.getHeaderList = function() {
