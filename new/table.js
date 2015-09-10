@@ -29,15 +29,7 @@ var table = {
       var tr = this.makeTr("id");
       
       for (var j = 0; j < headerList.length; j++) {
-        if (headerList[i] === "Select") {
-          var check = this.makeTdWithCheckbox();
-          td.appendChild(check);
-          tr.appendChild(td);
-        } else {
-          var td = document.createElement("td");
-          td.textContent = decimalConverter(dataArr[i - 1][headerList[j]], headerList[j]);
-          tr.appendChild(td);
-        }
+        
       }
       table.appendChild(tr);
     }
@@ -106,6 +98,20 @@ var table = {
   makeTable: function(id) {
     var table = this.makeElement("table", id);
     return table;
+  },
+  makeRow: function(dataObj, headerList) {
+    var tr = this.makeTr();
+    each(headerList, function(header, i, headerList) {
+      var td = this.makeTd();
+      if (header === "Select") {
+        var check = this.makeTdWithCheckbox();
+      } else {
+        var content = decimalConverter(dataObj[header]);
+        var td = this.makeTd(content);
+      }
+      tr.appendChild(td);
+    }, this);
+    return tr;
   },
   makeTr: function(id) {
     var tr = this.makeElement("tr", id);
