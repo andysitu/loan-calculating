@@ -1,6 +1,9 @@
 var payF = {
   completeData: function(data) {
     var data = copy(data);
+
+    data.rate = 1 + data.rate/12;
+
     if (data.months == '') {
       var months = this.calculateMonths(data.balance, data.rate, data.payment);
       data.months = months;
@@ -16,7 +19,6 @@ var payF = {
   calculatePayment: function(balance, rate, months) {
     var counter = 0,
       endingBalance = balance,
-      rate = 1 + rate,
       upLimit = Math.pow(rate, months) * balance / months,
       lowLimit = balance / months,
       guess;
@@ -30,7 +32,6 @@ var payF = {
       guess = (upLimit + lowLimit) / 2;
       for (var i = 0; i < months; i++) {
         endingBalance = endingBalance * (rate) - guess;
-        console.log(Math.ceil(guess * 100) / 100, endingBalance);
       }
 
       if (endingBalance > 0) {
@@ -42,19 +43,18 @@ var payF = {
   },
 
   calculateMonths: function(balance, rate, payment) {
-    var months = 0,
-      rate = rate / 12;
+    var months = 0;
 
     while (balance > 0) {
       months++;
-      balance = balance * (1 + rate) - payment;
+      balance = balance * (rate) - payment;
     }
     return months
   },
 
   makePObj: function(data) {
     var array = [],
-      rate = data.rate/ 12,
+      rate = data.rate,
       balance = data.balance,
       months = data.months,
       payment = data.payment;
