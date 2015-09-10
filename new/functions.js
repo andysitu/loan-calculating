@@ -107,7 +107,7 @@ function clearInput(id) {
 // }
 
 function testForNumber(value) {
-  if (parseFloat(value))
+  if (parseFloat(value) > 0)
     return true;
   else
     return false;

@@ -19,10 +19,7 @@ PaymentObject.prototype.decider = function(data) {
 
 PaymentObject.prototype.calculatePayment = function(balance, rate, months) {
   var counter = 0,
-    balance = this.data.balance,
     endingBalance = balance,
-    rate = this.data.rate,
-    months = this.data.months,
     upLimit = Math.pow(1 + rate, months) * balance / months,
     lowLimit = balance / months,
     guess;
@@ -43,7 +40,6 @@ PaymentObject.prototype.calculatePayment = function(balance, rate, months) {
     } else {
       upLimit = guess;
     }
-
     //console.log(limit, "guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
   }
 
