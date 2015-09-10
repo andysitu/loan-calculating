@@ -8,8 +8,8 @@ PaymentObject.prototype.decider = function(data) {
   if (data.months == '') {
     console.log("Needs months");
   } else if (data.payment == '') {
-    console.log("needs payment");
-    this.calculatePayment();
+    var payment = this.calculatePayment();
+    console.log("needs payment:", payment);
   } else {
     console.log("Got everything");
   }
@@ -27,7 +27,7 @@ PaymentObject.prototype.calculatePayment = function() {
       guess,
       limit = -0.01 * months; // accepting limit of the bisect method (in $ amount)
 
-  while ( endingBalance > 0 || endingBalance < limit  ) {
+  while ( upLimit - lowLimit > 0.01  ) {
     if (counter++ > 1000) {
       console.log("Something went wrong");
       break;
@@ -44,7 +44,7 @@ PaymentObject.prototype.calculatePayment = function() {
       upLimit = guess;
     }
 
-    console.log(limit, "guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
+    //console.log(limit, "guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
   }
 
   return Math.ceil(guess * 100) / 100;
