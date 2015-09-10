@@ -85,6 +85,21 @@ PaymentObject.prototype.makePayingArray = function(objMaker, balance, rate, mont
 
   return array;
 }
+
+PaymentObject.prototype.makePayingObject = function(startingBalance, month, payment, interest, actualPayment, totalInterest, endBalance) {
+  // Interprets data & returns object containing correct
+  // format for the data. This is for negative payments.
+
+  return {
+    "Starting Balance": decimalConverter(startingBalance),
+    "Month": month,
+    "Payment": decimalConverter(payment),
+    "Interest": decimalConverter(interest),
+    "Actual Payment to Balance": decimalConverter(actualPayment),
+    "Total Interest": decimalConverter(totalInterest),
+    "End Balance": decimalConverter(endBalance)
+  };
+};
 // var p = {
 // _workerStatus: true,
 // // table formation should go on only if workerstatus is true
