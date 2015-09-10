@@ -1,5 +1,6 @@
 var payF = {
   completeData: function(data) {
+    var data = copy(data);
     if (data.months == '') {
       var months = this.calculateMonths(data.balance, data.rate, data.payment);
       data.months = months;

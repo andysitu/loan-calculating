@@ -1,5 +1,5 @@
 function PaymentObject(data) {
-  this.data = payF.completeData( copy(data) );
+  this.data = payF.completeData(data);
   this.paymentObject = payF.makePObj( this.data );
 }
 
