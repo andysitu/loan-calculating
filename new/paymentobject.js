@@ -53,6 +53,17 @@ PaymentObject.prototype.calculateMonths = function(balance, rate, payment) {
     balance = balance * (1 + rate) - payment;
   }
   return months
+};
+
+PaymentObject.prototype.makePObj = function(data) {
+  var array = [],
+    rate = data.rate/ 12,
+    balance = data.balance,
+    months = data.months,
+    payment = data.payment;
+
+  return this.makePayingArray(this.makePayingObject, balance, rate, months, payment);
+};
 }
 // var p = {
 // _workerStatus: true,
