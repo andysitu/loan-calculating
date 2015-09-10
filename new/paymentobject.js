@@ -5,18 +5,18 @@ function PaymentObject(data) {
 }
 
 PaymentObject.prototype.decider = function(data) {
+  var data = this.data;
   if (data.months == '') {
     console.log("Needs months");
   } else if (data.payment == '') {
-    var payment = this.calculatePayment();
+    var payment = this.calculatePayment(data.balance, data.rate, data.months);
     console.log("needs payment:", payment);
   } else {
     console.log("Got everything");
   }
 };
 
-PaymentObject.prototype.calculatePayment = function() {
-
+PaymentObject.prototype.calculatePayment = function(balance, rate, months) {
   var counter = 0,
       balance = this.data.balance,
       endingBalance = balance,
