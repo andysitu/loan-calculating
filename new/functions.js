@@ -195,3 +195,14 @@ function every(obj, callback, context) {
   }
   return true;
 }
+
+function some(obj, callback, context) {
+  if (context === undefined)
+    context = window;
+
+  for (var key in obj) {
+    if (callback.call(context, obj[key], key, obj))
+      return true;
+  }
+  return false;
+}
