@@ -111,9 +111,7 @@
 // }
 
 function testForNumber(value) {
-  if (typeof value == "number")
-    return true;
-  else if (/\d/.test(value))
+  if (parseFloat(value))
     return true;
   else
     return false;
