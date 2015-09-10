@@ -17,25 +17,27 @@ var table = {
 
     var headerList = this.makeHeaderList(pObj);
 
-    var tr = this.makeHeadersToTr(headerList);
+    var tr = this.makeTrWithHeaders(headerList);
 
     table.appendChild(tr);
 
     // should throw error if the first element is accessed
-    selectedArr[0] = null;
+    //selectedArr[0] = null;
 
     // rows of the table, Note: i starts at 1
     for (i = 1; i <= dataArr.length; i++) {
-      selectedArr[i] = false;
-
       var tr = this.makeTr("id");
-      var td = document.createElement("td");
-      td.appendChild(check);
-      tr.appendChild(td);
+      
       for (var j = 0; j < headerList.length; j++) {
-        var td = document.createElement("td");
-        td.textContent = decimalConverter(dataArr[i - 1][headerList[j]], headerList[j]);
-        tr.appendChild(td);
+        if (headerList[i] === "Select") {
+          var check = this.makeTdWithCheckbox();
+          td.appendChild(check);
+          tr.appendChild(td);
+        } else {
+          var td = document.createElement("td");
+          td.textContent = decimalConverter(dataArr[i - 1][headerList[j]], headerList[j]);
+          tr.appendChild(td);
+        }
       }
       table.appendChild(tr);
     }
@@ -104,7 +106,7 @@ var table = {
   makeTable: function(id) {
     var table = this.makeElement("table", id);
     return table;
-  }
+  },
   makeTr: function(id) {
     var tr = this.makeElement("tr", id);
     return tr;
@@ -122,11 +124,12 @@ var table = {
     td.textContent = value;
     return td;
   },
-  makeCheckbox: function(value, id) {
+  makeTdWithCheckbox: function(value, id) {
+    var td = this.makeTd();
     var check = this.makeElement("input", id);
     check.type = "checkbox";
     check.value = value;
-    return check;
+    return td;
   },
   makeTh: function(content, id) {
     var th = this.makeElement("th", id);
