@@ -1,5 +1,5 @@
 var table = {
-  makeTable(pObj) {
+  makeTable: function(pObj) {
   /* Makes a table to doc by the headerObj (array) containing table heading
    * to specify order of the headings (optional) and dataObj which is objs 
    * in array that will contain the actual data.
@@ -16,7 +16,7 @@ var table = {
     table.id = "table";
     docFrag.appendChild(table);
 
-    var headerList = pObj.getHeaderList;
+    var headerList = pObj.getHeaderList();
 
     // header row
     var tr = document.createElement("tr");
@@ -31,8 +31,6 @@ var table = {
       tr.appendChild(th);
     })
 
-    var commas = makeCommas;
-
     table.appendChild(tr);
 
     // should throw error if the first element is accessed
@@ -42,13 +40,8 @@ var table = {
     for (i = 1; i <= dataArr.length; i++) {
       selectedArr[i] = false;
 
-      var tr = document.createElement("tr");
-      tr.id = "row" + i;
+      var tr = this.makeTr("id");
       var td = document.createElement("td");
-      var check = document.createElement("input");
-      check.type = "checkbox";
-      check.value = i;
-      check.id = "check" + i;
       td.appendChild(check);
       tr.appendChild(td);
       for (var j = 0; j < headerList.length; j++) {
