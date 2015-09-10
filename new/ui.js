@@ -45,7 +45,6 @@ var ui = {
   	var that = ui;
 
   	var inputData = that.translateInputData(e);
-
   	if (that.inputChecker(inputData)) {
       that.inputData = inputData;
       storage.store("inputData", inputData);
@@ -54,5 +53,18 @@ var ui = {
   	} else {
   	  console.log("ERROR");
     }
+  },
+  storageChecker() {
+    var inputData = storage.retrieve("inputData"),
+        that = ui;
+
+    if (inputData) {
+      that.setInputs(inputData);
+    }
+  },
+  setInputs(inputData) {
+    each(inputData, function(value, elementId) {
+      setInput(elementId, value);
+    });
   }
 };
