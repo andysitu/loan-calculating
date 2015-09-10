@@ -5,16 +5,18 @@ var ui = {
   inputFormatter(type, value) {
   	// formats value, eg 100.424 to 100.42,
   	// depending on the input 
-  	switch(type) {
-  	  case 'balance':
-  	  case 'payment': 
-  	    return decimalConverter(value);
-  	  case 'rate':
-  	  	if (value >= 1) {
-  	  	  return parseFloat(value) / 100; }
-  	  default:
-  	  	  return parseFloat(value);
-  	}
+    if (testForNumber(value)) {
+    	switch(type) {
+    	  case 'balance':
+    	  case 'payment': 
+    	    return decimalConverter(value);
+    	  case 'rate':
+    	  	if (value >= 1) {
+    	  	  return parseFloat(value) / 100; }
+    	  default:
+    	  	  return parseFloat(value);
+      } 
+    } else { return ""; }
   },
   inputChecker(data) {
     if (testForNumber(data.balance) && testForNumber(data.rate)) {
