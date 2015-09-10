@@ -226,3 +226,22 @@ function range(start, end) {
     array.push(i);
   return array;
 }
+
+function run(callback, end, start, increment, context) {
+  if (start === undefined)
+    start = 0;
+  if (increment === undefined)
+    increment = 1;
+
+  if (increment >= 1 && start <= end) {
+    for (var i = start; i < end; i += increment) {
+      callback.call(context, i);
+    }
+  } else if (increment <= -1 && start >= end) {
+    for (var i = start; i > end; i += increment) {
+      callback.call(context, i);
+    }
+  } else { throw "Error with run"; }
+
+  
+}
