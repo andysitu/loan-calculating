@@ -12,13 +12,12 @@ var table = {
     var docFrag = document.createDocumentFragment(),
       selectedArr = [];
 
-    var table = document.createElement("table");
-    table.id = "table";
+    var table = this.makeTable("table");
     docFrag.appendChild(table);
 
     var headerList = this.makeHeaderList(pObj);
 
-    this.makeHeadersToTr(headerList);
+    var tr = this.makeHeadersToTr(headerList);
 
     table.appendChild(tr);
 
@@ -102,9 +101,12 @@ var table = {
     return headerList;
   },
 
+  makeTable: function(id) {
+    var table = this.makeElement("table", id);
+    return table;
+  }
   makeTr: function(id) {
     var tr = this.makeElement("tr", id);
-    tr.id = id;
     return tr;
   },
   makeTrWithHeaders: function(headerList) {
