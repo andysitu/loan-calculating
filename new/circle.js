@@ -1,27 +1,41 @@
-circle = {
+var circle = {
+  makeCircle: function(dataArray) {
+    // dataArray -> [{name,amount,color}]
+  /**
+   * Makes circle with canvas that for now colors it in proportion
+   *   amount of the total interest and the amount of balance. Also,
+   *   it attaches itself to the canvas with id "canvas."
+   */
+    var canvas = document.getElementById("circleCanvas");
+    var ctx = canvas.getContext("2d"),
+      width = 700,
+      height = 320,
+      radius = 160,
+      pi = 2 * Math.PI,
+      center = Math.floor(height/2);
 
-function makeCircle(dataArray) {
-  // dataArray -> [{name,amount,color}]
-/**
- * Makes circle with canvas that for now colors it in proportion
- *   amount of the total interest and the amount of balance. Also,
- *   it attaches itself to the canvas with id "canvas."
- */
-  var canvas = document.getElementById("circleCanvas");
-  var ctx = canvas.getContext("2d"),
-    width = 700,
-    height = 320,
-    radius = 160,
-    pi = 2 * Math.PI,
-    startingBalance = p.getPayObjValue(1, "Starting Balance"),
-    totalInterest = p.getPayObjValue("end", "Total Interest"),
-    center = Math.floor(height/2);
+    canvas.width = width;
+    canvas.height = height;
+    portion = startingBalance / (startingBalance + totalInterest);
 
-  canvas.width = width;
-  canvas.height = height;
-  portion = startingBalance / (startingBalance + totalInterest);
+    
 
-  function drawCircle(x,y,radius, dataArray, ctx) {
+    drawCircle(center, center, radius, {"green": startingBalance, "red": totalInterest}, ctx);
+
+  /*
+    // Insert key
+    ctx.textBaseline = "top";
+    ctx.fillStyle = "green";
+    ctx.fillRect(center + radius + 20, height / 15, 20, 20);
+    ctx.font = "16px serif";
+    ctx.fillText("Total Balance Paid: $" + makeCommas(String(startingBalance)) , center + radius + 45, height / 15);
+    ctx.fillStyle = "red";
+    ctx.fillRect(center + radius + 20, height / 15 + 25, 20, 20);
+    ctx.font = "16px serif";
+    ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25); 
+  */
+  },
+  drawCircle: function(x,y,radius, dataArray, ctx) {
     var pi = 2 * Math.PI,
       prev = 0;
 
@@ -41,9 +55,9 @@ function makeCircle(dataArray) {
       }
     });
     
-  }
+  },
 
-  function drawCirclePortion(x,y,radius,start,end,color, ctx){
+  drawCirclePortion: function(x,y,radius,start,end,color, ctx){
     ctx.save();
     ctx.moveTo(center, center);
     ctx.beginPath();
@@ -53,31 +67,11 @@ function makeCircle(dataArray) {
     ctx.fillStyle = color;
     ctx.fill();
     ctx.restore();
-  }
+  },
 
-  function getColors(dataArray) {
-    map(dataObj, function(dataObj, i, dataArray) {
-      return dataObj["color"];
-    }
-  }
-
-  function getTotal(dataArray) {
+  getTotal: function(dataArray) {
     return map(dataArray, function(dataObj) { 
         return dataObj["amount"]; })
       .reduce(function(a,b) { return a + b;});
   }
-
-  drawCircle(center, center, radius, {"green": startingBalance, "red": totalInterest}, ctx);
-
-  // Insert key
-  ctx.textBaseline = "top";
-  ctx.fillStyle = "green";
-  ctx.fillRect(center + radius + 20, height / 15, 20, 20);
-  ctx.font = "16px serif";
-  ctx.fillText("Total Balance Paid: $" + makeCommas(String(startingBalance)) , center + radius + 45, height / 15);
-  ctx.fillStyle = "red";
-  ctx.fillRect(center + radius + 20, height / 15 + 25, 20, 20);
-  ctx.font = "16px serif";
-  ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25);
-}
 };
