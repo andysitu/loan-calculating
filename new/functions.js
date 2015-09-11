@@ -166,15 +166,16 @@ function map(obj, callback, context) {
   var newObj = null;
   if (Object.prototype.toString.call(obj) == '[object Object]') {
   	newObj = {};
+    each(obj, function(value, key, obj) {
+      newObj[key] = callback.call(context, value, key, obj);
+    }, context);
+
+    return newObj;
   } else if (Object.prototype.toString.call(obj) == '[object Array]') {
-  	newObj = obj.map(callback, context);
+  	return obj.map(callback, context);
   } else { throw "map was given a non-object"; }
 
-  each(obj, function(value, key, obj) {
-  	newObj[key] = callback.call(context, value, key, obj);
-  }, context);
-
-  return newObj;
+ 
 }
 
 function copy(obj) {
