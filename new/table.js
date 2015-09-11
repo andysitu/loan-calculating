@@ -12,7 +12,7 @@ var table = {
     var docFrag = document.createDocumentFragment(),
       selectedArr = [];
 
-    var table = this.makeTable("table");
+    var table = this.makeTable("paymentTable");
     docFrag.appendChild(table);
 
     var headerList = this.makeHeaderList(pObj);
