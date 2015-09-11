@@ -47,17 +47,15 @@ var ui = {
     return data;
   },
   submitData(e) {
-  	var that = ui;
-
-  	var inputData = that.translateInputData(e);
-  	if (that.inputChecker(inputData)) {
-      that.inputData = inputData;
+  	var inputData = this.translateInputData(e);
+  	if (this.inputChecker(inputData)) {
+      this.inputData = inputData;
       storage.store("inputData", inputData);
 
-      that.paymentObject = new PaymentObject(inputData);
-      that.addTable(that.paymentObject);
+      this.paymentObject = new PaymentObject(inputData);
+      this.addTable(this.paymentObject);
 
-      that.addCircle(that.paymentObject);
+      this.addCircle(this.paymentObject);
   	} else {
   	  console.log("ERROR");
     }

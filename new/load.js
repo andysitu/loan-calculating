@@ -5,7 +5,7 @@ function init() {
 // reset.addEventListener("click", onSubmit);
 
   var submitButton = document.getElementById("submit");
-  submitButton.addEventListener("click", ui.submitData);
+  submitButton.addEventListener("click", ui.submitData.bind(ui));
 // add right click events for the inputs
 
 // var tableButton = document.getElementById("tableButton");
