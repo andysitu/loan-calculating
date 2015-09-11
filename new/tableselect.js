@@ -1,5 +1,12 @@
 var tableSelect = {
-  // this.selectedList
+  selected: [],
+  select: function(month) {
+    this.selected.push(month);
+  },
+  deselect: function(month) {
+    var index = this.selected.indexOf(month);
+    this.selected.splice(index, 1);
+  },
   toggleSelected: function(e) {
     var ele = e.target
     console.log(e, ele, this);
