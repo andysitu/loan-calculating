@@ -102,8 +102,8 @@ var table = {
     var tr = this.makeTr();
     each(headerList, function(header, i, headerList) {
       var td = this.makeTd();
-      if (header === "Select") {
-        var check = this.makeTdWithCheckbox();
+      if (header == "Select") {
+        var td = this.makeTdWithCheckbox();
       } else {
         var content = decimalConverter(dataObj[header]);
         var td = this.makeTd(content);
@@ -134,6 +134,7 @@ var table = {
     var check = this.makeElement("input", id);
     check.type = "checkbox";
     check.value = value;
+    td.appendChild(check);
     return td;
   },
   makeTh: function(content, id) {
