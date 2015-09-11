@@ -24,7 +24,7 @@ var table = {
     var paymentArray = pObj.getPaymentArray();
 
     each(paymentArray, function(paymentObj, i, pArray) {
-      var tr = this.makeRow(paymentObj, headerList);
+      var tr = this.makeRow(paymentObj, headerList, i);
       table.appendChild(tr);
     }, this)
       
@@ -43,12 +43,12 @@ var table = {
     var table = this.makeElement("table", id);
     return table;
   },
-  makeRow: function(dataObj, headerList) {
+  makeRow: function(dataObj, headerList, month_0) {
     var tr = this.makeTr();
     each(headerList, function(header, i, headerList) {
       var td = this.makeTd();
       if (header == "Select") {
-        var td = this.makeTdWithCheckbox();
+        var td = this.makeTdWithCheckbox(month_0 + 1);
       } else {
         var content = makeCommas(dataObj[header]);
         var td = this.makeTd(content);
