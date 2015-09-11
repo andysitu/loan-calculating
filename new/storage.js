@@ -9,5 +9,11 @@ var storage =  {
   },
   del(key) {
     localStraoge.removeItem(key);
-  }
+  },
+  storageChecker() {
+    var inputData = storage.retrieve("inputData");
+    if (inputData) {
+      ui.setInputs(inputData);
+    }
+  },
 };

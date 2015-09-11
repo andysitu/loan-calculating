@@ -1,5 +1,5 @@
 function init() {
-  ui.storageChecker();
+  storage.storageChecker();
 
 // var reset = document.getElementById("resetButton");
 // reset.addEventListener("click", onSubmit);
