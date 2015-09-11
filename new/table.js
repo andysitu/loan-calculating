@@ -24,8 +24,6 @@ var table = {
     // should throw error if the first element is accessed
     //selectedArr[0] = null;
 
-    // rows of the table, Note: i starts at 1
-
     var paymentArray = pObj.getPaymentArray();
 
     each(paymentArray, function(paymentObj, i, pArray) {
@@ -105,7 +103,7 @@ var table = {
       if (header == "Select") {
         var td = this.makeTdWithCheckbox();
       } else {
-        var content = decimalConverter(dataObj[header]);
+        var content = makeCommas(dataObj[header]);
         var td = this.makeTd(content);
       }
       tr.appendChild(td);
