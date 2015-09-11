@@ -1,11 +1,12 @@
 circle = {
-function makeCircle() {
+
+function makeCircle(dataArray) {
 /**
  * Makes circle with canvas that for now colors it in proportion
  *   amount of the total interest and the amount of balance. Also,
  *   it attaches itself to the canvas with id "canvas."
  */
-  var canvas = document.getElementById("canvas");
+  var canvas = document.getElementById("circleCanvas");
   var ctx = canvas.getContext("2d"),
     width = 700,
     height = 320,
@@ -19,9 +20,9 @@ function makeCircle() {
   canvas.height = height;
   portion = startingBalance / (startingBalance + totalInterest);
 
-  function drawCircle(x,y,radius, dataObj, ctx) {
     var total = 0,
-      colors = Object.keys(dataObj),
+  function drawCircle(x,y,radius, dataArray, ctx) {
+    var colors = getColors(dataArray),
       pi = 2 * Math.PI,
       prev = "";
 
@@ -52,6 +53,12 @@ function makeCircle() {
     ctx.fillStyle = color;
     ctx.fill();
     ctx.restore();
+  }
+
+  function getColors(dataArray) {
+    map(dataObj, function(nameObj, i, dataArray) {
+      return dataObj["color"];
+    }
   }
 
   drawCircle(center, center, radius, {"green": startingBalance, "red": totalInterest}, ctx);
