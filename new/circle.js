@@ -16,9 +16,6 @@ var circle = {
 
     canvas.width = width;
     canvas.height = height;
-    portion = startingBalance / (startingBalance + totalInterest);
-
-    
 
     drawCircle(center, center, radius, {"green": startingBalance, "red": totalInterest}, ctx);
 
@@ -35,15 +32,15 @@ var circle = {
     ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25); 
   */
   },
-  drawCircle: function(x,y,radius, dataArray, ctx) {
+  drawCircle: function(x, y, radius, dataArray, ctx) {
     var pi = 2 * Math.PI,
-      prev = 0;
-
-    var total = getTotal(dataArray);
+      prev = 0,
+      total = getTotal(dataArray);
 
     each(dataArray, function(dataObj, i) {
       var color = dataObj["color"],
         portion = dataObj["amount"] / total * pi;
+
       if (i === 0) {
         drawCirclePortion(x, y, radius, 0, portion, color, ctx);
         prev = portion;
