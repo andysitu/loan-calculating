@@ -17,7 +17,7 @@ var circle = {
     canvas.width = width;
     canvas.height = height;
 
-    drawCircle(center, center, radius, {"green": startingBalance, "red": totalInterest}, ctx);
+    this.drawCircle(center, center, center, radius, dataArray, ctx);
 
   /*
     // Insert key
@@ -32,29 +32,29 @@ var circle = {
     ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25); 
   */
   },
-  drawCircle: function(x, y, radius, dataArray, ctx) {
+  drawCircle: function(x, y, center, radius, dataArray, ctx) {
     var pi = 2 * Math.PI,
       prev = 0,
-      total = getTotal(dataArray);
+      total = this.getTotal(dataArray);
 
-    each(dataArray, function(dataObj, i) {
+    each(dataArray, function(dataObj, i, dataArray) {
       var color = dataObj["color"],
         portion = dataObj["amount"] / total * pi;
 
       if (i === 0) {
-        drawCirclePortion(x, y, radius, 0, portion, color, ctx);
+        this.drawCirclePortion(x, y, center, radius, 0, portion, color, ctx);
         prev = portion;
-      } else if (i === len - 1) {
-        drawCirclePortion(x, y, radius, prev, 0, color, ctx);
+      } else if (i === dataArray.length - 1) {
+        this.drawCirclePortion(x, y, center, radius, prev, 0, color, ctx);
       } else {
-        drawCirclePortion(x, y, radius, prev, pi - portion, color, ctx);
+        this.drawCirclePortion(x, y, center, radius, prev, pi - portion, color, ctx);
         prev = pi - portion;
       }
-    });
+    }, this);
     
   },
 
-  drawCirclePortion: function(x,y,radius,start,end,color, ctx){
+  drawCirclePortion: function(x, y, center, radius, start, end, color, ctx){
     ctx.save();
     ctx.moveTo(center, center);
     ctx.beginPath();
