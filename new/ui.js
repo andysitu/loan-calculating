@@ -62,18 +62,10 @@ var ui = {
   	  console.log("ERROR");
     }
   },
-  storageChecker() {
-    var inputData = storage.retrieve("inputData"),
-        that = ui;
-
-    if (inputData) {
-      that.setInputs(inputData);
-    }
-  },
+  
   setInputs(inputData) {
-    each(inputData, function(value, elementId) {
-      setInput(elementId, value);
-    });
+    this.inputData = inputData;
+    display.setInputs(inputData);
   },
   getDataArrayForCircle(paymentObject) {
     var totalInterest = paymentObject.getTotalInterest(),

@@ -7,5 +7,10 @@ display = {
     } else {
       tableHere.replaceChild(docFrag, test);
     }
+  },
+  setInputs(inputData) {
+    each(inputData, function(value, elementId) {
+        setInput(elementId, value);
+      });
   }
 };
