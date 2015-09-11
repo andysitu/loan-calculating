@@ -56,6 +56,7 @@ var ui = {
 
       that.paymentObject = new PaymentObject(inputData);
       that.addTable(that.paymentObject)
+      console.log(that.getDataArrayForCircle(that.paymentObject));
   	} else {
   	  console.log("ERROR");
     }
@@ -73,8 +74,16 @@ var ui = {
       setInput(elementId, value);
     });
   },
+  getDataArrayForCircle(paymentObject) {
+    var totalInterest = paymentObject.getTotalInterest(),
+      balance = paymentObject.getBalance(1);
+
+    return [{name:"Balance", amount: balance, color: "green"},
+            {name:"Total Interest", amount: totalInterest, color: "red"}]
+  },
+
   addTable(paymentObject){
-    var docFrag = table.createTable(that.paymentObject);
+    var docFrag = table.createTable(paymentObject);
       display.addTable(docFrag);
   }
 };
