@@ -56,16 +56,16 @@ var payF = {
     return months
   },
 
-  makePArray: function(data) {
+  inputForMakePArray: function(data) {
     var rate = data.rate,
       balance = data.balance,
       months = data.months,
       payment = data.payment;
 
-    return this.makePObj(this.pObjMaker, balance, rate, months, payment);
+    return this.makePArray(this.pObjMaker, balance, rate, months, payment);
   },
 
-  makePObj: function(objMaker, balance, rate, months, payment) {
+  makePArray: function(objMaker, balance, rate, months, payment) {
     var array = [],
       startBalance,
       actualPayment = 0,
@@ -80,7 +80,8 @@ var payF = {
       totalInterest += interest;
       balance -= actualPayment;
 
-      array.push( objMaker(startBalance, month, payment, interest, actualPayment, totalInterest, balance) );
+      var pObj = objMaker(startBalance, month, payment, interest, actualPayment, totalInterest, balance)
+      array.push(pObj);
     }
 
     return array;

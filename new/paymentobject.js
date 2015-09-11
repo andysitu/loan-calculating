@@ -1,6 +1,6 @@
 function PaymentObject(data) {
   this.data = payF.completeData(data);
-  this.paymentArray = payF.makePArray( this.data );
+  this.paymentArray = payF.inputForMakePArray( this.data );
   this.index = 0;
 }
 
