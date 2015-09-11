@@ -1,6 +1,7 @@
 circle = {
 
 function makeCircle(dataArray) {
+  // dataArray -> [{name,amount,color}]
 /**
  * Makes circle with canvas that for now colors it in proportion
  *   amount of the total interest and the amount of balance. Also,
@@ -20,13 +21,12 @@ function makeCircle(dataArray) {
   canvas.height = height;
   portion = startingBalance / (startingBalance + totalInterest);
 
-    var total = 0,
   function drawCircle(x,y,radius, dataArray, ctx) {
     var colors = getColors(dataArray),
       pi = 2 * Math.PI,
       prev = "";
 
-    each(dataObj, function(value) { total += value; })
+    var total = getTotal(dataArray);
     
     for (var i = 0, len = colors.length; i < len; i++) {
       var color = colors[i],
@@ -56,9 +56,15 @@ function makeCircle(dataArray) {
   }
 
   function getColors(dataArray) {
-    map(dataObj, function(nameObj, i, dataArray) {
+    map(dataObj, function(dataObj, i, dataArray) {
       return dataObj["color"];
     }
+  }
+
+  function getTotal(dataArray) {
+    return map(dataArray, function(dataObj) { 
+        return dataObj["amount"]; })
+      .reduce(function(a,b) { return a + b;});
   }
 
   drawCircle(center, center, radius, {"green": startingBalance, "red": totalInterest}, ctx);
@@ -74,4 +80,4 @@ function makeCircle(dataArray) {
   ctx.font = "16px serif";
   ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25);
 }
-}
+};
