@@ -23,7 +23,8 @@ var ui = {
       if (testForNumber(data.months))
         return true;
       if (testForNumber(data.payment))
-        return true;
+        if (data.payment > data.balance * data.rate/12)
+          return true;
     }
     return false;
   },
