@@ -28,7 +28,15 @@ PaymentObject.prototype.checkNext = function() {
     return false;
   else
     return true;
-}
+};
+
+PaymentObject.prototype.getBalance = function(month) {
+  return this.paymentArray[month - 1]["Starting Balance"];
+};
+
+PaymentObject.prototype.getTotalInterest = function() {
+  return this.paymentArray[this.paymentArray.length - 1]["Total Interest"];
+};
 
 // var p = {
 // _workerStatus: true,
