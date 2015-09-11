@@ -56,7 +56,7 @@ var payF = {
     return months
   },
 
-  inputForMakePArray: function(data) {
+  inputToMakePArray: function(data) {
     var rate = data.rate,
       balance = data.balance,
       months = data.months,

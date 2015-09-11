@@ -8,4 +8,4 @@ display = {
       tableHere.replaceChild(docFrag, test);
     }
   }
-}
+};
