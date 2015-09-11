@@ -18,12 +18,12 @@ var payF = {
 
   calculatePayment: function(balance, rate, months) {
     var counter = 0,
-      endingBalance,
+      endingBalance = balance,
       upLimit = Math.pow(rate, months) * balance / months,
       lowLimit = balance / months,
       guess;
 
-    while ( upLimit - lowLimit > 0.01  ) {
+    while ( upLimit - lowLimit > 0.005 || endingBalance > 0 ) {
       if (counter++ > 1000) {
         console.log("Something went wrong");
         break;
@@ -34,7 +34,7 @@ var payF = {
       if (endingBalance > 0) {
         lowLimit = guess;
       } else { upLimit = guess; }
-      //console.log(limit, "guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
+      //console.log("guess " + guess + " endingBalance: " + endingBalance + " lowLimit: " + lowLimit + " upLimit: "+ upLimit)
     }
     return Math.ceil(guess * 100) / 100;
   },
