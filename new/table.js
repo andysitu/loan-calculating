@@ -25,14 +25,13 @@ var table = {
     //selectedArr[0] = null;
 
     // rows of the table, Note: i starts at 1
-    for (i = 1; i <= dataArr.length; i++) {
-      var tr = this.makeTr("id");
-      
-      for (var j = 0; j < headerList.length; j++) {
-        
-      }
+
+    var paymentArray = pObj.getPaymentArray();
+
+    each(paymentArray, function(paymentObj, i, pArray) {
+      var tr = this.makeRow(paymentObj, headerList);
       table.appendChild(tr);
-    }
+    }, this)
 
     // function toggleSelected(e) {
     //   var ele = e.target
@@ -127,7 +126,7 @@ var table = {
   },
   makeTd: function(content, id) {
     var td = this.makeElement("td", id);
-    td.textContent = value;
+    td.textContent = content;
     return td;
   },
   makeTdWithCheckbox: function(value, id) {
