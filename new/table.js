@@ -77,13 +77,7 @@ var table = {
 
     // this.selectedList = selectedArr;
 
-    var test = document.getElementById("table");
-    var tableHere = document.getElementById("tableHere");
-    if (test === null) {
-      tableHere.appendChild(docFrag);
-    } else {
-      tableHere.replaceChild(docFrag, test);
-    }
+    return docFrag;
   },
 
   makeHeaderList: function(pObj) {

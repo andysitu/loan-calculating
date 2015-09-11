@@ -55,7 +55,8 @@ var ui = {
       storage.store("inputData", inputData);
 
       that.paymentObject = new PaymentObject(inputData);
-      table.createTable(that.paymentObject);
+      var docFrag = table.createTable(that.paymentObject);
+      display.addTable(docFrag);
   	} else {
   	  console.log("ERROR");
     }
