@@ -17,20 +17,9 @@ var circle = {
     canvas.width = width;
     canvas.height = height;
 
+    ctx.clearRect(0, 0, width, height);
     this.drawCircle(center, center, center, radius, dataArray, ctx);
-
-  /*
-    // Insert key
-    ctx.textBaseline = "top";
-    ctx.fillStyle = "green";
-    ctx.fillRect(center + radius + 20, height / 15, 20, 20);
-    ctx.font = "16px serif";
-    ctx.fillText("Total Balance Paid: $" + makeCommas(String(startingBalance)) , center + radius + 45, height / 15);
-    ctx.fillStyle = "red";
-    ctx.fillRect(center + radius + 20, height / 15 + 25, 20, 20);
-    ctx.font = "16px serif";
-    ctx.fillText("Total Interest Paid: $" + makeCommas(String(totalInterest)) , center + radius + 45, height / 15 + 25); 
-  */
+    this.fillText(ctx, dataArray, center, radius, height);
   },
   drawCircle: function(x, y, center, radius, dataArray, ctx) {
     var pi = 2 * Math.PI,
@@ -70,5 +59,17 @@ var circle = {
     return map(dataArray, function(dataObj) { 
         return dataObj["amount"]; })
       .reduce(function(a,b) { return a + b;});
+  },
+
+  fillText: function(ctx, dataArray, center, radius, height) {
+    ctx.textBaseline = "top";
+    each(dataArray, function(dataObj, i, dataArray) {
+      ctx.save();
+      ctx.fillStyle = dataObj["color"];
+      ctx.fillRect(center + radius + 20, height / 15 + 25 * i, 20, 20);
+      ctx.font = "16px serif";
+      ctx.fillText(dataObj["name"] + ": $" + makeCommas(dataObj["amount"]) , center + radius + 45, height / 15 + 25 * i);
+      ctx.restore()
+    }, this);
   }
 };
