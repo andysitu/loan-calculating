@@ -119,14 +119,15 @@ function decimalConverter(value) {
   if (value == '')
   	return value;
   if (typeof value == 'string' || typeof value == 'number')
-  	return Math.round(parseFloat(value) * 100) / 100
+  	return Math.round(parseFloat(value) * 100) / 100;
 }
 
 function makeCommas(value) {
 	if (typeof value == 'number') {
 		value = String(value);
 	}
-	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+  value = String(parseFloat(value).toFixed(2));
+	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 // function hideInput(bool) {
