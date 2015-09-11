@@ -38,61 +38,6 @@ PaymentObject.prototype.getTotalInterest = function() {
   return this.paymentArray[this.paymentArray.length - 1]["Total Interest"];
 };
 
-// var p = {
-// _workerStatus: true,
-// // table formation should go on only if workerstatus is true
-// set workerStatus(status) {this._workerStatus = status;},
-// get workerStatus() {return this._workerStatus;},
-// _balance: 0,
-// set balance(value) { this._balance = decimalConverter(value);},
-// get balance() { return this._balance; },
-// _rate: 0,
-// set rate(value) {
-// if (value >= 1) { this._rate = parseFloat(value) / 100; }
-// else { this._rate = parseFloat(value); }
-// },
-// get rate() { return this._rate; },
-// _months: 0,
-// set months(value) { 
-// if (value != undefined) {
-// 	this._months = parseInt(value);
-// } else {
-// 	this._months = 0;
-// }
-// },
-// get months() { return this._months; },
-// monthsI: 0,
-// _payment: 0,
-// set payment(value) { 
-// if (value != undefined) {
-// 	this._payment = decimalConverter(value); 
-// } else {
-// 	this._payment = 0;
-// }
-// },
-// get payment() { return this._payment; },
-// paymentI: 0,
-// headerObj: null,
-// paymentObj: null,
-
-// getPObj() {
-// return this.paymentObj;
-// },
-
-// getPaymentObject(month) {
-// /**
-// * I want to prevent direct access to obj & want to ensure that
-// * future modifications to anything here will break as least as
-// * possible.
-// *
-// * Input: month, can type "end" &
-// * Output: Return the object of that month
-// */
-// 	if (month === "end") {
-// 		month = this.paymentObj.length - 1;
-// 	} else {
-// 		month -= 1;
-// 	}
 
 // return this.paymentObj[month];
 // },
@@ -120,11 +65,6 @@ PaymentObject.prototype.getTotalInterest = function() {
 // }
 // },
 
-// makeOnePObj(a, b, c, d, e, f, g) {
-// // makes obj of the values. To be used in creation 
-// // and recreation of the payment object.
-// var moneyF = decimalConverter;
-
 // return {
 //  	"Starting Balance": moneyF(a),
 //  	"Month": b,
@@ -134,37 +74,6 @@ PaymentObject.prototype.getTotalInterest = function() {
 //  	"Total Interest": moneyF(f),
 //  	"End Balance": moneyF(g)
 // };
-// },
-
-// getPayObjValue(month, name) {
-// /**
-// * Combine getPaymentObject & translatPaymentObject into one to
-// * return a value depending on the month and the name of the value.
-// */
-// 	var obj = this.getPaymentObject(month);
-// 	return obj[this.translatePaymentObject(name)]
-// },
-
-// changePaymentObject(month, name, value) {
-// /** 
-// * Change the payment object values based on month, name of 
-// * key, ane value for the amount to change it by (note: not set
-// * to this value, but changed to).
-// */
-// month -= 1;
-// name = this.translatePaymentObject(name);
-
-// this.paymentObj[month][name] += value;
-// },
-
-// replacePObj(obj) {
-// // In addition to replacing PObj, also stores new one to local Storage
-// if (Array.isArray(obj)) {
-// 	p.paymentObj = obj;
-// 	p.stor.storeP();
-// } else {
-// 	throw "replacePObj was given a non-Array";
-// }
 // },
 
 // addPayments(amount) {
@@ -204,113 +113,6 @@ PaymentObject.prototype.getTotalInterest = function() {
 		
 // 	}
 // } 
-
-// waitForWorker();
-
-// function waitForWorker() {
-// 	if (p.workerStatus == true) {
-// 		p.makePaymentObj();
-
-// 		table.tableMaker( p.getPObj() );
-// 		makeCircle();
-// 	} else {
-// 		window.setTimeout(waitForWorker, 50);
-// 	}
-// }
-// },
-
-// dataIn(bal, rate, months, payment) {
-// // properties have setters that'll convert to correct format.
-// this.balance = bal;
-// this.rate = rate;
-// this.months = this.monthsI = months;
-// this.payment = this.paymentI = payment;
-
-// this.runIt();
-// },
-
-// calculatePayment() {
-// /**
-// * Calculates the payment necessary to pay off a loan in a certain
-// * amount of time by sending it to the worker.
-// * 
-// * Input: values are given to work based on p.balance, p.rate
-// * 	and p.months.
-// * Output: the payment value is set to p.payment
-// */
-// 	p.workerStatus = false;
-
-// var worker = new Worker("worker.js");
-// worker.postMessage({"balance":p.balance, "rate": p.rate, "months": p.months, "payment": 0});
-
-// worker.onmessage = function(event) {
-// 	p.payment = event.data;
-// 	p.workerStatus = true;
-// 	console.log("from worker:" + typeof event.data + " payment:" + event.data);
-// }
-
-// worker.onerror = function(event) {
-// 	console.log("ERROR: " + event.filename + " ")
-// }
-// },
-// calculateMonths() {
-// /**
-// * Calculates the months necessary to pay off a loan in a certain
-// * by sending it to the worker.
-// * 
-// * Input: values are given to work based on p.balance, p.rate
-// * 	and p.payment.
-// * Output: the months value is set to p.months
-// */
-// p.workerStatus = false;
-
-// var worker = new Worker("worker.js");
-// worker.postMessage({"balance":p.balance, "rate": p.rate, "months": 0, "payment": p.payment});
-
-// worker.onmessage = function(event) {
-// 	p.months = event.data;
-// 	p.workerStatus = true;
-// 	console.log("from worker:" + typeof event.data + " payment:" + event.data);
-// }
-
-// worker.onerror = function(event) {
-// 	console.log("ERROR: " + event.filename + " ")
-// }
-// },
-
-// makePaymentObj() {
-// /**
-// * Makes the paymentObject that makeTable will use.
-// *
-// * Input: reads from p.balance, p.rate, p.months, p.payment
-// * Output: replaces p.paymentObject (null) for each month detailing interest,
-// * 	remaining balance, tallying interest from previous months
-// */
-
-// var that = p;
-
-// var arr = [],
-// 	rate = that.rate/ 12,
-// 	balance = that.balance,
-// 	oldBalance = 0,
-// 	months = that.months,
-// 	payment = that.payment,
-// 	realPayment = 0,
-//  	month = 0,
-//  	interest = 0,
-//  	totalInterest = 0;
-
-// for (month = 1; month <= months && balance >= 0; month++) {
-// 	oldBalance = balance;			
-// 	interest = balance * rate;
-// 	realPayment = payment - interest;
-// 	totalInterest += interest;
-// 	balance += interest - payment;
-
-// 	arr.push(that.makeOnePObj(oldBalance, month, payment, interest, realPayment, totalInterest, balance) );
-// }
-
-// p.replacePObj(arr);
 // },
 
 // recalPObj() {
