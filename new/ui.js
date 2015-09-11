@@ -12,9 +12,13 @@ var ui = {
     	    return decimalConverter(value);
     	  case 'rate':
     	  	if (value >= 1) {
-    	  	  return parseFloat(value) / 100; }
+    	  	  value = parseFloat(value) / 100;
+            if (value < 1)
+              return value; 
+          } else
+            return parseFloat(value);
     	  default:
-    	  	  return parseFloat(value);
+    	  	  return parseInt(value);
       } 
     } else { return ""; }
   },
