@@ -55,8 +55,9 @@ var ui = {
       storage.store("inputData", inputData);
 
       that.paymentObject = new PaymentObject(inputData);
-      that.addTable(that.paymentObject)
-      console.log(that.getDataArrayForCircle(that.paymentObject));
+      that.addTable(that.paymentObject);
+
+      that.addCircle(that.paymentObject);
   	} else {
   	  console.log("ERROR");
     }
@@ -85,5 +86,9 @@ var ui = {
   addTable(paymentObject){
     var docFrag = table.createTable(paymentObject);
       display.addTable(docFrag);
+  },
+  addCircle(paymentObject) {
+    var dataArray = this.getDataArrayForCircle(paymentObject);
+    circle.makeCircle(dataArray);
   }
 };
