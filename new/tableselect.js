@@ -22,23 +22,15 @@ var tableSelect = {
       }
     } catch (e) { /*blank*/}
 
+    
     if (ele.type == "checkbox") {
+      var parentTr = ele.parentNode.parentNode;
       if (ele.checked) {
         this.select(ele.value);
-        // var row = document.getElementById("row" + ele.value);
-        
-        // var children = row.children;
-        // for (var i = 0, len = row.children.length; i < len; i++) {
-        //   children[i].classList.add("selected");
-        // }
+        parentTr.classList.add("selected");
       } else {
         this.deselect(ele.value);
-        // var row = document.getElementById("row" + ele.value);
-        
-        // var children = row.children;
-        // for (var i = 0, len = row.children.length; i < len; i++) {
-        //   children[i].classList.remove("selected");
-        // }
+        parentTr.classList.remove("selected");
       }
     }
   }
