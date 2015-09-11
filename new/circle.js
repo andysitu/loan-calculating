@@ -22,15 +22,14 @@ function makeCircle(dataArray) {
   portion = startingBalance / (startingBalance + totalInterest);
 
   function drawCircle(x,y,radius, dataArray, ctx) {
-    var colors = getColors(dataArray),
-      pi = 2 * Math.PI,
-      prev = "";
+    var pi = 2 * Math.PI,
+      prev = 0;
 
     var total = getTotal(dataArray);
-    
-    for (var i = 0, len = colors.length; i < len; i++) {
-      var color = colors[i],
-        portion = dataObj[color] / total * pi;
+
+    each(dataArray, function(dataObj, i) {
+      var color = dataObj["color"],
+        portion = dataObj["amount"] / total * pi;
       if (i === 0) {
         drawCirclePortion(x, y, radius, 0, portion, color, ctx);
         prev = portion;
@@ -40,7 +39,8 @@ function makeCircle(dataArray) {
         drawCirclePortion(x, y, radius, prev, pi - portion, color, ctx);
         prev = pi - portion;
       }
-    }
+    });
+    
   }
 
   function drawCirclePortion(x,y,radius,start,end,color, ctx){
