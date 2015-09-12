@@ -46,24 +46,6 @@ var ui = {
 
     return data;
   },
-  submitData(e) {
-  	var inputData = this.translateInputData(e);
-  	if (this.inputChecker(inputData)) {
-      this.inputData = inputData;
-      storage.store("inputData", inputData);
-
-      this.paymentObject = new PaymentObject(inputData);
-      this.addTable(this.paymentObject);
-
-      this.addCircle(this.paymentObject);
-  	} else {
-  	  console.log("ERROR");
-    }
-  },
-  addSubmitHandler(){
-    var submitButton = document.getElementById("submit");
-    submitButton.addEventListener("click", ui.submitData.bind(ui));
-  },
 
   setInputs(inputData) {
     this.inputData = inputData;
@@ -101,5 +83,24 @@ var ui = {
     each(this.inputList, function(input) {
       addClearEvent(input);
     });
+  },
+  submitData(e) {
+    var inputData = this.translateInputData(e);
+    if (this.inputChecker(inputData)) {
+      this.inputData = inputData;
+      storage.store("inputData", inputData);
+
+      this.paymentObject = new PaymentObject(inputData);
+      this.addTable(this.paymentObject);
+
+      this.addCircle(this.paymentObject);
+    } else {
+      console.log("ERROR");
+    }
+  },
+  addSubmitHandler(){
+    var submitButton = document.getElementById("submit");
+    submitButton.addEventListener("click", ui.submitData.bind(ui));
+  },
   }
 };
