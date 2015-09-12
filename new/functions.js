@@ -15,10 +15,6 @@ function setInput(id, value) {
 	input.value = value;
 }
 
-function clearInput(id) {
-	setInput(id, "");
-}
-
 function testForNumber(value) {
   if (parseFloat(value) > 0)
     return true;
