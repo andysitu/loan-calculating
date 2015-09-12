@@ -1,11 +1,6 @@
 function init() {
   storage.storageChecker();
 
-// var reset = document.getElementById("resetButton");
-// reset.addEventListener("click", onSubmit);
-
-  
-
 // var tableButton = document.getElementById("tableButton");
 // tableButton.addEventListener("click", function(e) {
 // hideInput(false);
@@ -13,6 +8,7 @@ function init() {
 
   addHandler("submit", "click", ui.submitData.bind(ui));
   addHandler("addSubmit", "click", ui.paymentHandler.bind(ui));
+  addHandler("reset", "click", ui.submitData.bind(ui));
   each(ui.inputList, function(input) {
       addHandler(input, "contextmenu", ui.clearInput);
     });
