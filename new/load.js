@@ -13,7 +13,7 @@ function init() {
 
   ui.addSubmitHandler();
   ui.addRClickClear();
-
+  ui.addPaymentHandler();
 
 // var add = document.getElementById("addSubmit");
 // add.addEventListener("click", function(e){

@@ -102,5 +102,26 @@ var ui = {
     var submitButton = document.getElementById("submit");
     submitButton.addEventListener("click", ui.submitData.bind(ui));
   },
+  addPaymentHandler() {
+    var button = document.getElementById("addSubmit");
+    button.addEventListener("click", this.paymentHandler.bind(this));
+  },
+  paymentHandler(e) {
+    var addInput = document.getElementById("addAmount"),
+      value = addInput.value;
+
+    if (parseFloat(value) > 0) {
+      var selected = tableSelect.getSelected();
+      if (selected.length >= 1) {
+        this.paymentObject.addPayments(value, selected);
+        this.paymentObject.remakePaymentArray();
+        this.addTable(this.paymentObject);
+      } else {
+
+      }
+    } else {
+      //display("You didn't enter an value into Add");
+    }
+    addInput.value = "";
   }
 };
