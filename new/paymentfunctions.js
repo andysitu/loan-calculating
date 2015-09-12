@@ -56,13 +56,16 @@ var payF = {
     return months
   },
 
-  inputToMakePArray: function(data) {
+  inputToMakePArray: function(data, pArrayType, pArray) {
     var rate = data.rate,
       balance = data.balance,
       months = data.months,
       payment = data.payment;
 
-    return this.makePArray(this.pObjMaker, balance, rate, months, payment);
+    if (pArrayType == "make_Payment_Array")
+      return this.makePArray(this.pObjMaker, balance, rate, months, payment);
+    else if (pArrayType == "remake_Payment_Array")
+      return this.remakePArray(this.pObjMaker, pArray, balance, rate, months, payment);
   },
 
   makePArray: function(objMaker, balance, rate, months, payment) {
