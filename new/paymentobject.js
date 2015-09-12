@@ -9,7 +9,7 @@ PaymentObject.prototype.getHeaderList = function() {
 };
 
 PaymentObject.prototype.getPaymentArray = function() {
-  return this.paymentArray;
+  return copy(this.paymentArray);
 };
 
 PaymentObject.prototype.resetNext = function() {
