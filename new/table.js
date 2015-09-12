@@ -9,9 +9,10 @@ var table = {
    * Has an event handler for the entire table. Currently, only registers
    * if user has clicked on the checked input
    */
-    var docFrag = document.createDocumentFragment();
+    var docFrag = document.createDocumentFragment(),
+      tableId = "paymentTable";
 
-    var table = this.makeTable("paymentTable");
+    var table = this.makeTable(tableId);
     docFrag.appendChild(table);
 
     var headerList = this.makeHeaderList(pObj);
