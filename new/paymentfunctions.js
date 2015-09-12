@@ -83,7 +83,7 @@ var payF = {
       totalInterest += interest;
       balance -= actualPayment;
 
-      var pObj = objMaker(startBalance, month, payment, interest, actualPayment, totalInterest, balance);
+      var pObj = objMaker(month, startBalance, payment, interest, actualPayment, totalInterest, balance);
       array.push(pObj);
     }
 
@@ -114,25 +114,25 @@ var payF = {
       totalInterest += interest;
       balance -= actualPayment;
 
-      var pObj = objMaker(startBalance, month, payment, interest, actualPayment, totalInterest, balance);
+      var pObj = objMaker(month, startBalance, payment, interest, actualPayment, totalInterest, balance);
       array.push(pObj);
     }
 
     return array;
   },
 
-  pObjMaker: function(startingBalance, month, payment, interest, actualPayment, totalInterest, endBalance) {
+  pObjMaker: function(month, startingBalance, payment, interest, actualPayment, totalInterest, endBalance) {
     // Interprets data & returns object containing correct
     // format for the data. This is for negative payments.
 
     return {
-      "Starting Balance": decimalConverter(startingBalance),
       "Month": month,
+      "Starting Balance": decimalConverter(startingBalance),
       "Payment": decimalConverter(payment),
       "Interest": decimalConverter(interest),
-      "Actual Payment to Balance": decimalConverter(actualPayment),
+      "Actual Payment": decimalConverter(actualPayment),
       "Total Interest": decimalConverter(totalInterest),
-      "End Balance": decimalConverter(endBalance)
+      "Ending Balance": decimalConverter(endBalance)
     };
   },
 
