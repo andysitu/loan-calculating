@@ -5,7 +5,7 @@ body {
 
 table {
 	border-collapse: collapse;
-    padding: 0;
+  padding: 0;
 }
 
 td, th {
@@ -32,9 +32,7 @@ td:nth-child(2n) { background-color: rgb(242, 120, 120); }
 td:nth-child(1),td:nth-child(3) { 
 	text-align: center; }
 
-td:hover {
-	background: red;
-}
+td:hover { background: red; }
 
 #container {
 	text-align: center;
@@ -42,7 +40,7 @@ td:hover {
 
 #container table {
 	margin: 0 auto; 
-    text-align: left;
+  text-align: left;
 }
 
 #tableHere {
@@ -54,12 +52,8 @@ td:hover {
 	margin-left: 5%;
 }
 
-#balance, #payment {
-	width: 8em;
-}
-
+#balance, #payment { width: 8em; }
 #rate { width: 4em; }
-
 #months { width: 3em; }
 
 tr.selected td { background: green; }

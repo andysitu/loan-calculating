@@ -7,8 +7,7 @@ var ui = {
   	// depending on the input 
     if (testForNumber(value)) {
     	switch(type) {
-    	  case 'balance':
-    	  case 'payment': 
+    	  case 'balance': case 'payment': 
     	    return decimalConverter(value);
     	  case 'rate':
     	  	if (value >= 1) {
@@ -36,9 +35,8 @@ var ui = {
   	function getValueFromEle(elementId) {
   	  return document.getElementById(elementId).value; 
   	}
-
     var data = {};
-
+    
   	each(this.inputList, function( input ) {
   	  var value = getValueFromEle(input);
   	  data[input] = this.inputFormatter(input, value);

@@ -11,7 +11,7 @@ display = {
   setInputs(inputData) {
     each(inputData, function(value, elementId) {
         setInput(elementId, value);
-      });
+    });
   },
   makeTable(paymentObject){
     return table.createTable(paymentObject);
@@ -25,10 +25,6 @@ display = {
     this.addCircle(paymentObject);
   },
   hideInput: function(e) {
-  /* For now there are only two input forms, so if status if true
-   then the inputForm will be hidden and optionsForm will show.
-   If false, then the opposite.
-  */
     var value = e.target.value,
       input = document.getElementById("inputForm"),
       options = document.getElementById("optionsForm");

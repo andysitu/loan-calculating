@@ -9,17 +9,14 @@ var table = {
    * Has an event handler for the entire table. Currently, only registers
    * if user has clicked on the checked input
    */
-    var docFrag = document.createDocumentFragment(),
-      selectedArr = [];
+    var docFrag = document.createDocumentFragment();
 
     var table = this.makeTable("paymentTable");
     docFrag.appendChild(table);
 
     var headerList = this.makeHeaderList(pObj);
 
-    var tr = this.makeTrWithHeaders(headerList);
-
-    table.appendChild(tr);
+    table.appendChild(this.makeTrWithHeaders(headerList));
 
     var paymentArray = pObj.getPaymentArray();
 
