@@ -81,6 +81,32 @@ var payF = {
       balance -= actualPayment;
 
       var pObj = objMaker(startBalance, month, payment, interest, actualPayment, totalInterest, balance)
+  remakePArray: function(objMaker, paymentArray, balance, rate, originalPayment) {
+    var payments = map(paymentArray, function(dataObj) {
+      return dataObj["Payment"];
+    });
+
+    var array = [],
+      startBalance,
+      actualPayment = 0,
+      month = 1,
+      interest = 0,
+      totalInterest = 0,
+      payment;
+
+    for ( ; balance >= 0; month++) {
+      startBalance = balance;
+      interest = balance * rate - balance;
+      if (payments[month - 1] !== undefined) {
+        payment = payments[month - 1];
+      } else {
+        payment = originalPayment;
+      }
+      actualPayment = payment - interest;
+      totalInterest += interest;
+      balance -= actualPayment;
+
+      var pObj = objMaker(startBalance, month, payment, interest, actualPayment, totalInterest, balance);
       array.push(pObj);
     }
 
