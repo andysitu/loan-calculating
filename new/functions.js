@@ -137,7 +137,11 @@ function run(callback, end, start, increment, context) {
   } else { throw "Error with run"; }
 }
 
-function addHandler(id, event, handler) {
-  var element = document.getElementById(id);
-  element.addEventListener(event, handler);
+function addHandler(type, event, handler) {
+  if (typeof type == 'string') { // element Id
+    var element = document.getElementById(type);
+    element.addEventListener(event, handler);
+  } else if (typeof type == 'object') { // element node
+    type.addEventListener(event, handler);
+  }
 }
