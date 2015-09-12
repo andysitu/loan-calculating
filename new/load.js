@@ -14,18 +14,6 @@ function init() {
   ui.addSubmitHandler();
   ui.addRClickClear();
 
-// Check from localStorage if anything has been stored.
-// If so, will make table and change values to last setting
-// of the HTML input element. Then, will plot the table.
-// if (p.stor.getObj("paymentObj") !== null) {
-// p.stor.setP();
-// p.stor.setInputs();
-
-// table.tableMaker( p.getPObj() );
-// makeCircle();
-// } else {
-// hideInput(false);
-// }
 
 // var add = document.getElementById("addSubmit");
 // add.addEventListener("click", function(e){

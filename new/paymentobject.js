@@ -213,18 +213,3 @@ PaymentObject.prototype.getTotalInterest = function() {
 // //console.log("Payment Obj of setP:", this.getObj("paymentObj"));
 // },
 
-// setInputs(){
-// setInput("balanceInput", p.balance);
-// setInput("rateInput", p.rate);
-// setInput("monthsInput", p.monthsI);
-// setInput("paymentInput", p.paymentI);
-// }
-// }
-
-// p.date = {
-// getMonthYear() {
-// var date = new Date();
-// console.log(date.getUTCMonth());
-// console.log(date.getUTCFullYear());
-// }
-// }
