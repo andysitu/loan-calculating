@@ -30,18 +30,16 @@ display = {
    then the inputForm will be hidden and optionsForm will show.
    If false, then the opposite.
   */
-    console.log(e.target);
+    var value = e.target.value,
+      input = document.getElementById("inputForm"),
+      options = document.getElementById("optionsForm");
 
-  /*
-   var input = document.getElementById("inputForm"),
-     options = document.getElementById("optionsForm");
-
-   if (bool) {
-     input.hidden = true;
-     options.hidden = false;
-   } else {
-     input.hidden = false;
-     options.hidden = true;
-   } */
+    if (value == 'submit') {
+      input.hidden = true;
+      options.hidden = false;
+    } else if (value == 'newTable') {
+      input.hidden = false;
+      options.hidden = true;
+    } 
   }
 };
