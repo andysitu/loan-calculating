@@ -13,7 +13,9 @@ function init() {
 
   addHandler("submit", "click", ui.submitData.bind(ui));
   addHandler("addSubmit", "click", ui.paymentHandler.bind(ui));
-  ui.addRClickClear();
+  each(ui.inputList, function(input) {
+      addHandler(input, "contextmenu", ui.clearInput);
+    });
 
 // var add = document.getElementById("addSubmit");
 // add.addEventListener("click", function(e){

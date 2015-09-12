@@ -67,15 +67,9 @@ var ui = {
     var dataArray = this.getDataArrayForCircle(paymentObject);
     circle.makeCircle(dataArray);
   },
-  addRClickClear: function() {
-    function clearInput(e) {
-      e.preventDefault();
-      e.target.value = "";
-    }
-
-    each(this.inputList, function(input) {
-      addHandler(input, "contextmenu", clearInput);
-    });
+  clearInput: function(e) {
+    e.preventDefault();
+    e.target.value = "";
   },
   submitData(e) {
     var inputData = this.translateInputData(e);
