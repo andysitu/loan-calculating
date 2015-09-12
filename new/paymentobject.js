@@ -38,43 +38,19 @@ PaymentObject.prototype.getTotalInterest = function() {
   return this.paymentArray[this.paymentArray.length - 1]["Total Interest"];
 };
 
+PaymentObject.prototype.addPayments = function(amount, months) {
+  each(months, function(month) {
+    this._changeDataObj(month - 1, "Payment", amount, true);
+  }, this);
+};
 
-// return this.paymentObj[month];
-// },
-
-// translatePaymentObject(name) {
-// /**
-// * In case I want to change the Payment Object's key names later on
-// * Just a simple switch case. Keep the cases constant.
-// */
-// switch(name) {
-// 	case "Starting Balance":
-// 		return "Starting Balance";
-// 	case "Month":
-// 		return "Month";
-// 	case "Payment":
-// 		return "Payment";
-// 	case "Interest":
-// 		return "Interest";
-// 	case "Actual Payment to Balance":
-// 		return "Actual Payment to Balance";
-// 	case "Total Interest":
-// 		return "Total Interest";
-// 	case "End Balance":
-// 		return "End Balance";
-// }
-// },
-
-// return {
-//  	"Starting Balance": moneyF(a),
-//  	"Month": b,
-//  	"Payment": moneyF(c),
-//  	"Interest": moneyF(d),
-//  	"Actual Payment to Balance": moneyF(e),
-//  	"Total Interest": moneyF(f),
-//  	"End Balance": moneyF(g)
-// };
-// },
+PaymentObject.prototype._changeDataObj = function(index, type, value, add) {
+  if (add === true) {
+    this.paymentArray[index][type] += value;
+  } else {
+    this.paymentArray[index][type] = value;
+  }
+};
 
 // addPayments(amount) {
 // /**
