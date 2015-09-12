@@ -7,6 +7,11 @@ var tableSelect = {
     var index = this.selected.indexOf(month);
     this.selected.splice(index, 1);
   },
+  getSelected: function() {
+    var selected = copy(this.selected);
+    this.selected = [];
+    return selected;
+  },
   toggleSelected: function(e) {
     var ele = e.target;
 
