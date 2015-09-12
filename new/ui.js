@@ -116,6 +116,7 @@ var ui = {
         this.paymentObject.addPayments(value, selected);
         this.paymentObject.remakePaymentArray();
         this.addTable(this.paymentObject);
+        this.addCircle(this.paymentObject);
       } else {
 
       }
