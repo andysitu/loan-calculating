@@ -68,20 +68,13 @@ var ui = {
     circle.makeCircle(dataArray);
   },
   addRClickClear: function() {
-    function addClearEvent(id) {
-      // Sets clear event on ele with right click.
-      var input = document.getElementById(id);
-
-      input.addEventListener("contextmenu", function(e){
-        e.preventDefault();
-        clearInput(id);
-      });
-
-      input = null;
+    function clearInput(e) {
+      e.preventDefault();
+      e.target.value = "";
     }
 
     each(this.inputList, function(input) {
-      addClearEvent(input);
+      addHandler(input, "contextmenu", clearInput);
     });
   },
   submitData(e) {
