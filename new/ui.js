@@ -49,10 +49,6 @@ var ui = {
     this.inputData = inputData;
     display.setInputs(inputData);
   },
-  clearInput: function(e) {
-    e.preventDefault();
-    e.target.value = "";
-  },
   submitData(e) {
     var inputData = this.translateInputData(e);
     if (this.inputChecker(inputData)) {

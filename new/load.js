@@ -7,7 +7,7 @@ function init() {
   addHandler("addSubmit", "click", ui.paymentHandler.bind(ui));
   addHandler("reset", "click", ui.submitData.bind(ui));
   each(ui.inputList, function(input) {
-    addHandler(input, "contextmenu", ui.clearInput);
+    addHandler(input, "contextmenu", display.clearInput);
   });
 
 }

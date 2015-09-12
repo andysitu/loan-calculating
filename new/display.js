@@ -36,5 +36,9 @@ display = {
       input.hidden = false;
       options.hidden = true;
     } 
-  }
+  },
+  clearInput: function(e) {
+    e.preventDefault();
+    e.target.value = "";
+  },
 };
