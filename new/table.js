@@ -26,7 +26,7 @@ var table = {
       table.appendChild(tr);
     }, this)
       
-    table.addEventListener("click", tableSelect.toggleSelected.bind(tableSelect));
+    addHandler(table, "click", tableSelect.toggleSelected.bind(tableSelect));
 
     return docFrag;
   },
