@@ -54,12 +54,12 @@ td:hover {
 	margin-left: 5%;
 }
 
-#balanceInput, #paymentInput {
+#balance, #payment {
 	width: 8em;
 }
 
-#rateInput { width: 4em; }
+#rate { width: 4em; }
 
-#monthsInput { width: 3em; }
+#months { width: 3em; }
 
 tr.selected td { background: green; }
