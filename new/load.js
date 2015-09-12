@@ -11,9 +11,9 @@ function init() {
 // hideInput(false);
 // });
 
-  ui.addSubmitHandler();
+  addHandler("submit", "click", ui.submitData.bind(ui));
+  addHandler("addSubmit", "click", ui.paymentHandler.bind(ui));
   ui.addRClickClear();
-  ui.addPaymentHandler();
 
 // var add = document.getElementById("addSubmit");
 // add.addEventListener("click", function(e){

@@ -98,14 +98,6 @@ var ui = {
       console.log("ERROR");
     }
   },
-  addSubmitHandler(){
-    var submitButton = document.getElementById("submit");
-    submitButton.addEventListener("click", ui.submitData.bind(ui));
-  },
-  addPaymentHandler() {
-    var button = document.getElementById("addSubmit");
-    button.addEventListener("click", this.paymentHandler.bind(this));
-  },
   paymentHandler(e) {
     var addInput = document.getElementById("addAmount"),
       value = addInput.value;
