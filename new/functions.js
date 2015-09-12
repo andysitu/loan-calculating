@@ -156,6 +156,9 @@ function run(callback, end, start, increment, context) {
       callback.call(context, i);
     }
   } else { throw "Error with run"; }
+}
 
-  
+function addHandler(id, event, handler) {
+  var element = document.getElementById(id);
+  element.addEventListener(event, handler);
 }
