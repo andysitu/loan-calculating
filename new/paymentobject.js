@@ -1,6 +1,6 @@
 function PaymentObject(data) {
   this.data = payF.completeData(data);
-  this.paymentArray = payF.inputToMakePArray( this.data );
+  this.paymentArray = payF.inputToMakePArray( this.data, "make_Payment_Array" );
   this.index = 0;
 }
 
@@ -39,6 +39,7 @@ PaymentObject.prototype.getTotalInterest = function() {
 };
 
 PaymentObject.prototype.addPayments = function(amount, months) {
+  amount = decimalConverter(amount);
   each(months, function(month) {
     this._changeDataObj(month - 1, "Payment", amount, true);
   }, this);
@@ -50,6 +51,10 @@ PaymentObject.prototype._changeDataObj = function(index, type, value, add) {
   } else {
     this.paymentArray[index][type] = value;
   }
+};
+
+PaymentObject.prototype.remakePaymentArray = function() {
+  this.paymentArray = payF.inputToMakePArray( this.data, "remake_Payment_Array", this.paymentArray )
 };
 
 // addPayments(amount) {
