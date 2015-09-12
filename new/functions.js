@@ -38,23 +38,6 @@ function makeCommas(value) {
 	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
-// function hideInput(bool) {
-// /* For now there are only two input forms, so if status if true
-// 	then the inputForm will be hidden and optionsForm will show.
-// 	If false, then the opposite.
-// */
-// 	var input = document.getElementById("inputForm"),
-// 		options = document.getElementById("optionsForm");
-
-// 	if (bool) {
-// 		input.hidden = true;
-// 		options.hidden = false;
-// 	} else {
-// 		input.hidden = false;
-// 		options.hidden = true;
-// 	}
-// }
-
 function each(obj, callback, context) {
   if (context === undefined)
   	context = window;
