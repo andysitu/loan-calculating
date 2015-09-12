@@ -4,20 +4,15 @@ function init() {
 // var reset = document.getElementById("resetButton");
 // reset.addEventListener("click", onSubmit);
 
-  var submitButton = document.getElementById("submit");
-  submitButton.addEventListener("click", ui.submitData.bind(ui));
-// add right click events for the inputs
+  
 
 // var tableButton = document.getElementById("tableButton");
 // tableButton.addEventListener("click", function(e) {
 // hideInput(false);
 // });
 
+  ui.addSubmitHandler();
   ui.addRClickClear();
-
-// reset = null;
-// submit = null;
-// onsubmit = null;
 
 // Check from localStorage if anything has been stored.
 // If so, will make table and change values to last setting

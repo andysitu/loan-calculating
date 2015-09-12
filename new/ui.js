@@ -60,7 +60,11 @@ var ui = {
   	  console.log("ERROR");
     }
   },
-  
+  addSubmitHandler(){
+    var submitButton = document.getElementById("submit");
+    submitButton.addEventListener("click", ui.submitData.bind(ui));
+  },
+
   setInputs(inputData) {
     this.inputData = inputData;
     display.setInputs(inputData);
