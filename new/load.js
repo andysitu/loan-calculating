@@ -9,6 +9,7 @@ function init() {
   each(ui.inputList, function(input) {
     addHandler(input, "contextmenu", display.clearInput);
   });
+  addHandler("addAmount", "contextmenu", display.clearInput);
 
 }
 
