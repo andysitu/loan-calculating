@@ -1,5 +1,5 @@
 var circle = {
-  makeCircle: function(dataArray) {
+  makeCircle: function(paymentObject) {
     // dataArray -> [{name,amount,color}]
   /**
    * Makes circle with canvas that for now colors it in proportion
@@ -13,6 +13,7 @@ var circle = {
       radius = 160,
       pi = 2 * Math.PI,
       center = Math.floor(height/2);
+    var dataArray = this.makeDataArray(paymentObject);
 
     canvas.width = width;
     canvas.height = height;
@@ -71,5 +72,12 @@ var circle = {
       ctx.fillText(dataObj["name"] + ": $" + makeCommas(dataObj["amount"]) , center + radius + 45, height / 15 + 25 * i);
       ctx.restore()
     }, this);
-  }
+  },
+  makeDataArray(paymentObject) {
+    var totalInterest = paymentObject.getTotalInterest(),
+      balance = paymentObject.getBalance(1);
+
+    return [{name:"Balance", amount: balance, color: "green"},
+            {name:"Total Interest", amount: totalInterest, color: "red"}]
+  },
 };

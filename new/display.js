@@ -17,8 +17,7 @@ display = {
     return table.createTable(paymentObject);
   },
   addCircle(paymentObject) {
-    var dataArray = ui.getDataArrayForCircle(paymentObject);
-    circle.makeCircle(dataArray);
+    circle.makeCircle(paymentObject);
   },
   displayCharts(paymentObject) {
     var docFrag = this.makeTable(paymentObject);

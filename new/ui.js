@@ -51,13 +51,6 @@ var ui = {
     this.inputData = inputData;
     display.setInputs(inputData);
   },
-  getDataArrayForCircle(paymentObject) {
-    var totalInterest = paymentObject.getTotalInterest(),
-      balance = paymentObject.getBalance(1);
-
-    return [{name:"Balance", amount: balance, color: "green"},
-            {name:"Total Interest", amount: totalInterest, color: "red"}]
-  },
   clearInput: function(e) {
     e.preventDefault();
     e.target.value = "";
