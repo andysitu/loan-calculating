@@ -58,15 +58,6 @@ var ui = {
     return [{name:"Balance", amount: balance, color: "green"},
             {name:"Total Interest", amount: totalInterest, color: "red"}]
   },
-
-  addTable(paymentObject){
-    var docFrag = table.createTable(paymentObject);
-      display.addTable(docFrag);
-  },
-  addCircle(paymentObject) {
-    var dataArray = this.getDataArrayForCircle(paymentObject);
-    circle.makeCircle(dataArray);
-  },
   clearInput: function(e) {
     e.preventDefault();
     e.target.value = "";
@@ -78,9 +69,7 @@ var ui = {
       storage.store("inputData", inputData);
 
       this.paymentObject = new PaymentObject(inputData);
-      this.addTable(this.paymentObject);
-
-      this.addCircle(this.paymentObject);
+      display.displayCharts(this.paymentObject);
     } else {
       console.log("ERROR");
     }
@@ -94,8 +83,7 @@ var ui = {
       if (selected.length >= 1) {
         this.paymentObject.addPayments(value, selected);
         this.paymentObject.remakePaymentArray();
-        this.addTable(this.paymentObject);
-        this.addCircle(this.paymentObject);
+        display.displayCharts(this.paymentObject);
       } else {
 
       }

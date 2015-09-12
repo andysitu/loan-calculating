@@ -12,5 +12,18 @@ display = {
     each(inputData, function(value, elementId) {
         setInput(elementId, value);
       });
+  },
+  makeTable(paymentObject){
+    return table.createTable(paymentObject);
+  },
+  addCircle(paymentObject) {
+    var dataArray = ui.getDataArrayForCircle(paymentObject);
+    circle.makeCircle(dataArray);
+  },
+  displayCharts(paymentObject) {
+    var docFrag = this.makeTable(paymentObject);
+    this.addTable(docFrag);
+    this.addCircle(paymentObject);
+  },
   }
 };
