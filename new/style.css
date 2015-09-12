@@ -62,4 +62,4 @@ td:hover {
 
 #monthsInput { width: 3em; }
 
-td.selected { background: green; }
+tr.selected td { background: green; }
