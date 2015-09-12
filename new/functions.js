@@ -19,24 +19,6 @@ function clearInput(id) {
 	setInput(id, "");
 }
 
-// function addClearEvents() {
-// 	function addClearEvent(id) {
-// 		// Sets clear event on ele with right click.
-// 		var ele = document.getElementById(id);
-
-// 		ele.addEventListener("contextmenu", function(e){
-// 			e.preventDefault();
-// 			clearInput(id);
-// 		});
-
-// 		ele = null;
-// 	}
-
-// 	addClearEvent("balanceInput");
-// 	addClearEvent("rateInput");
-// 	addClearEvent("monthsInput");
-// 	addClearEvent("paymentInput");
-// }
 
 // function makeCircle() {
 // /**

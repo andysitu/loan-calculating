@@ -13,7 +13,7 @@ function init() {
 // hideInput(false);
 // });
 
-// addClearEvents();
+  ui.addRClickClear();
 
 // reset = null;
 // submit = null;

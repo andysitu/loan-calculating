@@ -80,5 +80,22 @@ var ui = {
   addCircle(paymentObject) {
     var dataArray = this.getDataArrayForCircle(paymentObject);
     circle.makeCircle(dataArray);
+  },
+  addRClickClear: function() {
+    function addClearEvent(id) {
+      // Sets clear event on ele with right click.
+      var input = document.getElementById(id);
+
+      input.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        clearInput(id);
+      });
+
+      input = null;
+    }
+
+    each(this.inputList, function(input) {
+      addClearEvent(input);
+    });
   }
 };
