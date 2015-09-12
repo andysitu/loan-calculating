@@ -50,7 +50,7 @@ var table = {
       if (header == "Select") {
         var td = this.makeTdWithCheckbox(month_0 + 1);
       } else {
-        var content = makeCommas(dataObj[header]);
+        var content = this.cellFormatter(dataObj[header], header);
         var td = this.makeTd(content);
       }
       tr.appendChild(td);
@@ -93,6 +93,12 @@ var table = {
     var element = document.createElement(type);
     element.id = id;
     return element;
+  },
+  cellFormatter: function(value, type) {
+    if (type == "Month")
+      return value;
+    else
+      return ' $ ' + makeCommas(value) + ' ';
   }
 
 };
