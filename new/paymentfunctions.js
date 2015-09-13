@@ -89,27 +89,21 @@ var payF = {
     });
 
     var paymentArray = [],
-      startBalance,
-      actualPayment = 0,
-      month = 1,
-      interest = 0,
       totalInterest = 0,
-      payment;
+      payment,
+      paymentObject,
+      month = 1;
 
     for ( ; balance >= 0; month++) {
-      startBalance = balance;
-      interest = balance * rate - balance;
       if (month in differentPayment) {
         payment = differentPayment[month];
       } else {
         payment = originalPayment;
       }
-      actualPayment = payment - interest;
-      totalInterest += interest;
-      balance -= actualPayment;
-
-      var pObj = objMaker(month, startBalance, payment, interest, actualPayment, totalInterest, balance);
-      paymentArray.push(pObj);
+      paymentObject = this.makePaymentObject(objMaker, balance, rate, month, payment, totalInterest)
+      balance = paymentObject["Ending Balance"];
+      totalInterest = paymentObject["Total Interest"];
+      paymentArray.push(paymentObject);
     }
 
     return paymentArray;
