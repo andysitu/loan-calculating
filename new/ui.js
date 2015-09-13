@@ -1,5 +1,5 @@
 var ui = {
-  paymentObject: null,
+  paymentSystem: null,
   inputList: ['balance', 'rate', 'months', 'payment'],
   inputData: null,
   inputFormatter(type, value) {
@@ -55,8 +55,8 @@ var ui = {
       this.inputData = inputData;
       storage.store("inputData", inputData);
 
-      this.paymentObject = new PaymentObject(inputData);
-      display.displayCharts(this.paymentObject);
+      this.paymentSystem = new PaymentSystem(inputData);
+      display.displayCharts(this.paymentSystem);
     } else {
       console.log("ERROR");
     }
@@ -68,9 +68,9 @@ var ui = {
     if (parseFloat(value) > 0) {
       var selected = tableSelect.getSelected();
       if (selected.length >= 1) {
-        this.paymentObject.addPayments(value, selected);
-        this.paymentObject.remakePaymentArray();
-        display.displayCharts(this.paymentObject);
+        this.paymentSystem.addPayments(value, selected);
+        this.paymentSystem.remakePaymentArray();
+        display.displayCharts(this.paymentSystem);
       } else {
 
       }

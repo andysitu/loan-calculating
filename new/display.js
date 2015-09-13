@@ -13,16 +13,16 @@ display = {
         setInput(elementId, value);
     });
   },
-  makeTable(paymentObject){
-    return table.createTable(paymentObject);
+  makeTable(paymentSystem){
+    return table.createTable(paymentSystem);
   },
-  addCircle(paymentObject) {
-    circle.makeCircle(paymentObject);
+  addCircle(paymentSystem) {
+    circle.makeCircle(paymentSystem);
   },
-  displayCharts(paymentObject) {
-    var docFrag = this.makeTable(paymentObject);
+  displayCharts(paymentSystem) {
+    var docFrag = this.makeTable(paymentSystem);
     this.addTable(docFrag);
-    this.addCircle(paymentObject);
+    this.addCircle(paymentSystem);
   },
   hideInput: function(e) {
     var value = e.target.value,

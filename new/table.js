@@ -1,5 +1,5 @@
 var table = {
-  createTable: function(pObj) {
+  createTable: function(paymentSystem) {
   /* Makes a table to doc by the headerObj (array) containing table heading
    * to specify order of the headings (optional) and dataObj which is objs 
    * in array that will contain the actual data.
@@ -15,11 +15,11 @@ var table = {
     var table = this.makeTable(tableId);
     docFrag.appendChild(table);
 
-    var headerList = this.makeHeaderList(pObj);
+    var headerList = this.makeHeaderList(paymentSystem);
 
     table.appendChild(this.makeTrWithHeaders(headerList));
 
-    var paymentArray = pObj.getPaymentArray();
+    var paymentArray = paymentSystem.getPaymentArray();
 
     each(paymentArray, function(paymentObj, i, pArray) {
       var tr = this.makeRow(paymentObj, headerList, i);
@@ -31,8 +31,8 @@ var table = {
     return docFrag;
   },
 
-  makeHeaderList: function(pObj) {
-    var headerList = pObj.getHeaderList();
+  makeHeaderList: function(paymentSystem) {
+    var headerList = paymentSystem.getHeaderList();
     headerList.unshift("Select");
     return headerList;
   },
