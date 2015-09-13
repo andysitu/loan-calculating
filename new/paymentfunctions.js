@@ -5,13 +5,9 @@ var payF = {
     data.rate = 1 + data.rate/12;
 
     if (data.months == '') {
-      var months = this.calculateMonths(data.balance, data.rate, data.payment);
-      data.months = months;
+      data.months = this.calculateMonths(data.balance, data.rate, data.payment);
     } else if (data.payment == '') {
-      var payment = this.calculatePayment(data.balance, data.rate, data.months);
-      data.payment = payment;
-    } else {
-      console.log("Got everything");
+      data.payment = this.calculatePayment(data.balance, data.rate, data.months);
     }
     return data;
   },
