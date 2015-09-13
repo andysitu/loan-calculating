@@ -15,28 +15,24 @@ var tableSelect = {
   toggleSelected: function(e) {
     var ele = e.target;
 
-    try {
-      // if user clicks on the td containing checkbox
-      if (ele.children[0].type == "checkbox") {
-        var ele = ele.children[0];
-        if (ele.checked) {
-          ele.checked = false;
-        } else {
-          ele.checked = true;
-        }
-      }
-    } catch (e) { /*blank*/}
-
-    
-    if (ele.type == "checkbox") {
-      var parentTr = ele.parentNode.parentNode;
-      if (ele.checked) {
-        this.select(ele.value);
-        parentTr.classList.add("selected");
+    if (ele.parentNode.tagName == 'TR') {
+      var tr = ele.parentNode;
+      var checkbox = tr.children[0].children[0];
+      if (checkbox.checked) {
+        checkbox.checked = false;
       } else {
-        this.deselect(ele.value);
-        parentTr.classList.remove("selected");
+        checkbox.checked = true;
       }
+    } else if (ele.parentNode.parentNode.tagName == 'TR') {
+      var tr = ele.parentNode.parentNode;
+    }
+    var idNumber = parseInt(tr.id.match(/row (\d*)/)[1]);
+    if (this.selected.indexOf(idNumber) == -1) {
+      this.select(idNumber);
+      tr.classList.add("selected");
+    } else {
+      this.deselect(idNumber);
+      tr.classList.remove("selected");
     }
   }
 }
