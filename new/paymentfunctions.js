@@ -118,6 +118,16 @@ var payF = {
 
     return paymentArray;
   },
+  makePaymentObject: function(objMaker, balance, rate, month, payment, totalInterest) {
+    startBalance = balance;
+    var interest = balance * rate - balance;
+    actualPayment = payment - interest;
+    totalInterest += interest;
+    balance -= actualPayment;
+
+    var pObj = objMaker(month, startBalance, payment, interest, actualPayment, totalInterest, balance);
+    return pObj;
+  },
 
   pObjMaker: function(month, startingBalance, payment, interest, actualPayment, totalInterest, endBalance) {
     // Interprets data & returns object containing correct
