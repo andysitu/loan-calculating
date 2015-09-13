@@ -31,10 +31,7 @@ function decimalConverter(value) {
 }
 
 function makeCommas(value) {
-	if (typeof value == 'number') {
-		value = String(value);
-	}
-  value = String(parseFloat(value).toFixed(2));
+	value = String(decimalConverter(value).toFixed(2));
 	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
