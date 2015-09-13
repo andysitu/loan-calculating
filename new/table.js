@@ -1,4 +1,5 @@
 var table = {
+  minWidths: null,
   createTable: function(paymentSystem) {
   /* Makes a table to doc by the headerObj (array) containing table heading
    * to specify order of the headings (optional) and dataObj which is objs 
@@ -11,6 +12,8 @@ var table = {
    */
     var docFrag = document.createDocumentFragment(),
       tableId = "paymentTable";
+
+    this.minWidths = this.getMinWidth(paymentSystem); // obj with headers as keys
 
     var table = this.makeTable(tableId);
     docFrag.appendChild(table);
