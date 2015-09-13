@@ -46,11 +46,11 @@ var table = {
     return table;
   },
   makeRow: function(dataObj, headerList, month_0) {
-    var tr = this.makeTr();
+    var tr = this.makeTr("row " + (month_0 + 1));
     each(headerList, function(header, i, headerList) {
       var td = this.makeTd();
       if (header == "Select") {
-        var td = this.makeTdWithCheckbox(month_0 + 1);
+        var td = this.makeTdWithCheckbox();
       } else {
         var content = this.cellFormatter(dataObj[header], header);
         var td = this.makeTd(content);
