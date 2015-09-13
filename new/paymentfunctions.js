@@ -103,7 +103,7 @@ var payF = {
     for ( ; balance >= 0; month++) {
       startBalance = balance;
       interest = balance * rate - balance;
-      if (differentPayment[month] !== undefined) {
+      if (month in differentPayment) {
         payment = differentPayment[month];
       } else {
         payment = originalPayment;
