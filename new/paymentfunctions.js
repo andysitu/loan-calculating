@@ -92,7 +92,7 @@ var payF = {
         differentPayment[dataObj["Month"]] = dataObj["Payment"];
     });
 
-    var array = [],
+    var paymentArray = [],
       startBalance,
       actualPayment = 0,
       month = 1,
@@ -113,10 +113,10 @@ var payF = {
       balance -= actualPayment;
 
       var pObj = objMaker(month, startBalance, payment, interest, actualPayment, totalInterest, balance);
-      array.push(pObj);
+      paymentArray.push(pObj);
     }
 
-    return array;
+    return paymentArray;
   },
 
   pObjMaker: function(month, startingBalance, payment, interest, actualPayment, totalInterest, endBalance) {
