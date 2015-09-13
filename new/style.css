@@ -33,7 +33,7 @@ td:nth-child(2n) { background-color: rgb(242, 120, 120); }
 td:nth-child(1),td:nth-child(2) { 
 	text-align: center; }
 
-td:hover { background: red; }
+tr:hover td { background: #b19cd9; }
 
 #container {
 	text-align: center;
