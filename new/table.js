@@ -64,7 +64,7 @@ var table = {
     return tr;
   },
   makeTrWithHeaders: function(headerList) {
-    var tr = this.makeTr();
+    var tr = this.makeTr("Header");
     each(headerList, function(head, i, list) {
       var th = this.makeTh(head);
       tr.appendChild(th);
