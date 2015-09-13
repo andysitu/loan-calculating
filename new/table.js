@@ -117,9 +117,12 @@ var table = {
   },
   makePArrayInString(paymentSystem){
     var paymentArray = paymentSystem.getPaymentArray();
-    map(paymentArray, function(paymentObject, i) {
-      return map(paymentObject, function(value) {
-        return String(value);
+    paymentArray = map(paymentArray, function(paymentObject, i) {
+      return map(paymentObject, function(value, header) {
+        if (header == "Month")
+          return String(value);
+        else
+          return makeCommas(value);
       });
     });
     return paymentArray;
