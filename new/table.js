@@ -97,6 +97,20 @@ var table = {
       return value;
     else
       return ' $ ' + makeCommas(value) + ' ';
+  },
+  getMinWidth: function(paymentSystem) {
+    var obj = {},
+      pArray = paymentSystem.getPaymentArray();
+
+    each(pArray[0], function(_, header) {
+      obj[header] = 0;
+      each(pArray, function(pObj, i) {
+        var string = String(pObj[header]);
+        obj[header] = Math.max(obj[header], string.length);
+      });
+    });
+
+    return obj;
   }
 
 };
