@@ -108,7 +108,7 @@ var table = {
     each(pArrayWithString[0], function(_, header) {
       obj[header] = 0;
       each(pArrayWithString, function(pObj, i) {
-        var string = obj[header];
+        var string = pObj[header];
         obj[header] = Math.max(obj[header], string.length);
       });
     });
