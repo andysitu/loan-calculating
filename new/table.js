@@ -96,11 +96,13 @@ var table = {
     element.id = id;
     return element;
   },
-  cellFormatter: function(value, type) {
-    if (type == "Month")
+  cellFormatter: function(value, header) {
+    if (header == "Month")
       return value;
-    else
-      return ' $ ' + makeCommas(value) + ' ';
+    else {
+      var minWidth = this.minWidths[header];
+      return '$' + repeatString(" ", 1 + minWidth - value.length) + value;
+    }
   },
   getMinWidths: function(pArrayWithString) {
     var obj = {};
