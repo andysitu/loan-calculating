@@ -15,7 +15,8 @@ var table = {
 
     var paymentArrayInString = this.makePArrayInString(paymentSystem);
 
-    this.minWidths = this.getMinWidths(paymentSystem); // obj with headers as keys
+    this.minWidths = this.getMinWidths(paymentArrayInString); 
+      // obj with headers as keys
 
     var table = this.makeTable(tableId);
     docFrag.appendChild(table);
@@ -101,14 +102,13 @@ var table = {
     else
       return ' $ ' + makeCommas(value) + ' ';
   },
-  getMinWidths: function(paymentSystem) {
-    var obj = {},
-      pArray = paymentSystem.getPaymentArray();
+  getMinWidths: function(paymentArrayInString) {
+    var obj = {};
 
-    each(pArray[0], function(_, header) {
+    each(paymentArrayInString[0], function(_, header) {
       obj[header] = 0;
-      each(pArray, function(pObj, i) {
-        var string = String(pObj[header]);
+      each(paymentArrayInString, function(pObj, i) {
+        var string = obj[header];
         obj[header] = Math.max(obj[header], string.length);
       });
     });
