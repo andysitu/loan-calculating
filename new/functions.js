@@ -145,3 +145,12 @@ function addHandler(type, event, handler) {
     type.addEventListener(event, handler);
   }
 }
+
+function repeatString(string, times) {
+  var newString = '';
+  run(function() {
+    newString += string;
+  }, times);
+
+  return newString;
+}
