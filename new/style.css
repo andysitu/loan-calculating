@@ -1,6 +1,6 @@
 body {
 	font-family: Arial;
-	background-color: white;	
+	background-color: white;		
 }
 
 table {
@@ -10,10 +10,10 @@ table {
 
 td, th {
 	border: solid thin gray;
+	white-space: pre-wrap;
 }
 
 th {
-	white-space: pre-wrap;
 	background-color: rgb(204,229,255);
 	color: green;
 }
@@ -21,7 +21,7 @@ th {
 td {
 	padding: 0;
 	text-align: right;
-	font-family: Rockwell;
+	font-family: Consolas;
 	color: rgb(239,220,220);
 }
 
@@ -29,7 +29,7 @@ td:nth-child(2n+1) { background-color: rgb(243,86,107); }
 
 td:nth-child(2n) { background-color: rgb(242, 120, 120); }
 
-td:nth-child(1),td:nth-child(3) { 
+td:nth-child(1),td:nth-child(2) { 
 	text-align: center; }
 
 td:hover { background: red; }
