@@ -15,7 +15,9 @@ var tableSelect = {
   toggleSelected: function(e) {
     var ele = e.target;
 
-    if (ele.parentNode.tagName == 'TR') {
+    if (ele.parentNode.id == "Header") {
+      return 0; // end function early
+    } else if (ele.parentNode.tagName == 'TR' && ele.parentNode.id !== "Header") {
       var tr = ele.parentNode;
       var checkbox = tr.children[0].children[0];
       if (checkbox.checked) {
@@ -26,6 +28,7 @@ var tableSelect = {
     } else if (ele.parentNode.parentNode.tagName == 'TR') {
       var tr = ele.parentNode.parentNode;
     }
+
     var idNumber = parseInt(tr.id.match(/row (\d*)/)[1]);
     if (this.selected.indexOf(idNumber) == -1) {
       this.select(idNumber);
