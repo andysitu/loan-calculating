@@ -86,8 +86,10 @@ var payF = {
     return array;
   },
   remakePArray: function(objMaker, paymentArray, balance, rate, originalPayment) {
-    var payments = map(paymentArray, function(dataObj) {
-      return dataObj["Payment"];
+    var differentPayment = {};
+    each(paymentArray, function(dataObj) {
+      if (dataObj["Payment"] != originalPayment)
+        differentPayment[dataObj["Month"]] = dataObj["Payment"];
     });
 
     var array = [],
@@ -101,8 +103,8 @@ var payF = {
     for ( ; balance >= 0; month++) {
       startBalance = balance;
       interest = balance * rate - balance;
-      if (payments[month - 1] !== undefined) {
-        payment = payments[month - 1];
+      if (differentPayment[month] !== undefined) {
+        payment = differentPayment[month];
       } else {
         payment = originalPayment;
       }
