@@ -13,7 +13,9 @@ var table = {
     var docFrag = document.createDocumentFragment(),
       tableId = "paymentTable";
 
-    this.minWidths = this.getMinWidth(paymentSystem); // obj with headers as keys
+    var paymentArrayInString = this.makePArrayInString(paymentSystem);
+
+    this.minWidths = this.getMinWidths(paymentSystem); // obj with headers as keys
 
     var table = this.makeTable(tableId);
     docFrag.appendChild(table);
@@ -22,9 +24,7 @@ var table = {
 
     table.appendChild(this.makeTrWithHeaders(headerList));
 
-    var paymentArray = paymentSystem.getPaymentArray();
-
-    each(paymentArray, function(paymentObj, i, pArray) {
+    each(paymentArrayInString, function(paymentObj, i, pArray) {
       var tr = this.makeRow(paymentObj, headerList, i);
       table.appendChild(tr);
     }, this)
@@ -101,7 +101,7 @@ var table = {
     else
       return ' $ ' + makeCommas(value) + ' ';
   },
-  getMinWidth: function(paymentSystem) {
+  getMinWidths: function(paymentSystem) {
     var obj = {},
       pArray = paymentSystem.getPaymentArray();
 
@@ -114,6 +114,15 @@ var table = {
     });
 
     return obj;
+  },
+  makePArrayInString(paymentSystem){
+    var paymentArray = paymentSystem.getPaymentArray();
+    map(paymentArray, function(paymentObject, i) {
+      return map(paymentObject, function(value) {
+        return String(value);
+      });
+    });
+    return paymentArray;
   }
 
 };
