@@ -65,14 +65,14 @@ var ui = {
     var addInput = document.getElementById("addAmount"),
       value = addInput.value;
 
-    if (parseFloat(value) > 0) {
+    if (parseFloat(value)) {
       var selected = tableSelect.getSelected();
       if (selected.length >= 1) {
         this.paymentSystem.addPayments(value, selected);
         this.paymentSystem.remakePaymentArray();
         display.displayCharts(this.paymentSystem);
       } else {
-
+        //display("Something");
       }
     } else {
       //display("You didn't enter an value into Add");
