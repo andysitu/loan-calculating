@@ -3,19 +3,14 @@
  *    decimalConverter, each, map, copy, every, some
  */
 
-// function display(msg) {
-// 	var msgArea = document.getElementById('msg');
-
-// 	msgArea.textContent = msg;
-	
-// }
-
 function setInput(id, value) {
+// sets the individual input by id.
 	var input = document.getElementById(id);
 	input.value = value;
 }
 
 function testForNumber(value) {
+// Test if a string contains a useable number.
   if (parseFloat(value) > 0)
     return true;
   else
@@ -31,11 +26,13 @@ function decimalConverter(value) {
 }
 
 function makeCommas(value) {
+  // Takes in number and returns string with commas added.
 	value = String(decimalConverter(value).toFixed(2));
 	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 function each(obj, callback, context) {
+// each function for both objects & arrays.
   if (context === undefined)
   	context = window;
 
@@ -49,6 +46,7 @@ function each(obj, callback, context) {
 }
 
 function map(obj, callback, context) {
+// map function for both objects & arrays.
   if (context === undefined)
   	context = window;
   var newObj = null;
@@ -67,10 +65,13 @@ function map(obj, callback, context) {
 }
 
 function copy(obj) {
+// Returns n object/ array copy.
   return map(obj, function(value) { return value; })
 }
 
+// Every and some are planned to be used later.
 function every(obj, callback, context) {
+// every function for both objects & arrays.
   if (context === undefined)
     context = window;
 
@@ -80,8 +81,8 @@ function every(obj, callback, context) {
   }
   return true;
 }
-
 function some(obj, callback, context) {
+// some function for both objects & arrays.
   if (context === undefined)
     context = window;
 
@@ -92,6 +93,9 @@ function some(obj, callback, context) {
   return false;
 }
 
+function getParameters(func) {
+// Returns an array containing strings of the
+//  parameter names of a function.
   var functionString = func.toString();
   if (/function\s*\(.*\)/.test(functionString)) {
     var parameter = /function\s*\(([\w,\s]+)\)/g.exec(functionString);
@@ -106,10 +110,13 @@ function some(obj, callback, context) {
 }
 
 function getNumParameters(func) {
+// Returns the number of paramters of a function.
   return getParameters(func).length;
 }
 
 function range(start, end) {
+// Range function in python. Returns array of
+// the range from start to end - 1.
   var array = [];
   for (var i = start; i < end; i++)
     array.push(i);
@@ -117,6 +124,8 @@ function range(start, end) {
 }
 
 function run(callback, end, start, increment, context) {
+// Runs a function x number of times (end).
+// Additional parameters changes the for loop.
   if (start === undefined)
     start = 0;
   if (increment === undefined)
@@ -134,6 +143,8 @@ function run(callback, end, start, increment, context) {
 }
 
 function addHandler(type, event, handler) {
+// Adds an event handler to document by type either
+//  being the id or the element.
   if (typeof type == 'string') { // element Id
     var element = document.getElementById(type);
     element.addEventListener(event, handler);
@@ -143,6 +154,7 @@ function addHandler(type, event, handler) {
 }
 
 function repeatString(string, times) {
+// Returns a string repeated x number of times.
   var newString = '';
   run(function() {
     newString += string;
