@@ -62,7 +62,7 @@ var payF = {
       return this.makePArray(this.pObjMaker, balance, rate, months, payment);
     else if (pArrayType == "remake_Payment_Array") {
       var differingPayments = this.makeDifferingPaymentsObject(pArray, payment);
-      return this.remakePArray(this.pObjMaker, differingPayments, balance, rate, payment);
+      return this.remakePArray(this.pObjMaker, differingPayments, balance, rate, payment, pArray.length);
     }
   },
 
@@ -81,20 +81,22 @@ var payF = {
 
     return paymentArray;
   },
-  remakePArray: function(objMaker, differingPayments, balance, rate, originalPayment) {
+  remakePArray: function(objMaker, differingPayments, balance, rate, originalPayment, months) {
     var paymentArray = [],
       totalInterest = 0,
       payment,
-      paymentObject,
       month = 1;
 
     for ( ; balance >= 0; month++) {
       if (month in differingPayments) {
         payment = differingPayments[month];
+        if (payment < originalPayment) {  
+          originalPayment = this.calculatePayment(balance, rate, months - month);
+        }
       } else {
         payment = originalPayment;
       }
-      paymentObject = this.makePaymentObject(objMaker, balance, rate, month, payment, totalInterest)
+      var paymentObject = this.makePaymentObject(objMaker, balance, rate, month, payment, totalInterest)
       balance = paymentObject["Ending Balance"];
       totalInterest = paymentObject["Total Interest"];
       paymentArray.push(paymentObject);
