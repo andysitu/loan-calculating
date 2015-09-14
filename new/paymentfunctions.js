@@ -61,21 +61,21 @@ var payF = {
       payment = data.payment;
 
     if (pArrayType == "make_Payment_Array")
-      return this.makePArray(this.pObjMaker, balance, rate, months, payment);
+      return this.makePArray(this.pObjFormatter, balance, rate, months, payment);
     else if (pArrayType == "remake_Payment_Array") {
       var differingPayments = this.makeDifferingPaymentsObject(pArray, payment);
       return this.remakePArray(this.pObjMaker, differingPayments, balance, rate, payment, pArray.length);
     }
   },
 
-  makePArray: function(objMaker, balance, rate, months, payment) {
+  makePArray: function(pObjFormatter, balance, rate, months, payment) {
     var paymentArray = [],
       paymentObject,
       month = 1,
       totalInterest = 0;
 
     for ( ; month <= months && balance >= 0; month++) {
-      paymentObject = this.makePaymentObject(objMaker, balance, rate, month, payment, totalInterest)
+      paymentObject = this.makePaymentObject(pObjFormatter, balance, rate, month, payment, totalInterest)
       balance = paymentObject["Ending Balance"];
       totalInterest = paymentObject["Total Interest"];
       paymentArray.push(paymentObject);
@@ -83,7 +83,7 @@ var payF = {
 
     return paymentArray;
   },
-  remakePArray: function(objMaker, differingPayments, balance, rate, originalPayment, months) {
+  remakePArray: function(pObjFormatter, differingPayments, balance, rate, originalPayment, months) {
     var paymentArray = [],
       totalInterest = 0,
       payment,
@@ -92,33 +92,32 @@ var payF = {
     for ( ; balance >= 0; month++) {
       if (month in differingPayments) {
         payment = differingPayments[month];
-        if (payment < originalPayment) {
+        if (payment < originalPayment) { // if user puts in a negative payment
           var monthsRemaining = months - month >= 0 ? months - month : 1;
-          console.log("calculating: ", balance, rate, monthsRemaining);
           originalPayment = this.calculatePayment(balance, rate, monthsRemaining);
         }
       } else {
         payment = originalPayment;
       }
-      var paymentObject = this.makePaymentObject(objMaker, balance, rate, month, payment, totalInterest)
+      var paymentObject = this.makePaymentObject(pObjFormatter, balance, rate, month, payment, totalInterest)
       balance = paymentObject["Ending Balance"];
       totalInterest = paymentObject["Total Interest"];
       paymentArray.push(paymentObject);
     }
     return paymentArray;
   },
-  makePaymentObject: function(objMaker, balance, rate, month, payment, totalInterest) {
+  makePaymentObject: function(pObjFormatter, balance, rate, month, payment, totalInterest) {
     startBalance = balance;
     var interest = balance * rate - balance;
     actualPayment = payment - interest;
     totalInterest += interest;
     balance -= actualPayment;
 
-    var pObj = objMaker(month, startBalance, payment, interest, actualPayment, totalInterest, balance);
+    var pObj = pObjFormatter(month, startBalance, payment, interest, actualPayment, totalInterest, balance);
     return pObj;
   },
 
-  pObjMaker: function(month, startingBalance, payment, interest, actualPayment, totalInterest, endBalance) {
+  pObjFormatter: function(month, startingBalance, payment, interest, actualPayment, totalInterest, endBalance) {
     // Interprets data & returns object containing correct
     // format for the data. This is for negative payments.
 

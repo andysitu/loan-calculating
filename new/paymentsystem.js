@@ -5,7 +5,7 @@ function PaymentSystem(data) {
 }
 
 PaymentSystem.prototype.getHeaderList = function() {
-  return payF.makeHeaderList(payF.pObjMaker);
+  return payF.makeHeaderList(payF.pObjFormatter);
 };
 
 PaymentSystem.prototype.getPaymentArray = function() {
