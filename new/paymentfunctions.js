@@ -1,5 +1,11 @@
+// Contains the functions that payment systems will use.
 var payF = {
   completeData: function(data) {
+  /* Decides how to complete the data object given to it by calling other
+   *  other methods in the object.
+   * The data object in its complete form contains balance, rate, payment,
+   *  and months for now.
+   */
     var data = copy(data);
 
     data.rate = 1 + data.rate/12;
@@ -13,6 +19,7 @@ var payF = {
   },
 
   calculatePayment: function(balance, rate, months) {
+  // Calculates payment given 3 parameters and returns it.
     var counter = 0,
       endingBalance = balance,
       upLimit = Math.pow(rate, months) * balance / months,
@@ -38,6 +45,8 @@ var payF = {
   },
 
   calculateEndBalance: function(balance, rate, months, payment) {
+  // Helper function for calculatePayment. Returns balance after 
+  // months times of calculations.
     run(function(i) {
       balance = balance * rate - payment;
     }, months)
@@ -45,6 +54,8 @@ var payF = {
   },
 
   calculateMonths: function(balance, rate, payment) {
+  // Calculates months it takes for balance to reach 0. 
+  // Returns months.
     var months = 0;
 
     while (balance > 0) {
@@ -55,6 +66,8 @@ var payF = {
   },
 
   inputToMakePArray: function(data, pArrayType, pArray) {
+  // Handles the inputs required for each payment array maker.
+  // Might change this later, but no good ideas for simplification.
     var rate = data.rate,
       balance = data.balance,
       months = data.months,
@@ -63,12 +76,19 @@ var payF = {
     if (pArrayType == "make_Payment_Array")
       return this.makePArray(this.pObjFormatter, balance, rate, months, payment);
     else if (pArrayType == "remake_Payment_Array") {
+      // This is when user modifies the payment array.
       var differingPayments = this.makeDifferingPaymentsObject(pArray, payment);
-      return this.remakePArray(this.pObjMaker, differingPayments, balance, rate, payment, pArray.length);
+      return this.remakePArray(this.pObjFormatter, differingPayments, balance, rate, payment, pArray.length);
     }
   },
 
   makePArray: function(pObjFormatter, balance, rate, months, payment) {
+  /* Makes a payment array and returns it using helper functions,
+   *  object maker decided by inputToMakePArray. Note that it depends 
+   *  on the payment objects having "Ending Balance" & "Total Interest"
+   *  as properties since it looks them up. 
+   * Returns a payment array, containing payment objects.
+   */
     var paymentArray = [],
       paymentObject,
       month = 1,
@@ -84,6 +104,9 @@ var payF = {
     return paymentArray;
   },
   remakePArray: function(pObjFormatter, differingPayments, balance, rate, originalPayment, months) {
+  /* Used when user modifies the payments and then the balances, etc
+   *  have to be calculated again. Returns a new payment array.
+   */
     var paymentArray = [],
       totalInterest = 0,
       payment,
@@ -93,6 +116,7 @@ var payF = {
       if (month in differingPayments) {
         payment = differingPayments[month];
         if (payment < originalPayment) { // if user puts in a negative payment
+          // This is for when the user adds negative payment in the last month.
           var monthsRemaining = months - month >= 0 ? months - month : 1;
           originalPayment = this.calculatePayment(balance, rate, monthsRemaining);
         }
@@ -118,9 +142,11 @@ var payF = {
   },
 
   pObjFormatter: function(month, startingBalance, payment, interest, actualPayment, totalInterest, endBalance) {
-    // Interprets data & returns object containing correct
-    // format for the data. This is for negative payments.
-
+    /* Interprets data & returns object containing correct
+     *  format for the data. This is for negative payments.
+     * Note: ordering of parameters matter since makeHeaderList
+     *  uses it for the ordering of the headers.
+     */
     return {
       "Month": month,
       "Starting Balance": decimalConverter(startingBalance),
@@ -132,8 +158,12 @@ var payF = {
     };
   },
 
-    var length = getNumArguments(makePObjFunction),
   makeHeaderList: function(pObjFormatter) {
+  /* Gets number of arguments for pObjFormatter and runs it to
+   *  get a payment object that has values that are numbered,
+   *  essentially ordering the payment object to return an
+   *  array of this ordered header list.
+   */ 
     var length = getNumArguments(pObjFormatter),
       rangedArray = range(0, length),
       obj = pObjFormatter.apply(null, rangedArray);
@@ -145,6 +175,8 @@ var payF = {
     return headerList;
   },
   makeDifferingPaymentsObject: function(paymentArray, originalPayment) {
+  // Returns an object of any payments that differ from the payment array
+  //  with the month being the key and the payment as the value.
     var differingPayments = {};
     each(paymentArray, function(paymentObject) {
       if (paymentObject["Payment"] != originalPayment)
