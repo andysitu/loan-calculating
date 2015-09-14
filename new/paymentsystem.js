@@ -27,7 +27,7 @@ PaymentSystem.prototype.nextPaymentObject = function() {
 PaymentSystem.prototype.checkNext = function() {
   if (this.index === 0)
     return true;
-  else if (this.index + 1 >= this.paymentArray.length)
+  else if (this.index >= this.paymentArray.length)
     return false;
   else
     return true;
