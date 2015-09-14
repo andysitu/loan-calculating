@@ -18,7 +18,10 @@ PaymentSystem.prototype.resetNext = function() {
 PaymentSystem.prototype.nextPaymentObject = function() {
   if (this.index === 0)
     return this.paymentArray[this.index++];
-  else
+  else if (this.index >= this.paymentArray.length) {
+    this.index = 0;
+    return this.paymentArray[this.index++];
+  } else
     return this.paymentArray[++this.index];
 };
 PaymentSystem.prototype.checkNext = function() {
