@@ -1,4 +1,7 @@
 display = {
+  displayMessage(message) {
+    alert(message);
+  },
   addTable(docFrag) {
     var test = document.getElementById("paymentTable");
     var tableHere = document.getElementById("table_container");
