@@ -16,14 +16,11 @@ display = {
         setInput(elementId, value);
     });
   },
-  makeTable(paymentSystem){
-    return table.createTable(paymentSystem);
-  },
   addCircle(paymentSystem) {
     circle.makeCircle(paymentSystem);
   },
   displayCharts(paymentSystem) {
-    var docFrag = this.makeTable(paymentSystem);
+    var docFrag = table.createTable(paymentSystem);
     this.addTable(docFrag);
     this.addCircle(paymentSystem);
   },
