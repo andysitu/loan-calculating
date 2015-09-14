@@ -81,13 +81,7 @@ var payF = {
 
     return paymentArray;
   },
-  remakePArray: function(objMaker, paymentArray, balance, rate, originalPayment) {
-    var differentPayment = {};
-    each(paymentArray, function(dataObj) {
-      if (dataObj["Payment"] != originalPayment)
-        differentPayment[dataObj["Month"]] = dataObj["Payment"];
-    });
-
+  remakePArray: function(objMaker, differingPayments, balance, rate, originalPayment) {
     var paymentArray = [],
       totalInterest = 0,
       payment,
@@ -144,5 +138,13 @@ var payF = {
       headerList[order] = header;
     });
     return headerList;
+  },
+  makeDifferingPaymentsObject: function(paymentArray, originalPayment) {
+    var differingPayments = {};
+    each(paymentArray, function(paymentObject) {
+      if (paymentObject["Payment"] != originalPayment)
+        differingPayments[ paymentObject["Month"] ] = paymentObject["Payment"];
+    });
+    return differingPayments;
   }
 };
