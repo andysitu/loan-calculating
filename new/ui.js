@@ -68,6 +68,7 @@ var ui = {
   // inputChecker will display error messages.
     var inputData = this.translateInputData(e);
     if (this.inputChecker(inputData)) {
+      display.hideInput(e);
       this.inputData = inputData;
       storage.store("inputData", inputData);
 
