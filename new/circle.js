@@ -1,10 +1,8 @@
 var circle = {
   makeCircle: function(paymentSystem) {
-    // dataArray -> [{name,amount,color}]
-  /**
-   * Makes circle with canvas that for now colors it in proportion
-   *   amount of the total interest and the amount of balance. Also,
-   *   it attaches itself to the canvas with id "canvas."
+  /* Sets the canvas properties and creates ctx.
+   * Then, handles drawing the pie chart representing 
+   *  the data and the text.
    */
     var canvas = document.getElementById("circleCanvas");
     var ctx = canvas.getContext("2d"),
@@ -23,6 +21,10 @@ var circle = {
     this.fillText(ctx, dataArray, center, radius, height);
   },
   drawCircle: function(x, y, center, radius, dataArray, ctx) {
+  // Draws the circle by running drawCirclePortion to draw part by part.
+
+  // Reads from dataArray created getTotal. Data Array is an array
+  //  containing objects of what properties to have.
     var pi = 2 * Math.PI,
       prev = 0,
       total = this.getTotal(dataArray);
@@ -45,6 +47,7 @@ var circle = {
   },
 
   drawCirclePortion: function(x, y, center, radius, start, end, color, ctx){
+  // Draws a portion of the pie chart.
     ctx.save();
     ctx.moveTo(center, center);
     ctx.beginPath();
@@ -57,12 +60,14 @@ var circle = {
   },
 
   getTotal: function(dataArray) {
+  // Gets the total amount of the entire data array.
     return map(dataArray, function(dataObj) { 
         return dataObj["amount"]; })
       .reduce(function(a,b) { return a + b;});
   },
 
   fillText: function(ctx, dataArray, center, radius, height) {
+  // Fills in text representing amounts of each category.
     ctx.textBaseline = "top";
     each(dataArray, function(dataObj, i, dataArray) {
       ctx.save();
@@ -73,7 +78,10 @@ var circle = {
       ctx.restore()
     }, this);
   },
+
   makeDataArray(paymentSystem) {
+  // Data array contains info as described and will be read
+  //  by other methods in this object.
     var totalInterest = paymentSystem.getTotalInterest(),
       balance = paymentSystem.getBalance(1);
 
