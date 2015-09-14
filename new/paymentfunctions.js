@@ -132,10 +132,11 @@ var payF = {
     };
   },
 
-  makeHeaderList: function(makePObjFunction) {
     var length = getNumArguments(makePObjFunction),
+  makeHeaderList: function(pObjFormatter) {
+    var length = getNumArguments(pObjFormatter),
       rangedArray = range(0, length),
-      obj = makePObjFunction.apply(null, rangedArray);
+      obj = pObjFormatter.apply(null, rangedArray);
 
     var headerList = [];
     each(obj, function(order, header) {
