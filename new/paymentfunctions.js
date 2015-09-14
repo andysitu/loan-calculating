@@ -164,7 +164,7 @@ var payF = {
    *  essentially ordering the payment object to return an
    *  array of this ordered header list.
    */ 
-    var length = getNumArguments(pObjFormatter),
+    var length = getNumParameters(pObjFormatter),
       rangedArray = range(0, length),
       obj = pObjFormatter.apply(null, rangedArray);
 

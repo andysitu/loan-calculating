@@ -92,7 +92,6 @@ function some(obj, callback, context) {
   return false;
 }
 
-function getArguments(func) {
   var functionString = func.toString();
   if (/function\s*\(.*\)/.test(functionString)) {
     var parameter = /function\s*\(([\w,\s]+)\)/g.exec(functionString);
@@ -106,8 +105,8 @@ function getArguments(func) {
   }
 }
 
-function getNumArguments(func) {
-  return getArguments(func).length;
+function getNumParameters(func) {
+  return getParameters(func).length;
 }
 
 function range(start, end) {
