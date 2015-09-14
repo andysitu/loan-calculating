@@ -19,7 +19,9 @@ var payF = {
       lowLimit = balance / months,
       guess;
 
-    while ( upLimit - lowLimit > 0.005 || endingBalance > 0 ) {
+    if (months <= 1) { return Math.ceil( balance * rate); }
+
+    while ( upLimit - lowLimit > 0.005 || endingBalance > 0.001 ) {
       if (counter++ > 1000) {
         console.log("Something went wrong");
         break;
