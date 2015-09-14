@@ -92,8 +92,10 @@ var payF = {
     for ( ; balance >= 0; month++) {
       if (month in differingPayments) {
         payment = differingPayments[month];
-        if (payment < originalPayment) {  
-          originalPayment = this.calculatePayment(balance, rate, months - month);
+        if (payment < originalPayment) {
+          var monthsRemaining = months - month >= 0 ? months - month : 1;
+          console.log("calculating: ", balance, rate, monthsRemaining);
+          originalPayment = this.calculatePayment(balance, rate, monthsRemaining);
         }
       } else {
         payment = originalPayment;
