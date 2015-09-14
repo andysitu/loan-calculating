@@ -31,9 +31,15 @@ var ui = {
     if (testForNumber(data.balance) && testForNumber(data.rate)) {
       if (testForNumber(data.months))
         return true;
-      if (testForNumber(data.payment))
+      else if (testForNumber(data.payment))
         if (data.payment > data.balance * data.rate/12)
           return true;
+        else
+          display.displayMessage("You need to enter a payment larger than $" + decimalConverter(data.balance * data.rate/12) );
+      else
+        display.displayMessage("You need to enter something either for Months or Payment (or both);");
+    } else {
+      display.displayMessage("You didn't enter anything for balance or apr.");
     }
     return false;
   },
@@ -59,6 +65,7 @@ var ui = {
   },
   submitData(e) {
   // Event handler for when user clicks on submit button.
+  // inputChecker will display error messages.
     var inputData = this.translateInputData(e);
     if (this.inputChecker(inputData)) {
       this.inputData = inputData;
@@ -66,8 +73,6 @@ var ui = {
 
       this.paymentSystem = new PaymentSystem(inputData);
       display.displayCharts(this.paymentSystem);
-    } else {
-      console.log("ERROR");
     }
   },
   paymentHandler(e) {
@@ -83,10 +88,10 @@ var ui = {
         this.paymentSystem.remakePaymentArray();
         display.displayCharts(this.paymentSystem);
       } else {
-        //display("Something");
+        display.displayMessage("You need to select 1 or more months to be modified.")
       }
     } else {
-      //display("You didn't enter an value into Add");
+      display.displayMessage("You didn't enter a valid value");
     }
     addInput.value = "";
   }
