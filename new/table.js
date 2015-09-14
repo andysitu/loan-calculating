@@ -4,6 +4,8 @@ var table = {
   /* Obtains a copy of the payment array. Then, reads it
    *  and will create a table by forming the header list
    *  and using lots of helper functions to create the parts.
+   *
+   * Returns a document fragment which display will apend.
    */
     var docFrag = document.createDocumentFragment(),
       tableId = "paymentTable";
