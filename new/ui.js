@@ -1,7 +1,12 @@
 var ui = {
+// Handles input of user interactions and calling of 
+// subsequent methods in other objects.
   paymentSystem: null,
+  // Reference to the payment system created.
   inputList: ['balance', 'rate', 'months', 'payment'],
   inputData: null,
+  // The inputs that the user has inputted. Complete
+  //  version in payment system.
   inputFormatter(type, value) {
   	// formats value, eg 100.424 to 100.42,
   	// depending on the input 
@@ -22,6 +27,7 @@ var ui = {
     } else { return ""; }
   },
   inputChecker(data) {
+  // Checks if the inputted data is valid.
     if (testForNumber(data.balance) && testForNumber(data.rate)) {
       if (testForNumber(data.months))
         return true;
@@ -32,6 +38,7 @@ var ui = {
     return false;
   },
   translateInputData() {
+  // Forms the input data & adds to data object.
   	function getValueFromEle(elementId) {
   	  return document.getElementById(elementId).value; 
   	}
@@ -46,10 +53,12 @@ var ui = {
   },
 
   setInputs(inputData) {
+  // Calls from data input & sets it using display obj.
     this.inputData = inputData;
     display.setInputs(inputData);
   },
   submitData(e) {
+  // Event handler for when user clicks on submit button.
     var inputData = this.translateInputData(e);
     if (this.inputChecker(inputData)) {
       this.inputData = inputData;
@@ -62,6 +71,8 @@ var ui = {
     }
   },
   paymentHandler(e) {
+  // Event handler for when user clicks on submit button
+  //  to change payments in the payment array.
     var addInput = document.getElementById("addAmount"),
       value = addInput.value;
 
