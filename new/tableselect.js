@@ -16,8 +16,8 @@ var tableSelect = {
     var ele = e.target;
 
     if (ele.parentNode.id == "Header") {
-      return 0; // end function early
-    } else if (ele.parentNode.tagName == 'TR' && ele.parentNode.id !== "Header") {
+      return 0;
+    } else if (ele.parentNode.tagName == 'TR') {
       var tr = ele.parentNode;
       var checkbox = tr.children[0].children[0];
       if (checkbox.checked) {
