@@ -48,7 +48,7 @@ var ui = {
   // Returns a input data object.
   	function getValueFromEle(elementId) {
   	  value = document.getElementById(elementId).value;
-      value = numberAndDot(String(value));
+      value = parseFloat(numberAndDot(String(value)));
       return value;
   	}
     var data = {};
