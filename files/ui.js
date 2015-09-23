@@ -44,7 +44,8 @@ var ui = {
     return false;
   },
   translateInputData() {
-  // Forms the input data & adds to data object.
+  // Retrieves values from the inputs &
+  // Returns a input data object.
   	function getValueFromEle(elementId) {
   	  value = document.getElementById(elementId).value;
       value = numberAndDot(String(value));
@@ -60,9 +61,10 @@ var ui = {
   },
 
   setInputs(inputData) {
-  // Calls from data input & sets it using display obj.
+  // Calls from data input & sets it to ui &
+  // to inputs on html using setInputs.
     this.inputData = inputData;
-    display.setInputs(inputData);
+    display.setInputs( inputData );
   },
   submitData(e) {
   // Event handler for when user clicks on submit button.
@@ -96,12 +98,6 @@ var ui = {
       display.displayMessage("You didn't enter a valid value");
     }
     addInput.value = "";
-  },
-  addCommaToInput(text) {
-    if (text === "")
-      return "";
-    text = String(text);
-    var newText = numberAndDot(text);
-    return commas(newText);
   }
+  
 };

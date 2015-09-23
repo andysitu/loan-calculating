@@ -56,4 +56,11 @@ display = {
     e.preventDefault();
     e.target.value = "";
   },
+  addCommaToInput(text) {
+    if (text === "")
+      return "";
+    text = String(text);
+    var newText = numberAndDot(text);
+    return commas(newText);
+  }
 };
