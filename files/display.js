@@ -21,8 +21,8 @@ display = {
   // Sets the inputs on the page. InputData is 
   //  an object with name of input in property.
     each(inputData, function(value, elementId) {
-        setInput(elementId, value);
-    });
+        setInput(elementId, this.addCommaToInput(value));
+    }, this);
   },
   addCircle(paymentSystem) {
   // Runs method to make pie chart in canvas.
@@ -44,7 +44,7 @@ display = {
       input = document.getElementById("inputForm"),
       options = document.getElementById("optionsForm");
 
-    if (value == 'submit') {
+    if (value == 'submit') {  
       input.hidden = true;
       options.hidden = false;
     } else if (value == 'newTable') {
@@ -57,10 +57,10 @@ display = {
     e.target.value = "";
   },
   addCommaToInput(text) {
-    if (text === "")
+    if (text == "")
       return "";
     text = String(text);
     var newText = numberAndDot(text);
     return commas(newText);
-  }
+  } 
 };
