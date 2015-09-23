@@ -95,5 +95,12 @@ var ui = {
       display.displayMessage("You didn't enter a valid value");
     }
     addInput.value = "";
+  },
+  addCommaToInput(text) {
+    var newText = text.split("").filter(function(value){
+      if (parseInt(value) >= 0 || value == ".")
+        return value;
+    }).join("");
+    return commas(newText);
   }
 };
