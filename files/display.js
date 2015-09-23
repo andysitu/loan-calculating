@@ -13,7 +13,6 @@ display = {
     if (test === null) {
       tableHere.appendChild(docFrag);
     } else {
-      test.removeEventListener("click", tableSelect.toggleSelected.bind(tableSelect))
       tableHere.replaceChild(docFrag, test);
     }
   },
