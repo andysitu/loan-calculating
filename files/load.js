@@ -12,6 +12,9 @@ function init() {
   addHandler("addAmount", "contextmenu", display.clearInput);
 
 
+  addHandler("balance", "input", function(e) {
+    e.target.value = ui.addCommaToInput(e.target.value);
+  });
 }
 
 window.onload = init;
