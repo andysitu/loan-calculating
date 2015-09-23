@@ -8,15 +8,12 @@ function init() {
   addHandler("reset", "click", ui.submitData.bind(ui));
   each(ui.inputList, function(input) {
     addHandler(input, "contextmenu", display.clearInput);
+    addHandler(input, "input", function(e) {
+      e.target.value = display.addCommaToInput(e.target.value);
+    });
   });
-  addHandler("addAmount", "contextmenu", display.clearInput);
+  addHandler("addAmount", "contextmenu", display.clearInput);;
 
-  addHandler("balance", "input", function(e) {
-    e.target.value = display.addCommaToInput(e.target.value);
-  });
-  addHandler("payment", "input", function(e) {
-    e.target.value = display.addCommaToInput(e.target.value);
-  });
 }
 
 window.onload = init;
