@@ -171,9 +171,10 @@ function repeatString(string, times) {
 
 function numberAndDot(value) {
 // input (value) should be a string.
-// output: number containing numbers & .
-  return parseFloat(value.split("").filter(function(value){
-      if (parseInt(value) >= 0 || value == ".")
+// output: string containing numbers & .
+  return value.split("").filter(function(value){
+      if (parseInt(value) >= 0 || value == ".") {
         return value;
-  }).join(""));
+      }
+  }).join("");
 }
