@@ -34,7 +34,15 @@ function makeCommas(value) {
 
 function commas(value) {
   // Takes in number and returns string with commas added.
-  return String(value).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  // Uses recursion to ensure that commas aren't added after
+  //   the dot.
+  value = String(value);
+  var index = value.indexOf(".");
+  if (index > -1) {
+    return commas(value.slice(0, index)) + value.slice(index).replace(/\,/g, "");
+  } else {
+    return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
 }
 
 function each(obj, callback, context) {
