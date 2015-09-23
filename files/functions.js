@@ -172,9 +172,8 @@ function repeatString(string, times) {
 function numberAndDot(value) {
 // input (value) should be a string.
 // output: number containing numbers & .
-  console.log(value);
-  return value.split("").filter(function(value){
+  return parseFloat(value.split("").filter(function(value){
       if (parseInt(value) >= 0 || value == ".")
         return value;
-  }).join("");
+  }).join(""));
 }
