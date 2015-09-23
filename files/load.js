@@ -11,7 +11,12 @@ function init() {
   });
   addHandler("addAmount", "contextmenu", display.clearInput);
 
-
+  addHandler("balance", "input", function(e) {
+    e.target.value = display.addCommaToInput(e.target.value);
+  });
+  addHandler("payment", "input", function(e) {
+    e.target.value = display.addCommaToInput(e.target.value);
+  });
 }
 
 window.onload = init;

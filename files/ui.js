@@ -44,9 +44,12 @@ var ui = {
     return false;
   },
   translateInputData() {
-  // Forms the input data & adds to data object.
+  // Retrieves values from the inputs &
+  // Returns a input data object.
   	function getValueFromEle(elementId) {
-  	  return document.getElementById(elementId).value; 
+  	  value = document.getElementById(elementId).value;
+      value = numberAndDot(String(value));
+      return value;
   	}
     var data = {};
     
@@ -54,19 +57,19 @@ var ui = {
   	  var value = getValueFromEle(input);
   	  data[input] = this.inputFormatter(input, value);
   	}, this);
-
     return data;
   },
 
   setInputs(inputData) {
-  // Calls from data input & sets it using display obj.
+  // Calls from data input & sets it to ui &
+  // to inputs on html using setInputs.
     this.inputData = inputData;
-    display.setInputs(inputData);
+    display.setInputs( inputData );
   },
   submitData(e) {
   // Event handler for when user clicks on submit button.
   // inputChecker will display error messages.
-    var inputData = this.translateInputData(e);
+    var inputData = this.translateInputData();
     if (this.inputChecker(inputData)) {
       display.hideInput(e);
       this.inputData = inputData;
@@ -95,12 +98,6 @@ var ui = {
       display.displayMessage("You didn't enter a valid value");
     }
     addInput.value = "";
-  },
-  addCommaToInput(text) {
-    var newText = text.split("").filter(function(value){
-      if (parseInt(value) >= 0 || value == ".")
-        return value;
-    }).join("");
-    return commas(newText);
   }
+  
 };

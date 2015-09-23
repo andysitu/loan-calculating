@@ -34,7 +34,7 @@ function makeCommas(value) {
 
 function commas(value) {
   // Takes in number and returns string with commas added.
-  return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return String(value).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 function each(obj, callback, context) {
@@ -167,4 +167,13 @@ function repeatString(string, times) {
   }, times);
 
   return newString;
+}
+
+function numberAndDot(value) {
+// input (value) should be a string.
+// output: number containing numbers & .
+  return parseFloat(value.split("").filter(function(value){
+      if (parseInt(value) >= 0 || value == ".")
+        return value;
+  }).join(""));
 }

@@ -53,7 +53,7 @@ tr:hover td { background: #b19cd9; }
 	margin-left: 5%;
 }
 
-#balance, #payment { width: 8em; }
+#balance, #payment { width: 12em; }
 #rate { width: 4em; }
 #months { width: 3em; }
 
