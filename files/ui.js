@@ -46,7 +46,9 @@ var ui = {
   translateInputData() {
   // Forms the input data & adds to data object.
   	function getValueFromEle(elementId) {
-  	  return document.getElementById(elementId).value; 
+  	  value = document.getElementById(elementId).value;
+      value = numberAndDot(String(value));
+      return value;
   	}
     var data = {};
     
@@ -54,7 +56,6 @@ var ui = {
   	  var value = getValueFromEle(input);
   	  data[input] = this.inputFormatter(input, value);
   	}, this);
-
     return data;
   },
 
@@ -66,7 +67,7 @@ var ui = {
   submitData(e) {
   // Event handler for when user clicks on submit button.
   // inputChecker will display error messages.
-    var inputData = this.translateInputData(e);
+    var inputData = this.translateInputData();
     if (this.inputChecker(inputData)) {
       display.hideInput(e);
       this.inputData = inputData;
