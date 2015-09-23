@@ -27,8 +27,14 @@ function decimalConverter(value) {
 
 function makeCommas(value) {
   // Takes in number and returns string with commas added.
+  // Converts to 2 decimal places. commas doesn't.
 	value = String(decimalConverter(value).toFixed(2));
-	return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+	return commas(value);
+}
+
+function commas(value) {
+  // Takes in number and returns string with commas added.
+  return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 function each(obj, callback, context) {
