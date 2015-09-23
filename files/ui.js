@@ -97,10 +97,8 @@ var ui = {
     addInput.value = "";
   },
   addCommaToInput(text) {
-    var newText = text.split("").filter(function(value){
-      if (parseInt(value) >= 0 || value == ".")
-        return value;
-    }).join("");
+    text = String(text);
+    var newText = numberAndDot(text);
     return commas(newText);
   }
 };
