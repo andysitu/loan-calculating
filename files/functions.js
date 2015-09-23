@@ -34,7 +34,7 @@ function makeCommas(value) {
 
 function commas(value) {
   // Takes in number and returns string with commas added.
-  return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return String(value).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 function each(obj, callback, context) {
